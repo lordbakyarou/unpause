@@ -70,7 +70,7 @@ function CreatePodcast() {
 
   dispatch(removePodcast(0));
 
-  console.log(image, "image", podcastImage, "podcastImage");
+  // console.log(image, "image", podcastImage, "podcastImage");
 
   const podcastCategories = [
     "Comedy",
@@ -103,11 +103,11 @@ function CreatePodcast() {
   const handleCreatePodcast = async (e) => {
     e.preventDefault();
     setLoading(true);
-    console.log("handleCreatePodcast");
+    // console.log("handleCreatePodcast");
     if (token) {
       try {
         const podcastId = uuidv4();
-        console.log(podcastId);
+        // console.log(podcastId);
 
         let bannerImageUrl = defaultBanner;
         let podcastImageUrl = defaultPodcastImage;
@@ -291,7 +291,7 @@ function CreatePodcast() {
                     onClick={() => {
                       const temp = [...selectedCategories];
                       temp.splice(index, 1);
-                      console.log(temp, selectedCategories);
+                      // console.log(temp, selectedCategories);
                       setSelectedCategories(temp);
                     }}
                   />{" "}

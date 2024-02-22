@@ -17,6 +17,7 @@ import { clearPodcast } from "../redux/features/podcast/podcastSlice";
 import { openPost, closePost } from "../redux/features/editpost/editPostOpen";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { clearEpisode } from "../redux/features/episods/episodsSlice";
 
 import { toast } from "react-toastify";
 
@@ -101,6 +102,7 @@ function Profile() {
                 dispatch(clearToken());
                 dispatch(clearUser());
                 dispatch(clearPodcast());
+                dispatch(clearEpisode());
                 navigate("/");
               }}
             >

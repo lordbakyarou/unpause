@@ -15,10 +15,10 @@ import { playMusic, pauseMusic } from "../redux/features/music/musicSlice";
 
 function PodcastPlayer() {
   const episode = useSelector((state) => state.episode.episode);
-  console.log(episode, "episode");
+  // console.log(episode, "episode");
 
   const music = useSelector((state) => state.music);
-  console.log(music);
+  // console.log(music);
 
   const dispatch = useDispatch();
 
@@ -31,8 +31,8 @@ function PodcastPlayer() {
   const [volumeVisible, setVolumeVisible] = useState(false);
   const [isAudioMuted, setIsAudioMuted] = useState(false);
 
-  console.log(music.status);
-  console.log(audioRef.current);
+  // console.log(music.status);
+  // console.log(audioRef.current);
 
   useEffect(() => {
     if (volume === 0) {

@@ -48,7 +48,7 @@ function Login() {
         password
       );
       const user = loggedInUser.user;
-      console.log(user);
+      // console.log(user);
 
       dispatch(setToken(user.accessToken));
 

@@ -35,7 +35,7 @@ const PodcastDetail = () => {
     const getUserInfo = async () => {
       try {
         const temp = await getDoc(doc(db, "users", uid));
-        console.log(temp.data(), "mcmmc");
+        // console.log(temp.data(), "mcmmc");
         setCreatedBy(temp.data().name);
       } catch (error) {
         console.log(error);

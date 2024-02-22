@@ -9,7 +9,7 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setCurrentUser: (state, action) => {
-      console.log(action.payload.profilePic);
+      // console.log(action.payload.profilePic);
       // console.log(action.payload, "thsi is action payload");
       state.user = action.payload;
     },

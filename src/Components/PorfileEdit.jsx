@@ -98,7 +98,7 @@ function ProfileEdit() {
     }
   };
 
-  console.log(password);
+  // console.log(password);
 
   const handlePasswordUpdate = async () => {
     setLoading2(true);

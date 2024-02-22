@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { clearToken } from "../redux/features/token/tokenSlice";
 import { clearUser } from "../redux/features/user/userSlice";
 import { clearPodcast } from "../redux/features/podcast/podcastSlice";
+import { clearEpisode } from "../redux/features/episods/episodsSlice";
 import { useEffect, useState } from "react";
 
 function Navbar() {
@@ -50,7 +51,7 @@ function Navbar() {
         ></div>
       )}
 
-      {console.log(token.token)}
+      {/* {console.log(token.token)} */}
 
       <div className="z-50 w-full max-sm:text-sm flex justify-center h-14 items-center max-lg:gap-10 gap-20 max-xxs:gap-5 text-lg">
         {!token.token && (
@@ -95,6 +96,7 @@ function Navbar() {
               dispatch(clearToken());
               dispatch(clearUser());
               dispatch(clearPodcast());
+              dispatch(clearEpisode());
             }}
           >
             Logout

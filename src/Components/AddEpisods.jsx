@@ -61,7 +61,7 @@ function AddEpisodes({
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const { uid, id } = useParams();
-  console.log(uid, id);
+  // console.log(uid, id);
 
   const handleCreateEpisode = async () => {
     if (episodeImage && audio && episodeName && episodeDescription) {

@@ -48,7 +48,7 @@ function Signup() {
     confirmPassword: "",
   });
 
-  console.log(import.meta.env, "shikar");
+  // console.log(import.meta.env, "shikar");
 
   const { name, email, password, confirmPassword } = user;
 
@@ -84,14 +84,14 @@ function Signup() {
 
       const user = userCredential.user;
 
-      console.log(image);
+      // console.log(image);
 
       if (image) {
         const storageRef = ref(storage, `profile/${user.uid}`);
         const imagethis = await uploadBytes(storageRef, image);
 
         const imageUrl = await getDownloadURL(storageRef);
-        console.log(imagethis, imageUrl);
+        // console.log(imagethis, imageUrl);
 
         // // Save user data along with the profile pic URL
         await setDoc(doc(db, "users", user.uid), {
