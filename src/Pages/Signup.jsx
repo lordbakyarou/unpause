@@ -48,6 +48,8 @@ function Signup() {
     confirmPassword: "",
   });
 
+  console.log(import.meta.env, "shikar");
+
   const { name, email, password, confirmPassword } = user;
 
   function setUserProperties(e) {
