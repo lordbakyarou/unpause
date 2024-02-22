@@ -95,7 +95,7 @@ function Login() {
             type="email"
             placeholder="Email"
             name="email"
-            className="peer outline-none bg-transparent p-3 rounded border w-[500px] placeholder-transparent"
+            className="peer outline-none bg-transparent p-3 rounded border w-[500px] w-[500px] max-sm:w-[450px] max-xxs:w-[290px] placeholder-transparent"
             onChange={(e) => setUserProperties(e)}
           />
           <label
@@ -124,7 +124,7 @@ function Login() {
             type={showPassword ? "text" : "password"}
             placeholder="Password"
             name="password"
-            className="peer outline-none bg-transparent p-3 rounded border w-[500px] placeholder-transparent"
+            className="peer outline-none bg-transparent p-3 rounded border w-[500px] w-[500px] max-sm:w-[450px] max-xxs:w-[290px] placeholder-transparent"
             onChange={(e) => setUserProperties(e)}
           />
           <label
@@ -153,7 +153,7 @@ function Login() {
         </div>
 
         <button
-          className="border-2  rounded p-3 font-semibold w-[500px] hover:bg-gray-200 hover:bg-opacity-20"
+          className="border-2  rounded p-3 font-semibold w-[500px] w-[500px] max-sm:w-[450px] max-xxs:w-[290px] hover:bg-gray-200 hover:bg-opacity-20"
           onClick={handleLogin}
         >
           {loading ? (

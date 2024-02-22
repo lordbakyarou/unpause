@@ -157,7 +157,7 @@ function Signup() {
             type="text"
             placeholder="Full Name"
             name="name"
-            className="peer outline-none bg-transparent p-3 rounded border w-[500px] placeholder-transparent"
+            className="peer outline-none bg-transparent p-3 rounded border w-[500px] w-[500px] max-sm:w-[450px] max-xxs:w-[290px] placeholder-transparent"
             onChange={(e) => setUserProperties(e)}
           />
           <label
@@ -177,7 +177,7 @@ function Signup() {
             type="email"
             placeholder="Email"
             name="email"
-            className="peer outline-none bg-transparent p-3 rounded border w-[500px] placeholder-transparent"
+            className="peer outline-none bg-transparent p-3 rounded border w-[500px] w-[500px] max-sm:w-[450px] max-xxs:w-[290px] placeholder-transparent"
             onChange={(e) => setUserProperties(e)}
           />
           <label
@@ -197,7 +197,7 @@ function Signup() {
             type={showPassword ? "text" : "password"}
             placeholder="Password"
             name="password"
-            className="peer outline-none bg-transparent p-3 rounded border w-[500px] placeholder-transparent"
+            className="peer outline-none bg-transparent p-3 rounded border w-[500px] w-[500px] max-sm:w-[450px] max-xxs:w-[290px] placeholder-transparent"
             onChange={(e) => setUserProperties(e)}
           />
           <label
@@ -229,7 +229,7 @@ function Signup() {
             type={showConfirmPassword ? "text" : "password"}
             placeholder="Confirm Password"
             name="confirmPassword"
-            className="peer outline-none bg-transparent p-3 rounded border w-[500px] placeholder-transparent"
+            className="peer outline-none bg-transparent p-3 rounded border w-[500px] w-[500px] max-sm:w-[450px] max-xxs:w-[290px] placeholder-transparent"
             onChange={(e) => setUserProperties(e)}
           />
           <label
@@ -260,7 +260,7 @@ function Signup() {
 
         <label
           htmlFor="fileInput"
-          className="block cursor-pointer outline-none bg-transparent p-3 rounded border w-[500px] "
+          className="block cursor-pointer outline-none bg-transparent p-3 rounded border w-[500px] w-[500px] max-sm:w-[450px] max-xxs:w-[290px] "
         >
           <span className="text-gray-400 flex gap-2 items-center">
             Add Profile Pic <CiImageOn className="text-2xl" />
@@ -273,7 +273,7 @@ function Signup() {
           />
         </label>
         <button
-          className="border-2  rounded p-3 font-semibold w-[500px] hover:bg-gray-200 hover:bg-opacity-20"
+          className="border-2  rounded p-3 font-semibold w-[500px] w-[500px] max-sm:w-[450px] max-xxs:w-[290px] hover:bg-gray-200 hover:bg-opacity-20"
           onClick={validateDetails}
         >
           {loading ? (
