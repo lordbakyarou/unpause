@@ -11,6 +11,8 @@ import store from "./redux/app/store.js";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 
+import { Analytics } from "@vercel/analytics/react";
+
 let persistor = persistStore(store);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -19,6 +21,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <BrowserRouter>
         <PersistGate persistor={persistor}>
           <App />
+          <Analytics />
         </PersistGate>
       </BrowserRouter>
     </Provider>
