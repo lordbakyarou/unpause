@@ -31,9 +31,6 @@ function PodcastPlayer() {
   const [volumeVisible, setVolumeVisible] = useState(false);
   const [isAudioMuted, setIsAudioMuted] = useState(false);
 
-  // console.log(music.status);
-  // console.log(audioRef.current);
-
   useEffect(() => {
     if (volume === 0) {
       setIsAudioMuted(true);
@@ -105,11 +102,11 @@ function PodcastPlayer() {
             class="bg-white w-full flex max-sm:flex-col items-center h-fit"
             //   style="width: 45rem !important;"
           >
-            <div class="flex gap-2 p-2 max-sm:w-full  items-center">
+            <div class="flex gap-2 pt-1 pl-1 max-sm:w-full  items-center">
               {/* {console.log(episode)} */}
-              <div>
+              <div className="w-32 h-20 mb-3">
                 <img
-                  className="w-full hidden md:block max-sm:block w-32 h-20"
+                  className="w-full h-20 hidden md:block max-sm:block object-cover "
                   src={episode.episodeImage}
                   alt="Album Pic"
                 />
@@ -126,10 +123,10 @@ function PodcastPlayer() {
                   </div>
                 </div>
                 <div class="flex justify-between max-sm:justify-start max-sm:gap-10 max-xxs:justify-between max-xxs:gap-2 gap-2 text-xl items-center h-fit text-black">
-                  <div class="text-gray-800">
+                  <div class="text-gray-800 hover:cursor-pointer">
                     <FaStepBackward />
                   </div>
-                  <div class="text-gray-800">
+                  <div class="text-gray-800 hover:cursor-pointer">
                     <TbRewindBackward5 onClick={handleBackward} />
                   </div>
                   <div
@@ -138,23 +135,26 @@ function PodcastPlayer() {
                         ? dispatch(pauseMusic())
                         : dispatch(playMusic())
                     }
-                    className="text-black cursor-pointer"
+                    className="text-black cursor-pointer flex justify-center  items-center"
                   >
                     {music.status ? (
-                      <div class="text-black rounded-full bg-red-light shadow-lg">
+                      <div class="text-black rounded-full bg-white p-2 shadow-lg">
                         <FaPause />
                       </div>
                     ) : (
-                      <div class="text-black rounded-full bg-red-light shadow-lg">
-                        <FaPlay />
+                      <div class="text-black rounded-full bg-white p-2 shadow-lg">
+                        <FaPlay className="ml-0.5" />
                       </div>
                     )}
                   </div>
 
-                  <div class="text-gray-800" onClick={handleForward}>
+                  <div
+                    class="text-gray-800 hover:cursor-pointer"
+                    onClick={handleForward}
+                  >
                     <TbRewindForward5 />
                   </div>
-                  <div class="text-gray-800">
+                  <div class="text-gray-800 hover:cursor-pointer">
                     <FaStepForward />
                   </div>
                 </div>

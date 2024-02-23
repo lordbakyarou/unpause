@@ -146,7 +146,7 @@ function Signup() {
   // console.log(image);
 
   return (
-    <div className="pt-20 overflow-y-hidden flex justify-center items-center flex-col gap-10 bg-primary-background">
+    <div className="pt-20 overflow-y-hidden flex justify-center items-center flex-col gap-10 ">
       <h1 className="text-4xl font-semibold">Signup</h1>
       <form
         className="flex flex-col items-center justify-center gap-5"

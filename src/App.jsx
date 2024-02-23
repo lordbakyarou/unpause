@@ -19,7 +19,7 @@ function App() {
   const episode = useSelector((state) => state.episode.episode);
 
   return (
-    <div className="homescreen m-0 flex   flex-col w-screen justify-center bg-gray-900 h-screen text-gray-100 ">
+    <div className="homescreen m-0 flex  flex-col w-screen justify-center bg-gray-900 h-screen text-gray-100 ">
       <Navbar />
       <div className="relative w-screen overflow-auto h-screen flex justify-center text-primary-text-color bg-transparent scrollbar-hide">
         <div className="w-full h-full absolute top-0 z-50 ">

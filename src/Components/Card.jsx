@@ -7,7 +7,7 @@ function Card({ podcastDetails, podcast }) {
 
   return (
     <div
-      className="w-80 h-[450px] max-sm:w-60 pt-4 max-sm:pt-1 max-xxs:w-full max-xxs:p-2 max-xxs:h-fit  max-sm:h-full  rounded-2xl flex flex-col gap-2 justify-between max-sm:justify-evenly "
+      className="w-80 h-[510px] max-sm:w-60 pt-4 max-sm:pt-1 max-xxs:w-full max-xxs:p-2 max-xxs:h-fit  max-sm:h-full  rounded-2xl flex flex-col gap-2 justify-between max-sm:justify-evenly "
       style={{
         backgroundImage:
           "linear-gradient(rgba(58, 129, 191, 0.3), rgba(65, 48, 90, 0.3))",
@@ -35,7 +35,7 @@ function Card({ podcastDetails, podcast }) {
           />
         </div>
         <div className="flex justify-between px-4 items-center text-primary-text-color">
-          <p className="w-fit max-sm:text-lg overflow-hidden opacity-50 hover:opacity-100 cursor-pointer">
+          <p className="w-fit max-sm:text-sm text-sm max-h-20 overflow-scroll opacity-50 hover:opacity-100 cursor-pointer">
             {podcast?.podcastDescription}
           </p>
         </div>

@@ -125,14 +125,14 @@ function ProfileEdit() {
 
   return (
     <div
-      className="h-full w-full backdrop-blur-sm  bg-black/30 flex items-center justify-center"
+      className="h-screen w-full backdrop-blur-sm  bg-black/30 flex items-center justify-center"
       onClick={(e) => {
         e.stopPropagation();
         dispatch(closePost());
       }}
     >
       <div
-        className="overflow-y-hidden flex max-sm:w-[500px] max-xxs:w-[400px] justify-center relative items-center flex-col gap-10 bg-black backdrop-blur-xl rounded-lg p-5"
+        className=" flex max-sm:w-[500px] max-xxs:w-[400px] justify-center relative items-center flex-col gap-10 bg-black  backdrop-blur-xl rounded-lg p-5"
         onClick={(e) => {
           e.stopPropagation();
           dispatch(openPost());

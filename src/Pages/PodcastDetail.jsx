@@ -62,7 +62,7 @@ const PodcastDetail = () => {
 
   return (
     <div
-      className={`py-5 px-20 pb-56 max-sm:px-4 pb-40 w-full overflow-y-hidden flex justify-center flex-col gap-10 bg-primary-background backdrop-blur-sm `}
+      className={`py-5 px-20 pb-56 max-sm:px-4 pb-40 w-full overflow-y-hidden flex justify-center flex-col gap-10 backdrop-blur-sm `}
     >
       {!podcast && <PodcastDetailLoading />}
       {podcast && (

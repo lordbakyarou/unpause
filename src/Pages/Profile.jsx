@@ -131,23 +131,20 @@ function Profile() {
           </h1>
         )}
       </div>
-      <div className="max-sm:w-full  flex  grid grid-cols-3 max-lg:grid-cols-2  max-md:grid-cols-1  gap-5 justify-center">
+      <div className="podcasts max-xxs:grid-cols-1 max-xxs:px-10  max-sm:items-center max-sm:px-2 max-sm:grid-cols-2  flex  grid grid-cols-3 max-lg:grid-cols-2  max-md:grid-cols-2 max-md:gap-2  gap-5 justify-center">
         {userPodcast?.map((podcast) => {
           // console.log(podcast);
           return (
-            <div
+            <Card
+              podcastDetails={{
+                img: podcast.podcastImage,
+                podcastName: podcast.podcastTitle,
+              }}
               onClick={() =>
                 navigate(`/podcast/${podcast.uid}/${podcast.podcastId}`)
               }
-            >
-              <Card
-                podcastDetails={{
-                  img: podcast.podcastImage,
-                  podcastName: podcast.podcastTitle,
-                }}
-                podcast={podcast}
-              />
-            </div>
+              podcast={podcast}
+            />
           );
         })}
       </div>
