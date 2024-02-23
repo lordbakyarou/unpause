@@ -63,7 +63,7 @@ function CreatePodcast() {
   });
 
   const { podcastTitle, podcastDescription } = podcast;
-  console.log(podcastDescription);
+  // console.log(podcastDescription);
 
   function setPodcastDetails(e) {
     setPodcast({ ...podcast, [e.target.name]: e.target.value });

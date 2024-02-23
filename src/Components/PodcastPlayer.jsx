@@ -11,6 +11,10 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { FaVolumeUp, FaVolumeMute } from "react-icons/fa";
 
+import { MdOutlineCancel } from "react-icons/md";
+
+import { clearEpisode } from "../redux/features/episods/episodsSlice";
+
 import { playMusic, pauseMusic } from "../redux/features/music/musicSlice";
 
 function PodcastPlayer() {
@@ -96,6 +100,9 @@ function PodcastPlayer() {
   return (
     episode && (
       <div class="w-full fixed bottom-0 z-50">
+        <div className="absolute right-1 top-1 w-fit h-fit  text-black">
+          <MdOutlineCancel onClick={() => dispatch(clearEpisode())} />
+        </div>
         <div class="bg-red-light"></div>
         <div class="flex items-center justify-center h-fit bg-red-lightest">
           <div

@@ -32,12 +32,12 @@ function Episode({ episode, index }) {
         <div className="rounded ml-5 w-fit flex gap-2 items-center cursor-pointer">
           <p onClick={playEpisode}>
             {music.status &&
-            currentEpisode.episode.episodeId === episode.episodeId
+            currentEpisode?.episode?.episodeId === episode.episodeId
               ? "Pause"
               : "Play"}
           </p>
           {music.status &&
-          currentEpisode.episode.episodeId === episode.episodeId ? (
+          currentEpisode?.episode?.episodeId === episode.episodeId ? (
             <IoPauseCircleOutline
               onClick={() => dispatch(pauseMusic())}
               className="text-2xl transition-all hover:scale-[120%] duration-500 cursor-pointer"
