@@ -35,7 +35,7 @@ function Card({ podcastDetails, podcast }) {
           />
         </div>
         <div className="flex justify-between px-4 items-center text-primary-text-color">
-          <p className="w-fit max-sm:text-sm text-sm max-h-20 overflow-scroll opacity-50 hover:opacity-100 cursor-pointer">
+          <p className="w-fit max-sm:text-sm text-sm max-h-20 overflow-scroll scrollbar-hide opacity-50 hover:opacity-100 cursor-pointer">
             {podcast?.podcastDescription}
           </p>
         </div>
