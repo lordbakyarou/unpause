@@ -123,7 +123,7 @@ function AddEpisodes({
 
   return (
     <div
-      className="h-screen w-full backdrop-blur-sm  bg-black/30 flex items-center justify-center"
+      className="h-screen w-full bg-black/30 flex items-center justify-center backdrop-blur-sm"
       onClick={(e) => {
         e.stopPropagation();
         setAddPodcastOpen(false);
@@ -138,7 +138,7 @@ function AddEpisodes({
       >
         <div className="absolute top-3 right-3 z-50">
           <MdOutlineCancel
-            className="text-2xl"
+            className="text-2xl cursor-pointer"
             onClick={(e) => {
               e.stopPropagation();
               setAddPodcastOpen(false);

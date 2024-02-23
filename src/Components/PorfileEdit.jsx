@@ -98,8 +98,6 @@ function ProfileEdit() {
     }
   };
 
-  // console.log(password);
-
   const handlePasswordUpdate = async () => {
     setLoading2(true);
 
@@ -142,7 +140,7 @@ function ProfileEdit() {
       >
         <div className="absolute top-3 right-3 z-50">
           <MdOutlineCancel
-            className="text-2xl"
+            className="text-2xl cursor-pointer"
             onClick={(e) => {
               e.stopPropagation();
               dispatch(closePost());

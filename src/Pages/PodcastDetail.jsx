@@ -12,6 +12,7 @@ import { selectPodcastById } from "../redux//features/podcast/podcastSlice";
 import { IoMdAdd } from "react-icons/io";
 import AddEpisodes from "../Components/AddEpisods";
 import { useNavigate } from "react-router-dom";
+import PodcastDetailLoading from "../Components/PodcastDetailLoading";
 
 const PodcastDetail = () => {
   const { uid, id } = useParams();
@@ -26,8 +27,7 @@ const PodcastDetail = () => {
   const [isNewPodcastAdded, setIsNewPodcastAdded] = useState(false);
 
   const [createdBy, setCreatedBy] = useState("");
-
-  const podcastDetail = useSelector((state) => state.podcast);
+  const [userProfile, setUserProfile] = useState("");
 
   const [addPodcastOpen, setAddPodcastOpen] = useState(false);
 
@@ -37,6 +37,7 @@ const PodcastDetail = () => {
         const temp = await getDoc(doc(db, "users", uid));
         // console.log(temp.data(), "mcmmc");
         setCreatedBy(temp.data().name);
+        setUserProfile(temp.data().profilePic);
       } catch (error) {
         console.log(error);
       }
@@ -60,7 +61,10 @@ const PodcastDetail = () => {
   }, [uid, id, isNewPodcastAdded]);
 
   return (
-    <div className="py-5 px-20 pb-56 max-sm:px-4 pb-40 w-full overflow-y-hidden flex justify-center flex-col gap-10 bg-primary-background">
+    <div
+      className={`py-5 px-20 pb-56 max-sm:px-4 pb-40 w-full overflow-y-hidden flex justify-center flex-col gap-10 bg-primary-background backdrop-blur-sm `}
+    >
+      {!podcast && <PodcastDetailLoading />}
       {podcast && (
         <>
           <div className="flex flex-col gap-10 ">
@@ -73,12 +77,15 @@ const PodcastDetail = () => {
               className="w-full h-[350px] object-cover rounded-2xl cursor-pointer transition-all hover:scale-105 duration-500"
             />
           </div>
-          <div className="opacity-50 w-full flex justify-end hover:opacity-100 transition-all hover:scale-[101%] duration-500">
+          <div className=" w-full flex  items-center  gap-2 justify-end">
+            <p className="w-fit cursor-pointer opacity-50 hover:opacity-100 ">
+              Created By: {createdBy}
+            </p>
             <p
-              className="w-fit cursor-pointer"
+              className="w-10 h-10 rounded-full bg-transparent overflow-hidden border  cursor-pointer transition-all hover:scale-[110%] duration-500"
               onClick={() => navigate(`/profile/${podcast.uid}`)}
             >
-              Created By: {createdBy}
+              <img src={userProfile} />
             </p>
           </div>
 
@@ -100,7 +107,7 @@ const PodcastDetail = () => {
             <h1 className="">{podcast.description}</h1>
           </div>
 
-          <div className="w-full flex flex-col gap-5">
+          <div className={`w-full flex flex-col gap-5 `}>
             <div className="flex flex-col gap-4">
               <div className="flex  justify-between items-center">
                 <p className="text-3xl">Episodes</p>
@@ -110,7 +117,7 @@ const PodcastDetail = () => {
                     onClick={() => setAddPodcastOpen(true)}
                   >
                     <IoMdAdd className="transition-all hover:scale-[120%] duration-500 cursor-pointer  cursor-pointer text-2xl  " />
-                    <p className="cursor-pointer">Add Episods</p>
+                    <p className="cursor-pointer">Create Episods</p>
                   </div>
                 )}
               </div>
@@ -122,7 +129,7 @@ const PodcastDetail = () => {
             {/* need to chang ethis */}
           </div>
           {addPodcastOpen && (
-            <div className="w-screen h-screen absolute left-0 top-0 flex items-center justify-center">
+            <div className="w-screen h-screen overflow-hidden absolute left-0 top-0 flex items-center justify-center">
               <AddEpisodes
                 setAddPodcastOpen={setAddPodcastOpen}
                 setIsNewPodcastAdded={setIsNewPodcastAdded}

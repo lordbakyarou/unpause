@@ -160,7 +160,7 @@ function PodcastPlayer() {
                 </div>
               </div>
             </div>
-            <div className="mx-8 py-4 max-sm:w-full max-sm:px-10 max-xxs:px-5">
+            <div className="mx-8 py-4 max-sm:w-full w-full max-sm:px-10 max-xxs:px-5">
               <div className="flex justify-between text-sm text-black">
                 <p>{formatTime(currentTime)}</p>
                 <p>{formatTime(duration)}</p>

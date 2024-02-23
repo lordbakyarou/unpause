@@ -8,12 +8,15 @@ import { getDoc, doc, getDocs, collection } from "firebase/firestore";
 
 import { useNavigate } from "react-router-dom";
 
+import { FaFilter } from "react-icons/fa";
+
 import { useDispatch, useSelector } from "react-redux";
 import { addAllPodcast } from "../redux/features/allPodcast/allPodcastSlice";
 import { toast } from "react-toastify";
+import LoadingCard from "../Components/LoadingCard";
 
 function Podcasts() {
-  const allPodcast = [useSelector((state) => state.allPodcast.allPodcast)];
+  const [allPodcast, setAllPodcast] = useState([]);
   const podcast = useSelector((state) => state.podcast.podcast);
   const dispatch = useDispatch();
 
@@ -52,7 +55,7 @@ function Podcasts() {
             newArray.push(podcastDoc.data());
           });
           // console.log(newArray);
-          dispatch(addAllPodcast([...newArray]));
+          setAllPodcast([...newArray]);
         });
       } catch (error) {
         console.error("Error fetching podcasts: ", error);
@@ -63,7 +66,7 @@ function Podcasts() {
   }, [podcast]);
 
   useEffect(() => {
-    const temp = allPodcast[0].filter(
+    const temp = allPodcast.filter(
       (podcast) =>
         podcast.podcastTitle
           .toLowerCase()
@@ -72,7 +75,9 @@ function Podcasts() {
     );
 
     setFilteredPodcast(temp);
-  }, [search]);
+  }, [search, allPodcast]);
+
+  const [filterOption, setFilterOption] = useState(false);
 
   const podcastCategories = [
     "Comedy",
@@ -101,11 +106,11 @@ function Podcasts() {
   ];
 
   return (
-    <div className="pt-5 pb-40 w-full  overflow-y-hidden flex justify-center items-center flex-col gap-10 bg-primary-background">
+    <div className="pt-5 pb-40 w-full podcast overflow-auto flex justify-center items-center flex-col gap-10 bg-transparent">
       <div className="flex flex-col gap-2 items-center justify-center">
         <div className="flex flex-col gap-10 items-center">
           <h1 className="text-3xl">Discover Podcasts</h1>
-          <div className="flex max-lg:w-[700px]  max-md:w-[600px] max-sm:w-[490px] max-xxs:w-[300px] relative ">
+          <div className="flex max-lg:w-[700px] relative max-md:w-[600px] max-sm:w-[490px] max-xxs:w-[300px] relative items-center gap-2">
             <input
               // type={showPassword ? "text" : "password"}
               placeholder="Search"
@@ -124,38 +129,56 @@ function Podcasts() {
             >
               Search
             </label>
+            <p
+              className="absolute top-4 right-2"
+              onClick={() => setFilterOption(!filterOption)}
+            >
+              <FaFilter />
+            </p>
           </div>
         </div>
 
-        <div className="flex gap-2 w-[1000px] max-lg:w-[700px] max-md:w-[600px] max-sm:w-[490px] max-xxs:w-[300px] flex-wrap ">
-          {podcastCategories.map((category, index) => (
-            <p
-              key={index}
-              onClick={() => setSearch(category)}
-              className="backdrop-blur-sm max-sm:text-xs w-fit cursor-pointer hover:bg-white/40 bg-white/30 rounded-xl p-2 text-sm"
-            >
-              {category}
-            </p>
-          ))}
+        <div className="transition-all duration-1000 ease-in-out">
+          {filterOption && (
+            <div className="flex gap-2 w-[1000px] max-lg:w-[700px] max-md:w-[600px] max-sm:w-[490px] max-xxs:w-[300px] flex-wrap ">
+              {podcastCategories.map((category, index) => (
+                <p
+                  key={index}
+                  onClick={() => setSearch(category)}
+                  className="backdrop-blur-sm max-sm:text-xs w-fit cursor-pointer hover:bg-white/40 bg-white/30 rounded-xl p-2 text-sm"
+                >
+                  {category}
+                </p>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 
-      <div className="podcasts max-sm:w-full  flex  grid grid-cols-3 max-lg:grid-cols-2  max-md:grid-cols-1  gap-5 justify-center">
-        {filteredPodcast?.map((podcast) => (
-          <div
-            onClick={() =>
-              navigate(`/podcast/${podcast.uid}/${podcast.podcastId}`)
-            }
-          >
+      {allPodcast.length == 0 && (
+        <div className="podcasts max-xxs:grid-cols-1  max-sm:items-center max-sm:px-2 max-sm:grid-cols-2  flex  grid grid-cols-3 max-lg:grid-cols-2  max-md:grid-cols-2 max-md:gap-2  gap-5 justify-center">
+          {[1, 2, 3, 4, 5, 6].map(() => {
+            return <LoadingCard />;
+          })}
+        </div>
+      )}
+
+      {allPodcast.length > 0 && (
+        <div className="podcasts max-xxs:grid-cols-1  max-sm:items-center max-sm:px-2 max-sm:grid-cols-2  flex  grid grid-cols-3 max-lg:grid-cols-2  max-md:grid-cols-2 max-md:gap-2  gap-5 justify-center">
+          {filteredPodcast?.map((podcast) => (
             <Card
+              onClick={() =>
+                navigate(`/podcast/${podcast.uid}/${podcast.podcastId}`)
+              }
               podcastDetails={{
                 img: podcast.podcastImage,
                 podcastName: podcast.podcastTitle,
               }}
+              podcast={podcast}
             />
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

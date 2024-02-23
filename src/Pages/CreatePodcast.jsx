@@ -59,10 +59,11 @@ function CreatePodcast() {
 
   const [podcast, setPodcast] = useState({
     podcastTitle: "",
-    podcastDescrption: "",
+    podcastDescription: "",
   });
 
-  const { podcastTitle, podcastDescrption } = podcast;
+  const { podcastTitle, podcastDescription } = podcast;
+  console.log(podcastDescription);
 
   function setPodcastDetails(e) {
     setPodcast({ ...podcast, [e.target.name]: e.target.value });
@@ -132,7 +133,7 @@ function CreatePodcast() {
 
         await setDoc(doc(db, `podcasts/${user.uid}/podcast`, podcastId), {
           podcastTitle,
-          podcastDescrption,
+          podcastDescription,
           genres: selectedCategories,
           uid: user.uid,
           bannerImage: bannerImageUrl,
@@ -144,7 +145,7 @@ function CreatePodcast() {
         dispatch(
           addPodcast({
             podcastTitle,
-            podcastDescrption,
+            podcastDescription,
             genres: selectedCategories,
             uid: user.uid,
             bannerImage: bannerImageUrl,
@@ -154,13 +155,13 @@ function CreatePodcast() {
           })
         );
         setLoading(false);
-        navigate("/profile");
+        navigate(`/profile/${user.uid}`);
 
         toast.success("Podcast Created");
       } catch (error) {
         console.log(error);
         setLoading(false);
-        toast.success("Error while creating podcast");
+        toast.error("Error while creating podcast");
       }
     }
   };
@@ -188,7 +189,7 @@ function CreatePodcast() {
   }, [searchCategory, selectedCategories]);
 
   return (
-    <div className="pt-20 pb-40 flex justify-center items-center flex-col scrollbar-hide gap-10 bg-primary-background">
+    <div className="pt-20 pb-40 flex justify-center items-center flex-col scrollbar-hide gap-10 ">
       <h1 className="text-4xl font-semibold max-sm:text-xl">
         Create A Podcast
       </h1>

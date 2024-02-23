@@ -74,7 +74,7 @@ function Profile() {
   }, [uid]);
 
   return (
-    <div className="pt-5 w-full pb-40 overflow-y-hidden flex justify-center items-center flex-col gap-10 bg-primary-background">
+    <div className="pt-5 w-full pb-40 overflow-y-hidden flex justify-center items-center flex-col gap-10">
       <div className="flex flex-col gap-10 items-center ">
         <h1 className="text-3xl">Profile</h1>
       </div>
@@ -145,6 +145,7 @@ function Profile() {
                   img: podcast.podcastImage,
                   podcastName: podcast.podcastTitle,
                 }}
+                podcast={podcast}
               />
             </div>
           );
