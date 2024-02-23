@@ -117,6 +117,7 @@ function Podcasts() {
               name="text"
               className="peer outline-none bg-transparent p-3 rounded border w-[1000px] max-lg:w-[800px] placeholder-transparent"
               onChange={(e) => setSearch(e.target.value)}
+              value={search}
             />
             <label
               className="absolute
@@ -144,7 +145,10 @@ function Podcasts() {
               {podcastCategories.map((category, index) => (
                 <p
                   key={index}
-                  onClick={() => setSearch(category)}
+                  onClick={() => {
+                    setSearch(category);
+                    setSearch(category);
+                  }}
                   className="backdrop-blur-sm max-sm:text-xs w-fit cursor-pointer hover:bg-white/40 bg-white/30 rounded-xl p-2 text-sm"
                 >
                   {category}

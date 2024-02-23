@@ -117,7 +117,7 @@ const PodcastDetail = () => {
                     onClick={() => setAddPodcastOpen(true)}
                   >
                     <IoMdAdd className="transition-all hover:scale-[120%] duration-500 cursor-pointer  cursor-pointer text-2xl  " />
-                    <p className="cursor-pointer">Create Episods</p>
+                    <p className="cursor-pointer">Create Episodes</p>
                   </div>
                 )}
               </div>
