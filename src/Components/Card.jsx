@@ -19,7 +19,7 @@ function Card({ podcastDetails, podcast }) {
       >
         <img
           src={podcastDetails.img}
-          className="w-[280px]  h-72 max-xxs:w-full max-xxs:p-2 max-xxs:h-96 object-cover rounded-t-2xl cursor-pointer transition-all hover:scale-105 duration-500 max-sm:w-64 max-sm:h-40"
+          className="w-[280px] h-72 max-xxs:w-screen max-xxs:p-2 max-xxs:h-40  object-cover rounded-t-2xl cursor-pointer transition-all hover:scale-105 duration-500 max-sm:w-64 max-sm:h-40"
         />
       </div>
       <div className="flex flex-col gap-2 flex-grow">
