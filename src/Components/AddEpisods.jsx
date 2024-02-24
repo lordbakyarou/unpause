@@ -216,9 +216,9 @@ function AddEpisodes({
           </>
           <label
             htmlFor="episodImage"
-            className="block cursor-pointer outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[450px] max-xxs:w-[290px] "
+            className="block cursor-pointer outline-none flex gap-2 bg-transparent p-3 rounded border w-[500px] max-sm:w-[450px] max-xxs:w-[290px] "
           >
-            <span className="text-gray-400 flex gap-2 items-center">
+            <span className="text-gray-400 flex whitespace-nowrap gap-2 items-center">
               Select Episode Image
               <CiImageOn className="text-2xl" />
             </span>
@@ -228,13 +228,16 @@ function AddEpisodes({
               className="hidden"
               onChange={(e) => setEpisodeImage(e.target.files[0])}
             />
+            <p className="overflow-hidden whitespace-nowrap w-[250px] max-sm">
+              {episodeImage?.name}
+            </p>
           </label>
 
           <label
             htmlFor="episodAudio"
-            className="block cursor-pointer outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[450px] max-xxs:w-[290px] "
+            className="block cursor-pointer flex gap-2  outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[450px] max-xxs:w-[290px] "
           >
-            <span className="text-gray-400 flex gap-2 items-center">
+            <span className="text-gray-400 flex whitespace-nowrap gap-2 items-center">
               Select Audio File
               <MdAudioFile className="text-2xl" />
             </span>
@@ -244,6 +247,9 @@ function AddEpisodes({
               className="hidden"
               onChange={(e) => setAudio(e.target.files[0])}
             />
+            <p className="overflow-hidden whitespace-nowrap w-[250px] max-sm">
+              {audio?.name}
+            </p>
           </label>
 
           <div className="flex gap-4">

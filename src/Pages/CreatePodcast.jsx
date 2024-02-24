@@ -323,24 +323,27 @@ function CreatePodcast() {
 
         <label
           htmlFor="bannerImage"
-          className="block cursor-pointer outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[300px]"
+          className="block cursor-pointer flex gap-2  outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[300px]"
         >
-          <span className="text-gray-400 flex gap-2 items-center">
+          <span className="text-gray-400 flex gap-2 whitespace-nowrap items-center">
             Banner Image <CiImageOn className="text-2xl" />
           </span>
           <input
             id="bannerImage"
             type="file"
-            className="hidden"
+            className="hidden "
             onChange={(e) => setImage(e.target.files[0])}
           />
+          <p className="overflow-hidden whitespace-nowrap w-[250px] max-sm">
+            {image?.name}
+          </p>
         </label>
 
         <label
           htmlFor="podcastImage"
-          className="block cursor-pointer outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[300px]"
+          className="block cursor-pointer flex gap-2 outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[300px]"
         >
-          <span className="text-gray-400 flex gap-2 items-center">
+          <span className="text-gray-400 flex whitespace-nowrap gap-2 items-center">
             Podcast Image <CiImageOn className="text-2xl" />
           </span>
           <input
@@ -351,6 +354,9 @@ function CreatePodcast() {
               setPodcastImage(e.target.files[0]);
             }}
           />
+          <p className="overflow-hidden whitespace-nowrap w-[250px] max-sm">
+            {podcastImage?.name}
+          </p>
         </label>
 
         <button

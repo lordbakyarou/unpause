@@ -260,9 +260,9 @@ function Signup() {
 
         <label
           htmlFor="fileInput"
-          className="block cursor-pointer outline-none bg-transparent p-3 rounded border w-[500px] w-[500px] max-sm:w-[450px] max-xxs:w-[290px] "
+          className="block cursor-pointer outline-none flex gap-2 bg-transparent p-3 rounded border w-[500px] w-[500px] max-sm:w-[450px] max-xxs:w-[290px] "
         >
-          <span className="text-gray-400 flex gap-2 items-center">
+          <span className="text-gray-400 flex whitespace-nowrap gap-2 items-center">
             Add Profile Pic <CiImageOn className="text-2xl" />
           </span>
           <input
@@ -271,6 +271,9 @@ function Signup() {
             className="hidden"
             onChange={(e) => setImage(e.target.files[0])}
           />
+          <p className="overflow-hidden whitespace-nowrap w-[250px] max-sm">
+            {image?.name}
+          </p>
         </label>
         <button
           className="border-2  rounded p-3 font-semibold w-[500px] w-[500px] max-sm:w-[450px] max-xxs:w-[290px] hover:bg-gray-200 hover:bg-opacity-20"

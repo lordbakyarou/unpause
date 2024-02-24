@@ -273,9 +273,9 @@ function ProfileEdit() {
           {!editPassword && (
             <label
               htmlFor="profilePic"
-              className="block cursor-pointer outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[450px] max-xxs:w-[290px]"
+              className="block cursor-pointer flex gap-2  outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[450px] max-xxs:w-[290px]"
             >
-              <span className="text-gray-400 flex gap-2 items-center">
+              <span className="text-gray-400 flex gap-2 whitespace-nowrap items-center">
                 Profile Image
                 <CiImageOn className="text-2xl" />
               </span>
@@ -285,6 +285,9 @@ function ProfileEdit() {
                 className="hidden"
                 onChange={(e) => setImage(e.target.files[0])}
               />
+              <p className="overflow-hidden whitespace-nowrap w-[250px] max-sm">
+                {image?.name}
+              </p>
             </label>
           )}
 
