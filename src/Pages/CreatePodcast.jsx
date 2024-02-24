@@ -203,7 +203,7 @@ function CreatePodcast() {
       <h1 className="text-4xl font-semibold max-sm:text-xl">
         Create A Podcast
       </h1>
-      <form
+      <div
         className="flex flex-col items-center justify-center gap-5"
         autoComplete="off"
       >
@@ -255,15 +255,6 @@ function CreatePodcast() {
           >
             What is this podcast about?
           </label>
-          {/* 
-                  {loginInUser.password && (
-                    <div
-                      className="absolute top-2.5 right-2 text-lg text-gray-800 cursor-pointer"
-                      onClick={togglePasswordVisibility}
-                    >
-                      {showPassword ? <FaEyeSlash /> : <FaEye />}
-                    </div>
-                  )} */}
         </div>
 
         <div className="input-password  relative">
@@ -279,6 +270,7 @@ function CreatePodcast() {
                 setSearchCategory("");
               }
             }}
+            value={searchCategory}
           />
           <label
             className="absolute
@@ -388,7 +380,7 @@ function CreatePodcast() {
             "Create Podcast"
           )}
         </button>
-      </form>
+      </div>
     </div>
   );
 }

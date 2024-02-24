@@ -4,7 +4,13 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import { db, storage, auth } from "../Firebase/firebase";
-import { getDoc, doc, getDocs, collection } from "firebase/firestore";
+import {
+  getDoc,
+  doc,
+  getDocs,
+  collection,
+  deleteDoc,
+} from "firebase/firestore";
 
 import { useSelector } from "react-redux";
 import { selectPodcastById } from "../redux//features/podcast/podcastSlice";
@@ -62,6 +68,18 @@ const PodcastDetail = () => {
     getPodcast();
   }, [uid, id, isNewPodcastAdded]);
 
+  const handleDeletePodcast = async () => {
+    try {
+      const docRef = doc(db, "podcasts", uid, "podcast", id);
+
+      await deleteDoc(docRef);
+      console.log("done");
+      navigate(`/profile/${uid}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div
       className={`py-5 px-20 pb-56 max-sm:px-4 pb-40 w-full overflow-y-hidden flex justify-center flex-col gap-10  `}
@@ -71,9 +89,14 @@ const PodcastDetail = () => {
         <>
           <div className="flex flex justify-between items-center">
             <h1 className="text-3xl">Podcast Name : {podcast.podcastTitle}</h1>
-            <p className="flex  items-center gap-2">
-              <RiDeleteBin6Line /> Delete Podcast
-            </p>
+            {uid === userInfo.uid && (
+              <p
+                className="flex  items-center gap-2"
+                onClick={handleDeletePodcast}
+              >
+                <RiDeleteBin6Line /> Delete Podcast
+              </p>
+            )}
           </div>
 
           <div className="image w-full h-full flex flex-col items-center justify-start pt-4 ">
