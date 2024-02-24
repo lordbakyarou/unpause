@@ -84,7 +84,7 @@ function ProfileEdit() {
 
         setLoading1(false);
 
-        navigate("/profile");
+        navigate(`/profile/${userInfo.uid}`);
         toast.success("User successfully updated");
       } catch (error) {
         console.log(error);

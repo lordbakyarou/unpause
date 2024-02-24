@@ -103,6 +103,16 @@ function CreatePodcast() {
 
   const handleCreatePodcast = async (e) => {
     e.preventDefault();
+    if (podcastTitle === "" && podcastDescription === "") {
+      toast.error("Please fill all the details");
+      return;
+    }
+
+    if (selectedCategories.length === 0) {
+      toast.error("Please select at least one genre");
+      return;
+    }
+
     setLoading(true);
     // console.log("handleCreatePodcast");
     if (token) {
@@ -263,6 +273,12 @@ function CreatePodcast() {
             name="genres"
             className="peer outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[300px] placeholder-transparent"
             onChange={(e) => setSearchCategory(e.target.value)}
+            onKeyUp={(e) => {
+              if (e.key === "Enter") {
+                setSelectedCategories([...selectedCategories, e.target.value]);
+                setSearchCategory("");
+              }
+            }}
           />
           <label
             className="absolute
