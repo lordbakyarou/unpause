@@ -14,6 +14,8 @@ import AddEpisodes from "../Components/AddEpisods";
 import { useNavigate } from "react-router-dom";
 import PodcastDetailLoading from "../Components/PodcastDetailLoading";
 
+import { RiDeleteBin6Line } from "react-icons/ri";
+
 const PodcastDetail = () => {
   const { uid, id } = useParams();
   const navigate = useNavigate();
@@ -67,8 +69,11 @@ const PodcastDetail = () => {
       {!podcast && <PodcastDetailLoading />}
       {podcast && (
         <>
-          <div className="flex flex-col gap-10 ">
+          <div className="flex flex justify-between items-center">
             <h1 className="text-3xl">Podcast Name : {podcast.podcastTitle}</h1>
+            <p className="flex  items-center gap-2">
+              <RiDeleteBin6Line /> Delete Podcast
+            </p>
           </div>
 
           <div className="image w-full h-full flex flex-col items-center justify-start pt-4 ">
