@@ -103,7 +103,7 @@ function PodcastPlayer() {
         <div class="bg-red-light"></div>
         <div class="flex items-center justify-center h-fit bg-red-lightest">
           <div
-            class="backdrop-blur-sm bg-black/40 shadow-outline w-full flex max-sm:flex-col items-center h-fit"
+            class="backdrop-blur-xl bg-black/40 shadow-outline w-full flex max-sm:flex-col items-center h-fit"
             //   style="width: 45rem !important;"
           >
             <div className="absolute right-1 top-1 w-fit h-fit text-white">
