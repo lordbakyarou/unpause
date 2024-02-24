@@ -22,6 +22,8 @@ import PodcastDetailLoading from "../Components/PodcastDetailLoading";
 
 import { RiDeleteBin6Line } from "react-icons/ri";
 
+import { HiOutlineDotsHorizontal } from "react-icons/hi";
+
 const PodcastDetail = () => {
   const { uid, id } = useParams();
   const navigate = useNavigate();
@@ -38,6 +40,8 @@ const PodcastDetail = () => {
   const [userProfile, setUserProfile] = useState("");
 
   const [addPodcastOpen, setAddPodcastOpen] = useState(false);
+
+  const [deleteIcon, setDeleteIcon] = useState(false);
 
   useEffect(() => {
     const getUserInfo = async () => {
@@ -83,20 +87,39 @@ const PodcastDetail = () => {
   return (
     <div
       className={`py-5 px-20 pb-56 max-sm:px-4 pb-40 w-full overflow-y-hidden flex justify-center flex-col gap-10  `}
+      onClick={(e) => {
+        e.stopPropagation();
+        setDeleteIcon(false);
+      }}
     >
       {!podcast && <PodcastDetailLoading />}
       {podcast && (
         <>
           <div className="flex flex justify-between items-center">
             <h1 className="text-3xl">Podcast Name : {podcast.podcastTitle}</h1>
-            {uid === userInfo.uid && (
+
+            <div className="relative">
               <p
-                className="flex  items-center gap-2"
-                onClick={handleDeletePodcast}
+                className="text-2xl"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setDeleteIcon(!deleteIcon);
+                }}
               >
-                <RiDeleteBin6Line /> Delete Podcast
+                <HiOutlineDotsHorizontal />
               </p>
-            )}
+              {deleteIcon && uid === userInfo.uid && (
+                <p
+                  className="flex max-sm:flex-col bg-gray-200 items-center justify-center text-black p-2 mt-2 rounded absolute -left-14 whitespace-nowrap max-sm:text-xs items-center gap-2"
+                  onClick={handleDeletePodcast}
+                >
+                  <RiDeleteBin6Line />{" "}
+                  <span className="max-sm:w-10 max-sm:whitespace-pre-wrap">
+                    Delete Podcast
+                  </span>
+                </p>
+              )}
+            </div>
           </div>
 
           <div className="image w-full h-full flex flex-col items-center justify-start pt-4 ">
