@@ -19,11 +19,7 @@ function Episode({ episode, index, setPodcast }) {
   const currentEpisode = useSelector((state) => state.episode);
   const user = useSelector((state) => state.user.user);
 
-  const h = useSelector((state) => state);
-
   const music = useSelector((state) => state.music);
-
-  console.log(h);
 
   const playEpisode = () => {
     dispatch(setEpisode(episode));
