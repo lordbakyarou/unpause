@@ -65,59 +65,77 @@ function AddEpisodes({
 
   const handleCreateEpisode = async () => {
     if (episodeImage && audio && episodeName && episodeDescription) {
-      setLoading(true);
-      try {
-        let episodeImageUrl = "";
-        let audioUrl = "";
-        if (episodeImage) {
-          const storageRef = ref(
-            storage,
-            `podcasts/${uid}/${id}/episodeImage/${uuid}`
-          );
+    }
 
-          await uploadBytes(storageRef, episodeImage);
-          episodeImageUrl = await getDownloadURL(storageRef);
-        }
+    if (!episodeImage) {
+      toast.error("Please select episode image");
+      return;
+    }
+    if (!audio) {
+      toast.error("Please add episode audio");
+      return;
+    }
+    if (!episodeName) {
+      toast.error("Please give episode a name");
+      return;
+    }
+    if (!episodeDescription) {
+      toast.error("Please add episode description");
+      return;
+    }
 
-        if (audio) {
-          const storageRef = ref(
-            storage,
-            `podcasts/${uid}/${id}/episode/${uuid}`
-          );
+    setLoading(true);
+    try {
+      let episodeImageUrl = "";
+      let audioUrl = "";
+      if (episodeImage) {
+        const storageRef = ref(
+          storage,
+          `podcasts/${uid}/${id}/episodeImage/${uuid}`
+        );
 
-          await uploadBytes(storageRef, audio);
-
-          audioUrl = await getDownloadURL(storageRef);
-        }
-
-        const podcastRef = doc(db, `podcasts/${uid}/podcast/${id}`);
-
-        const newEpisode = {
-          episodeName,
-          episodeDescription,
-          uid,
-          podcastId: id,
-          episodeId: uuid,
-          episodeAudio: audioUrl,
-          episodeImage: episodeImageUrl,
-          episodeCreator: userInfo.name,
-        };
-
-        setIsNewPodcastAdded(!isNewPodcastAdded);
-
-        await updateDoc(podcastRef, {
-          episodes: arrayUnion(newEpisode),
-        });
-
-        toast.success("New Episode Created");
-      } catch (error) {
-        console.log(error);
-        toast.success("Error while creating episode");
-      } finally {
-        dispatch(closePost());
-        setLoading(false);
-        setAddPodcastOpen(false);
+        await uploadBytes(storageRef, episodeImage);
+        episodeImageUrl = await getDownloadURL(storageRef);
       }
+
+      if (audio) {
+        const storageRef = ref(
+          storage,
+          `podcasts/${uid}/${id}/episode/${uuid}`
+        );
+
+        await uploadBytes(storageRef, audio);
+
+        audioUrl = await getDownloadURL(storageRef);
+      }
+
+      const podcastRef = doc(db, `podcasts/${uid}/podcast/${id}`);
+
+      const newEpisode = {
+        episodeName,
+        episodeDescription,
+        uid,
+        podcastId: id,
+        episodeId: uuid,
+        episodeAudio: audioUrl,
+        episodeImage: episodeImageUrl,
+        episodeCreator: userInfo.name,
+      };
+
+      setIsNewPodcastAdded(!isNewPodcastAdded);
+
+      await updateDoc(podcastRef, {
+        episodes: arrayUnion(newEpisode),
+      });
+
+      toast.success("New Episode Created");
+    } catch (error) {
+      console.log(error);
+      toast.success("Error while creating episode");
+    } finally {
+      dispatch(closePost());
+      setLoading(false);
+      setAddPodcastOpen(false);
     }
   };
 

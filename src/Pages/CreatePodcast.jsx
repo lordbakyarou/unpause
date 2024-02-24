@@ -103,7 +103,7 @@ function CreatePodcast() {
 
   const handleCreatePodcast = async (e) => {
     e.preventDefault();
-    if (podcastTitle === "" && podcastDescription === "") {
+    if (podcastTitle === "" || podcastDescription === "") {
       toast.error("Please fill all the details");
       return;
     }

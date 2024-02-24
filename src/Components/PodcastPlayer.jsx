@@ -113,7 +113,7 @@ function PodcastPlayer() {
               {/* {console.log(episode)} */}
               <div className="w-32 h-20 mb-3">
                 <img
-                  className="w-full h-20 hidden md:block max-sm:block object-cover "
+                  className="w-full h-20  md:block max-sm:block object-cover "
                   src={episode.episodeImage}
                   alt="Album Pic"
                 />

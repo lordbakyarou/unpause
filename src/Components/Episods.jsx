@@ -1,23 +1,71 @@
 import { IoPlayCircleOutline, IoPauseCircleOutline } from "react-icons/io5";
 
 import { useSelector, useDispatch } from "react-redux";
-import { setEpisode } from "../redux/features/episods/episodsSlice";
+import {
+  setEpisode,
+  clearEpisode,
+} from "../redux/features/episods/episodsSlice";
 
 import { playMusic } from "../redux/features/music/musicSlice";
 
 import { pauseMusic } from "../redux/features/music/musicSlice";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
-function Episode({ episode, index }) {
+import { db, storage, auth } from "../Firebase/firebase";
+import { getDoc, doc, updateDoc } from "firebase/firestore";
+
+function Episode({ episode, index, setPodcast }) {
   const dispatch = useDispatch();
   const currentEpisode = useSelector((state) => state.episode);
+  const user = useSelector((state) => state.user.user);
+
+  const h = useSelector((state) => state);
 
   const music = useSelector((state) => state.music);
 
-  // console.log(currentEpisode.episode.episodeId, episode.episodeId);
+  console.log(h);
 
   const playEpisode = () => {
     dispatch(setEpisode(episode));
     dispatch(playMusic());
+  };
+
+  const deleteEpisode = async () => {
+    try {
+      const docPath = `/podcasts/${episode.uid}/podcast/${episode.podcastId}`;
+
+      // Get the document
+      const docRef = doc(db, docPath);
+      const docSnapshot = await getDoc(docRef);
+
+      // Check if the document exists
+      if (docSnapshot.exists()) {
+        // Get the data
+        const data = docSnapshot.data();
+
+        // Remove the element from the array
+        if (data.episodes && Array.isArray(data.episodes)) {
+          data.episodes.splice(index, 1); // Remove 1 element at index
+        }
+
+        // Update the document with the modified array
+        await updateDoc(docRef, {
+          episodes: data.episodes,
+        });
+
+        const podcast = await getDoc(docRef);
+
+        setPodcast(podcast.data());
+      } else {
+        console.log("Document does not exist.");
+      }
+
+      if (episode.episodeId === currentEpisode.episode.episodeId) {
+        dispatch(clearEpisode());
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -29,7 +77,7 @@ function Episode({ episode, index }) {
         <p className="pl-5 opacity-50 hover:opacity-100 transition-all hover:scale-[102%] duration-500 cursor-pointer">
           {episode.episodeDescription}
         </p>
-        <div className="rounded ml-5 w-fit flex gap-2 items-center cursor-pointer">
+        <div className="rounded ml-5 w-fit flex gap-5 items-center cursor-pointer">
           <p onClick={playEpisode}>
             {music.status &&
             currentEpisode?.episode?.episodeId === episode.episodeId
@@ -47,6 +95,11 @@ function Episode({ episode, index }) {
               onClick={playEpisode}
               className="text-2xl transition-all hover:scale-[120%] duration-500 cursor-pointer"
             />
+          )}
+          {user.uid === episode.uid && (
+            <div className="flex items-center gap-2" onClick={deleteEpisode}>
+              Delete <RiDeleteBin6Line />
+            </div>
           )}
         </div>
       </div>

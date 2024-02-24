@@ -123,7 +123,14 @@ const PodcastDetail = () => {
               </div>
               {/* {console.log(podcast)} */}
               {podcast.episodes?.map((episode, index) => {
-                return <Episode episode={episode} key={index} index={index} />;
+                return (
+                  <Episode
+                    episode={episode}
+                    key={index}
+                    index={index}
+                    setPodcast={setPodcast}
+                  />
+                );
               })}
             </div>
             {/* need to chang ethis */}
