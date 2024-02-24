@@ -129,7 +129,7 @@ function PodcastPlayer() {
                     </p>
                   </div>
                 </div>
-                <div class="flex justify-between max-sm:justify-start max-sm:gap-10 max-xxs:justify-between max-xxs:gap-2 gap-2 text-xl items-center h-fit text-white">
+                <div class="flex justify-between max-sm:justify-start max-sm:gap-10 max-xxs:justify-between max-xxs:px-1 max-xxs:gap-2 gap-2 text-xl items-center h-fit text-white">
                   <div class="text-white hover:cursor-pointer">
                     <FaStepBackward />
                   </div>
