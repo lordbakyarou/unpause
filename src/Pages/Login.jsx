@@ -84,32 +84,33 @@ function Login() {
   };
 
   return (
-    <div className="pt-20 overflow-y-hidden flex justify-center items-center flex-col gap-10 ">
-      <h1 className="text-4xl font-semibold">Login</h1>
-      <form
-        className="flex flex-col items-center justify-center gap-5"
-        autoComplete="off"
-      >
-        <div className="input-password  relative">
-          <input
-            type="email"
-            placeholder="Email"
-            name="email"
-            className="peer outline-none bg-transparent p-3 rounded border w-[500px] w-[500px] max-sm:w-[450px] max-xxs:w-[290px] placeholder-transparent"
-            onChange={(e) => setUserProperties(e)}
-          />
-          <label
-            className="absolute
+    <div class="p-4 sm:ml-64">
+      <div className="pt-20 overflow-y-hidden flex justify-center items-center flex-col gap-10 ">
+        <h1 className="text-4xl font-semibold">Login</h1>
+        <form
+          className="flex flex-col items-center justify-center gap-5"
+          autoComplete="off"
+        >
+          <div className="input-password  relative">
+            <input
+              type="email"
+              placeholder="Email"
+              name="email"
+              className="peer outline-none bg-transparent p-3 rounded border w-[500px] w-[500px] max-sm:w-[450px] max-xxs:w-[290px] placeholder-transparent"
+              onChange={(e) => setUserProperties(e)}
+            />
+            <label
+              className="absolute
              transition-all
               left-3.5 -top-0
                text-gray-400 
                text-xs peer-placeholder-shown:text-sm
                 peer-placeholder-shown:top-3.5
                 pointer-events-none"
-          >
-            Email
-          </label>
-          {/* 
+            >
+              Email
+            </label>
+            {/* 
               {loginInUser.password && (
                 <div
                   className="absolute top-2.5 right-2 text-lg text-gray-800 cursor-pointer"
@@ -118,63 +119,64 @@ function Login() {
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </div>
               )} */}
-        </div>
-        <div className="input-password  relative">
-          <input
-            type={showPassword ? "text" : "password"}
-            placeholder="Password"
-            name="password"
-            className="peer outline-none bg-transparent p-3 rounded border w-[500px] w-[500px] max-sm:w-[450px] max-xxs:w-[290px] placeholder-transparent"
-            onChange={(e) => setUserProperties(e)}
-          />
-          <label
-            className="absolute
+          </div>
+          <div className="input-password  relative">
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              name="password"
+              className="peer outline-none bg-transparent p-3 rounded border w-[500px] w-[500px] max-sm:w-[450px] max-xxs:w-[290px] placeholder-transparent"
+              onChange={(e) => setUserProperties(e)}
+            />
+            <label
+              className="absolute
              transition-all
               left-3.5 -top-0
                text-gray-400 
                text-xs peer-placeholder-shown:text-sm
                 peer-placeholder-shown:top-3.5
                 pointer-events-none"
-          >
-            Password
-          </label>
-          {user.password && (
-            <div
-              className="absolute top-3.5 right-2 text-lg text-gray-800 cursor-pointer"
-              onClick={() => setShowPassword(!showPassword)}
             >
-              {showPassword ? (
-                <IoMdEyeOff className="text-white" />
-              ) : (
-                <IoMdEye className="text-white" />
-              )}
-            </div>
-          )}
-        </div>
+              Password
+            </label>
+            {user.password && (
+              <div
+                className="absolute top-3.5 right-2 text-lg text-gray-800 cursor-pointer"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? (
+                  <IoMdEyeOff className="text-white" />
+                ) : (
+                  <IoMdEye className="text-white" />
+                )}
+              </div>
+            )}
+          </div>
 
-        <button
-          className="border-2  rounded p-3 font-semibold w-[500px] w-[500px] max-sm:w-[450px] max-xxs:w-[290px] hover:bg-gray-200 hover:bg-opacity-20"
-          onClick={handleLogin}
-        >
-          {loading ? (
-            <div className="flex gap-2 justify-center items-center">
-              <BsArrowClockwise className="animate-spin" />
-              Loging up...
-            </div>
-          ) : (
-            "Login Now"
-          )}
-        </button>
-      </form>
-      <p className="">
-        <span className="opacity-50">Don't Have An Account? </span>
-        <span
-          className="cursor-pointer opacity-50 hover:opacity-100 text-blue-top"
-          onClick={() => navigate("/signup")}
-        >
-          Signup
-        </span>
-      </p>
+          <button
+            className="border-2  rounded p-3 font-semibold w-[500px] w-[500px] max-sm:w-[450px] max-xxs:w-[290px] hover:bg-gray-200 hover:bg-opacity-20"
+            onClick={handleLogin}
+          >
+            {loading ? (
+              <div className="flex gap-2 justify-center items-center">
+                <BsArrowClockwise className="animate-spin" />
+                Loging up...
+              </div>
+            ) : (
+              "Login Now"
+            )}
+          </button>
+        </form>
+        <p className="">
+          <span className="opacity-50">Don't Have An Account? </span>
+          <span
+            className="cursor-pointer opacity-50 hover:opacity-100 text-blue-top"
+            onClick={() => navigate("/signup")}
+          >
+            Signup
+          </span>
+        </p>
+      </div>
     </div>
   );
 }

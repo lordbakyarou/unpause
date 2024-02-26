@@ -14,17 +14,19 @@ import { useSelector, useDispatch } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import TwinklingStars from "./Components/TwinklingStars";
+import Sidebar from "./Components/Sidebar";
+import LikedPodcasts from "./Pages/LikedPodcast";
 
 function App() {
   const episode = useSelector((state) => state.episode.episode);
 
   return (
     <div className="homescreen m-0 flex  flex-col w-screen justify-center bg-gray-900 h-screen text-gray-100 ">
-      <Navbar />
       <div className="relative w-screen overflow-auto h-screen flex justify-center text-primary-text-color bg-transparent scrollbar-hide">
         <div className="w-full h-full absolute top-0 z-50 ">
           {/* Render the TwinklingStars component */}
-
+          <Navbar />
+          <Sidebar />
           <TwinklingStars />
           <Routes>
             <Route path="/" element={<Login />} />
@@ -33,6 +35,7 @@ function App() {
             <Route path="/podcast/:uid/:id" element={<PodcastDetail />} />
             <Route path="/create-a-podcast" element={<CreatePodcast />} />
             <Route path="/profile/:uid" element={<Profile />} />
+            <Route path="/liked-podcast/:uid" element={<LikedPodcasts />} />
           </Routes>
           {episode && <PodcastPlayer />}
           <ToastContainer />

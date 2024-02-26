@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/flowbite/**/*.js",
+  ],
 
   theme: {
     extend: {
@@ -9,6 +13,7 @@ export default {
         "blue-top": "#18B2DE",
         secondary: "#00ff00",
         "primary-text-color": "#fff",
+        "text-color": "#DCEDC2",
       },
       screens: {
         xxs: "500px",
