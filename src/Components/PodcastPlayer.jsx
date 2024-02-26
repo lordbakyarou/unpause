@@ -106,7 +106,7 @@ function PodcastPlayer() {
             class="backdrop-blur-xl bg-black/40 shadow-outline w-full flex max-sm:flex-col items-center h-fit"
             //   style="width: 45rem !important;"
           >
-            <div className="absolute right-1 top-1 w-fit h-fit text-white">
+            <div className="absolute right-1 top-1 w-fit h-fit text-white hover:cursor-pointer">
               <MdOutlineCancel onClick={() => dispatch(clearEpisode())} />
             </div>
             <div class="flex gap-2 pt-1 pl-1 max-sm:w-full  items-center">

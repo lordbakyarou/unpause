@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { db, storage, auth } from "../Firebase/firebase";
 import { getDoc, doc, getDocs, collection } from "firebase/firestore";
@@ -21,6 +21,7 @@ function Login() {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
+  const token = useSelector((state) => state.token.token);
 
   const [user, setUser] = useState({
     email: "",
@@ -82,6 +83,12 @@ function Login() {
       toast.error("Login error please check your login details");
     }
   };
+
+  useEffect(() => {
+    if (token) {
+      navigate("/podcasts");
+    }
+  }, [token]);
 
   return (
     <div class="p-4 sm:ml-64">

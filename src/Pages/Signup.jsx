@@ -31,6 +31,7 @@ function Signup() {
   const dispatch = useDispatch();
 
   const [loading, setLoading] = useState(false);
+  const token = useSelector((state) => state.token.tokenn);
 
   const [image, setImage] = useState(null);
 
@@ -148,6 +149,12 @@ function Signup() {
   };
 
   // console.log(image);
+
+  useEffect(() => {
+    if (token) {
+      navigate("/podcasts");
+    }
+  }, [token]);
 
   return (
     <div class="p-4 sm:ml-64">

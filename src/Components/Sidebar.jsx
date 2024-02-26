@@ -174,6 +174,18 @@ function Sidebar() {
               </NavLink>
             </li>
           )}
+          <hr />
+          <li>
+            <NavLink
+              to="https://mayur.fun"
+              target="_blank"
+              className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 group"
+            >
+              <span class="flex-1 ms-3 text-gray-400 font-normal whitespace-nowrap">
+                About Me
+              </span>
+            </NavLink>
+          </li>
         </ul>
       </div>
     </aside>
