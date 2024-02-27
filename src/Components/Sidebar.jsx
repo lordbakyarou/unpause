@@ -156,7 +156,7 @@ function Sidebar() {
               >
                 <CgLogIn className="text-gray-300 text-2xl" />
                 <span class="flex-1 ms-3 text-gray-300 whitespace-nowrap">
-                  Sign In
+                  Log In
                 </span>
               </NavLink>
             </li>
