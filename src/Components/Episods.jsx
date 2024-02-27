@@ -14,17 +14,19 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { db, storage, auth } from "../Firebase/firebase";
 import { getDoc, doc, updateDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
+import { useEffect } from "react";
 
-function Episode({ episode, index, setPodcast }) {
+function Episode({ episode, index, setPodcast, podcastDetail }) {
   const dispatch = useDispatch();
 
   const currentEpisode = useSelector((state) => state.episode);
   const user = useSelector((state) => state.user.user);
 
   const music = useSelector((state) => state.music);
+  console.log(podcastDetail, "in episodes page");
 
   const playEpisode = () => {
-    dispatch(setEpisode(episode));
+    dispatch(setEpisode({ episodes: podcastDetail, index }));
     dispatch(playMusic());
   };
 
@@ -78,12 +80,14 @@ function Episode({ episode, index, setPodcast }) {
         <div className="rounded ml-5 w-fit flex gap-5 items-center cursor-pointer">
           <p onClick={playEpisode}>
             {music.status &&
-            currentEpisode?.episode?.episodeId === episode.episodeId
+            currentEpisode?.episode?.episodes[currentEpisode?.episode?.index]
+              .episodeId === episode.episodeId
               ? "Pause"
               : "Play"}
           </p>
           {music.status &&
-          currentEpisode?.episode?.episodeId === episode.episodeId ? (
+          currentEpisode?.episode?.episodes[currentEpisode?.episode?.index]
+            .episodeId === episode.episodeId ? (
             <IoPauseCircleOutline
               onClick={() => dispatch(pauseMusic())}
               className="text-2xl transition-all hover:scale-[120%] duration-500 cursor-pointer"

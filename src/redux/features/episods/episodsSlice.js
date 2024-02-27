@@ -14,9 +14,19 @@ const episodeSlice = createSlice({
     clearEpisode: (state) => {
       state.episode = null;
     },
+    increaseIndex: (state) => {
+      // console.log(state.episode.index, state.episode.episodes.length);
+      if (state.episode.index < state.episode.episodes.length - 1)
+        state.episode.index = state.episode.index + 1;
+    },
+    decreaseIndex: (state) => {
+      if (state.episode.index > 0)
+        state.episode.index = state.episode.index - 1;
+    },
   },
 });
 
-export const { setEpisode, clearEpisode } = episodeSlice.actions;
+export const { setEpisode, clearEpisode, increaseIndex, decreaseIndex } =
+  episodeSlice.actions;
 
 export default episodeSlice.reducer;

@@ -13,18 +13,23 @@ import { RxCross1 } from "react-icons/rx";
 
 import { FaVolumeUp, FaVolumeMute } from "react-icons/fa";
 
-import { MdOutlineCancel } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
-import { clearEpisode } from "../redux/features/episods/episodsSlice";
+import {
+  clearEpisode,
+  increaseIndex,
+  decreaseIndex,
+} from "../redux/features/episods/episodsSlice";
 
 import { playMusic, pauseMusic } from "../redux/features/music/musicSlice";
 
 function PodcastPlayer() {
   const episode = useSelector((state) => state.episode.episode);
-  // console.log(episode, "episode");
 
+  const navigate = useNavigate();
   const music = useSelector((state) => state.music);
   // console.log(music);
+  // console.log(episode, "episode", music);
 
   const dispatch = useDispatch();
 
@@ -52,10 +57,12 @@ function PodcastPlayer() {
       } else {
         audioRef.current.play();
       }
+      // console.log(music.status, episode.index);
     };
 
     handlePlayPause();
-  }, [music.status, episode.episodeId]);
+    // console.log(episode.index);
+  }, [music.status, episode.episodes[episode.index].episodeId]);
 
   const handleTimeUpdate = () => {
     setCurrentTime(audioRef.current.currentTime);
@@ -116,23 +123,33 @@ function PodcastPlayer() {
               <div className="w-32 h-20 mb-3">
                 <img
                   className="w-full h-20  md:block max-sm:block object-cover "
-                  src={episode.episodeImage}
+                  src={episode.episodes[episode.index].episodeImage}
                   alt="Album Pic"
+                  onClick={() =>
+                    navigate(
+                      `/podcast/${episode.episodes[episode.index].uid}/${
+                        episode.episodes[episode.index].podcastId
+                      }`
+                    )
+                  }
                 />
               </div>
               <div class="w-full flex gap-2 max-sm:flex-col max-sm:w-full sm:items-center">
                 <div class="flex  justify-between">
                   <div className="">
-                    <h3 class="text-xl text-white font-medium">
-                      {episode.episodeName}
-                    </h3>
+                    <marquee class="text-xl text-white whitespace-nowrap font-medium">
+                      {episode.episodes[episode.index].episodeName}
+                    </marquee>
                     <p class="text-sm text-white mt-1">
-                      {episode.episodeCreator}
+                      {episode.episodes[episode.index].episodeCreator}
                     </p>
                   </div>
                 </div>
                 <div class="flex justify-between max-sm:justify-start max-sm:gap-10 max-xxs:justify-between max-xxs:px-1 max-xxs:gap-2 gap-2 text-xl items-center h-fit text-white">
-                  <div class="text-white hover:cursor-pointer">
+                  <div
+                    class="text-white hover:cursor-pointer"
+                    onClick={() => dispatch(decreaseIndex())}
+                  >
                     <FaStepBackward />
                   </div>
                   <div class="text-white hover:cursor-pointer">
@@ -163,7 +180,10 @@ function PodcastPlayer() {
                   >
                     <TbRewindForward5 />
                   </div>
-                  <div class="text-white hover:cursor-pointer">
+                  <div
+                    class="text-white hover:cursor-pointer"
+                    onClick={() => dispatch(increaseIndex())}
+                  >
                     <FaStepForward />
                   </div>
                 </div>
@@ -176,7 +196,7 @@ function PodcastPlayer() {
                 <p>{formatTime(currentTime)}</p>
                 <audio
                   ref={audioRef}
-                  src={episode.episodeAudio}
+                  src={episode.episodes[episode.index].episodeAudio}
                   onTimeUpdate={handleTimeUpdate}
                   onLoadedMetadata={handleLoadedMetadata}
                 ></audio>

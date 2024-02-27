@@ -21,16 +21,6 @@ function Navbar() {
 
   const currentUser = useSelector((state) => state.user.user);
 
-  const [scrolled, setScrolled] = useState(false);
-
-  const [onScrollCode, setOnScrollCode] = useState(
-    "w-full flex justify-center h-14 items-center gap-20 text-black font-semibold transition-all duration-1000 bg-white/30 backdrop-blur-xl top-0 z-50 fixed"
-  );
-
-  const [onScrollUpCode, setOnScrollUpCode] = useState(
-    "w-full flex justify-center h-14 items-center  gap-20 bg-transparent  top-0 z-50 sticky"
-  );
-
   useEffect(() => {
     function onScroll() {
       if (window.scrollY > 50) {
