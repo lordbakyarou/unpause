@@ -1,31 +1,7 @@
-import { CiPlay1 } from "react-icons/ci";
-
 import { useNavigate } from "react-router-dom";
-
-import { FaPlay } from "react-icons/fa";
-
-import { FaRegHeart } from "react-icons/fa";
-import { FaHeart } from "react-icons/fa";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setCurrentUser } from "../redux/features/user/userSlice";
-
-import { db, storage, auth } from "../Firebase/firebase";
-import {
-  getDoc,
-  doc,
-  getDocs,
-  collection,
-  updateDoc,
-} from "firebase/firestore";
 
 function UserCard({ user }) {
   const navigate = useNavigate();
-
-  const currentUser = useSelector((state) => state.user.user);
-  const dispatch = useDispatch();
-
-  const [isLiked, setIsLiked] = useState(false);
 
   return (
     <div
