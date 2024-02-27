@@ -141,14 +141,14 @@ function AddEpisodes({
 
   return (
     <div
-      className="h-screen w-full bg-black/30 flex items-center justify-center backdrop-blur-sm"
+      className="h-screen  w-full bg-black/30 flex items-center justify-center backdrop-blur-sm"
       onClick={(e) => {
         e.stopPropagation();
         setAddPodcastOpen(false);
       }}
     >
       <div
-        className="overflow-y-hidden max-sm:w-[500px] max-xxs:w-[400px] flex justify-center relative items-center flex-col gap-10 bg-black backdrop-blur-xl rounded-lg p-5"
+        className="overflow-y-hidden overflow-x-hidden max-sm:w-[500px] max-xxs:w-[290px] max-md:w-[350px] flex justify-center relative items-center flex-col gap-10 bg-black backdrop-blur-xl rounded-lg p-5"
         onClick={(e) => {
           e.stopPropagation();
           setAddPodcastOpen(true);
@@ -176,7 +176,7 @@ function AddEpisodes({
                 type="text"
                 placeholder="Episodes Name"
                 name="name"
-                className="peer outline-none bg-transparent w-[500px] max-sm:w-[450px] max-xxs:w-[290px] p-3 rounded border w-[500px] placeholder-transparent"
+                className="peer outline-none bg-transparent w-[500px] max-sm:w-[500px] max-xxs:w-[290px] max-md:w-[350px] p-3 rounded border w-[500px] placeholder-transparent"
                 onChange={(e) => setEpisodeName(e.target.value)}
                 value={episodeName}
               />
@@ -206,7 +206,7 @@ function AddEpisodes({
                 type="text"
                 placeholder="Episodes Description"
                 name="email"
-                className="peer outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[450px] max-xxs:w-[290px] placeholder-transparent"
+                className="peer outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[500px] max-xxs:w-[290px] max-md:w-[350px] placeholder-transparent"
                 onChange={(e) => setEpisodeDescription(e.target.value)}
                 value={episodeDescription}
               />
@@ -234,7 +234,7 @@ function AddEpisodes({
           </>
           <label
             htmlFor="episodImage"
-            className="block cursor-pointer outline-none flex gap-2 bg-transparent p-3 rounded border w-[500px] max-sm:w-[450px] max-xxs:w-[290px] "
+            className="block cursor-pointer outline-none flex gap-2 bg-transparent p-3 rounded border w-[500px] max-xxs:w-[300px]  max-md:w-[350px] "
           >
             <span className="text-gray-400 flex whitespace-nowrap gap-2 items-center">
               Select Episode Image
@@ -246,14 +246,14 @@ function AddEpisodes({
               className="hidden"
               onChange={(e) => setEpisodeImage(e.target.files[0])}
             />
-            <p className="overflow-hidden whitespace-nowrap w-[250px] max-sm">
+            <p className="overflow-hidden truncate whitespace-nowrap w-[250px] max-sm">
               {episodeImage?.name}
             </p>
           </label>
 
           <label
             htmlFor="episodAudio"
-            className="block cursor-pointer flex gap-2  outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[450px] max-xxs:w-[290px] "
+            className="block cursor-pointer flex gap-2  outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[500px] max-xxs:w-[290px] max-md:w-[350px] "
           >
             <span className="text-gray-400 flex whitespace-nowrap gap-2 items-center">
               Select Audio File
@@ -262,10 +262,11 @@ function AddEpisodes({
             <input
               id="episodAudio"
               type="file"
+              accept="audio/mp3"
               className="hidden"
               onChange={(e) => setAudio(e.target.files[0])}
             />
-            <p className="overflow-hidden whitespace-nowrap w-[250px] max-sm">
+            <p className="overflow-hidden truncate whitespace-nowrap w-[250px] max-sm">
               {audio?.name}
             </p>
           </label>

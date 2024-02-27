@@ -15,7 +15,7 @@ import { addAllPodcast } from "../redux/features/allPodcast/allPodcastSlice";
 import { toast } from "react-toastify";
 import LoadingCard from "../Components/LoadingCard";
 
-function Podcasts() {
+function Users() {
   const [allPodcast, setAllPodcast] = useState([]);
   const podcast = useSelector((state) => state.podcast.podcast);
   const dispatch = useDispatch();
@@ -110,7 +110,7 @@ function Podcasts() {
       <div className="pt-20 pb-40 w-full podcast overflow-auto flex justify-center items-center flex-col gap-10 bg-transparent">
         <div className="flex flex-col gap-2 items-center justify-center">
           <div className="flex flex-col gap-10 items-center">
-            <h1 className="text-3xl">Discover Podcasts</h1>
+            <h1 className="text-3xl">All Users</h1>
             <div className="flex max-lg:w-[450px] relative max-md:w-[300px] max-sm:w-[400px] max-xxs:w-[300px] w-full relative items-center gap-2">
               <input
                 // type={showPassword ? "text" : "password"}
@@ -134,29 +134,8 @@ function Podcasts() {
               <p
                 className="absolute top-5 right-2"
                 onClick={() => setFilterOption(!filterOption)}
-              >
-                <FaFilter className="cursor-pointer" />
-              </p>
+              ></p>
             </div>
-          </div>
-
-          <div className="transition-all duration-1000 ease-in-out">
-            {filterOption && (
-              <div className="flex gap-2 max-xl:w-[700px] w-[900px] max-lg:w-[450px] max-md:w-[300px] max-sm:w-[400px] max-xxs:w-[300px] flex-wrap ">
-                {podcastCategories.map((category, index) => (
-                  <p
-                    key={index}
-                    onClick={() => {
-                      setSearch(category);
-                      setSearch(category);
-                    }}
-                    className="backdrop-blur-sm max-sm:text-xs w-fit cursor-pointer hover:bg-white/40 bg-white/30 rounded-xl p-2 text-sm"
-                  >
-                    {category}
-                  </p>
-                ))}
-              </div>
-            )}
           </div>
         </div>
 
@@ -190,4 +169,4 @@ function Podcasts() {
   );
 }
 
-export default Podcasts;
+export default Users;

@@ -169,7 +169,7 @@ function Signup() {
               type="text"
               placeholder="Full Name"
               name="name"
-              className="peer outline-none bg-transparent p-3 rounded border w-[500px] w-[500px] max-sm:w-[450px] max-xxs:w-[290px] placeholder-transparent"
+              className="peer outline-none bg-transparent p-3 rounded border w-[450px] max-md:w-[350px] max-sm:w-[450px] max-xxs:w-[290px]  placeholder-transparent"
               onChange={(e) => setUserProperties(e)}
             />
             <label
@@ -189,7 +189,7 @@ function Signup() {
               type="email"
               placeholder="Email"
               name="email"
-              className="peer outline-none bg-transparent p-3 rounded border w-[500px] w-[500px] max-sm:w-[450px] max-xxs:w-[290px] placeholder-transparent"
+              className="peer outline-none bg-transparent p-3 rounded border  w-[450px] max-md:w-[350px] max-sm:w-[450px] max-xxs:w-[290px] placeholder-transparent"
               onChange={(e) => setUserProperties(e)}
             />
             <label
@@ -209,7 +209,7 @@ function Signup() {
               type={showPassword ? "text" : "password"}
               placeholder="Password"
               name="password"
-              className="peer outline-none bg-transparent p-3 rounded border w-[500px] w-[500px] max-sm:w-[450px] max-xxs:w-[290px] placeholder-transparent"
+              className="peer outline-none bg-transparent p-3 rounded border  w-[450px] max-md:w-[350px] max-sm:w-[450px] max-xxs:w-[290px] placeholder-transparent"
               onChange={(e) => setUserProperties(e)}
             />
             <label
@@ -241,7 +241,7 @@ function Signup() {
               type={showConfirmPassword ? "text" : "password"}
               placeholder="Confirm Password"
               name="confirmPassword"
-              className="peer outline-none bg-transparent p-3 rounded border w-[500px] w-[500px] max-sm:w-[450px] max-xxs:w-[290px] placeholder-transparent"
+              className="peer outline-none bg-transparent p-3 rounded border  w-[450px] max-md:w-[350px] max-sm:w-[450px] max-xxs:w-[290px] placeholder-transparent"
               onChange={(e) => setUserProperties(e)}
             />
             <label
@@ -272,7 +272,7 @@ function Signup() {
 
           <label
             htmlFor="fileInput"
-            className="block cursor-pointer outline-none flex gap-2 bg-transparent p-3 rounded border w-[500px] w-[500px] max-sm:w-[450px] max-xxs:w-[290px] "
+            className="block cursor-pointer outline-none flex gap-2 bg-transparent p-3 rounded border  w-[450px] max-md:w-[350px] max-sm:w-[450px] max-xxs:w-[290px] "
           >
             <span className="text-gray-400 flex whitespace-nowrap gap-2 items-center">
               Add Profile Pic <CiImageOn className="text-2xl" />
@@ -283,12 +283,12 @@ function Signup() {
               className="hidden"
               onChange={(e) => setImage(e.target.files[0])}
             />
-            <p className="overflow-hidden whitespace-nowrap w-[250px] max-sm">
+            <p className="overflow-hidden truncate whitespace-nowrap w-[250px] max-sm">
               {image?.name}
             </p>
           </label>
           <button
-            className="border-2  rounded p-3 font-semibold w-[500px] w-[500px] max-sm:w-[450px] max-xxs:w-[290px] hover:bg-gray-200 hover:bg-opacity-20"
+            className="border-2  rounded p-3 font-semibold  w-[450px] max-md:w-[350px] max-sm:w-[450px] max-xxs:w-[290px] hover:bg-gray-200 hover:bg-opacity-20"
             onClick={validateDetails}
           >
             {loading ? (

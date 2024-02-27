@@ -106,7 +106,7 @@ function Sidebar() {
           )}
           <li>
             <NavLink
-              to="/"
+              to="/users"
               className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 group"
               // onClick={handleNavLinkClick}
             >

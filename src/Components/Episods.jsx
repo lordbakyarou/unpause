@@ -16,6 +16,7 @@ import { getDoc, doc, updateDoc } from "firebase/firestore";
 
 function Episode({ episode, index, setPodcast }) {
   const dispatch = useDispatch();
+
   const currentEpisode = useSelector((state) => state.episode);
   const user = useSelector((state) => state.user.user);
 

@@ -9,6 +9,8 @@ import { FaStepBackward } from "react-icons/fa";
 import { FaStepForward } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 
+import { RxCross1 } from "react-icons/rx";
+
 import { FaVolumeUp, FaVolumeMute } from "react-icons/fa";
 
 import { MdOutlineCancel } from "react-icons/md";
@@ -107,7 +109,7 @@ function PodcastPlayer() {
             //   style="width: 45rem !important;"
           >
             <div className="absolute right-1 top-1 w-fit h-fit text-white hover:cursor-pointer">
-              <MdOutlineCancel onClick={() => dispatch(clearEpisode())} />
+              <RxCross1 onClick={() => dispatch(clearEpisode())} />
             </div>
             <div class="flex gap-2 pt-1 pl-1 max-sm:w-full  items-center">
               {/* {console.log(episode)} */}

@@ -16,6 +16,7 @@ import "react-toastify/dist/ReactToastify.css";
 import TwinklingStars from "./Components/TwinklingStars";
 import Sidebar from "./Components/Sidebar";
 import LikedPodcasts from "./Pages/LikedPodcast";
+import Users from "./Pages/Users";
 
 function App() {
   const episode = useSelector((state) => state.episode.episode);
@@ -36,6 +37,7 @@ function App() {
             <Route path="/create-a-podcast" element={<CreatePodcast />} />
             <Route path="/profile/:uid" element={<Profile />} />
             <Route path="/liked-podcast/:uid" element={<LikedPodcasts />} />
+            <Route path="/users" element={<Users />} />
           </Routes>
           {episode && <PodcastPlayer />}
           <ToastContainer />

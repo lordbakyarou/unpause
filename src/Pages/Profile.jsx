@@ -139,7 +139,7 @@ function Profile() {
             </h1>
           )}
         </div>
-        <div className="podcasts max-xxs:grid-cols-1 max-xxs:px-10  max-sm:items-center max-sm:px-2 max-sm:grid-cols-2  flex  grid grid-cols-3 max-lg:grid-cols-2  max-md:grid-cols-2 max-md:gap-2  gap-5 justify-center">
+        <div className="podcasts max-xxs:grid-cols-1 max-sm:items-center max-sm:px-2 max-sm:grid-cols-2  flex  grid grid-cols-3 max-xl:grid-cols-2  max-md:grid-cols-1 max-md:gap-2  gap-5 justify-center">
           {userPodcast?.map((podcast) => {
             // console.log(podcast);
             return (
@@ -159,7 +159,7 @@ function Profile() {
         {!userPodcast && <p>User has no podcast</p>}
 
         {isPostOpen && (
-          <div className="w-screen h-screen absolute top-0 flex items-center justify-center">
+          <div className="w-screen h-screen sm:pl-64   overflow-hidden absolute top-0 left-0 flex items-center justify-center">
             <ProfileEdit />
           </div>
         )}

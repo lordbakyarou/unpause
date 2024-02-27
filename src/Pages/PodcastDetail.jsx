@@ -87,7 +87,7 @@ const PodcastDetail = () => {
   return (
     <div class="p-4 sm:ml-64">
       <div
-        className={`py-5 px-20 pb-56 max-sm:px-4 pb-40 w-full overflow-y-hidden flex justify-center flex-col gap-10  `}
+        className={`py-5 px-20 max-lg:px-4 pb-56 max-sm:px-4 pb-40 w-full overflow-y-hidden flex justify-center flex-col gap-10  `}
         onClick={(e) => {
           e.stopPropagation();
           setDeleteIcon(false);
@@ -183,6 +183,7 @@ const PodcastDetail = () => {
                       key={index}
                       index={index}
                       setPodcast={setPodcast}
+                      podcastDetail={podcast.episodes}
                     />
                   );
                 })}
@@ -190,7 +191,12 @@ const PodcastDetail = () => {
               {/* need to chang ethis */}
             </div>
             {addPodcastOpen && (
-              <div className="w-screen h-screen overflow-hidden absolute left-0 top-0 flex items-center justify-center">
+              <div
+                className="w-screen sm:pl-64  overflow-hidden absolute left-0 top-0 flex items-center justify-center"
+                style={{
+                  zIndex: "99",
+                }}
+              >
                 <AddEpisodes
                   setAddPodcastOpen={setAddPodcastOpen}
                   setIsNewPodcastAdded={setIsNewPodcastAdded}

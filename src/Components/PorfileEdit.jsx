@@ -12,6 +12,7 @@ import { openPost, closePost } from "../redux/features/editpost/editPostOpen";
 import { setCurrentUser } from "../redux/features/user/userSlice";
 
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
+import { RxCross1 } from "react-icons/rx";
 
 import { db, storage, auth } from "../Firebase/firebase";
 
@@ -125,21 +126,21 @@ function ProfileEdit() {
 
   return (
     <div
-      className="h-screen w-full backdrop-blur-sm  bg-black/30 flex items-center justify-center"
+      className="h-screen w-full  backdrop-blur-sm   bg-black/30 flex items-center justify-center"
       onClick={(e) => {
         e.stopPropagation();
         dispatch(closePost());
       }}
     >
       <div
-        className=" flex max-sm:w-[500px] max-xxs:w-[400px] justify-center relative items-center flex-col gap-10 bg-black  backdrop-blur-xl rounded-lg p-5"
+        className=" flex max-xxs:w-[300px]   max-md:w-[400px] justify-center relative items-center flex-col gap-10 bg-black  backdrop-blur-xl rounded-lg p-5"
         onClick={(e) => {
           e.stopPropagation();
           dispatch(openPost());
         }}
       >
         <div className="absolute top-3 right-3 z-50">
-          <MdOutlineCancel
+          <RxCross1
             className="text-2xl cursor-pointer"
             onClick={(e) => {
               e.stopPropagation();
@@ -161,7 +162,7 @@ function ProfileEdit() {
                   type="text"
                   placeholder="Full Name"
                   name="name"
-                  className="peer outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[450px] max-xxs:w-[290px] placeholder-transparent"
+                  className="peer outline-none bg-transparent p-3 rounded border w-[500px] max-xxs:w-[290px] max-md:w-[350px] placeholder-transparent"
                   onChange={(e) => setFullname(e.target.value)}
                   value={fullname}
                 />
@@ -182,7 +183,7 @@ function ProfileEdit() {
                   type="email"
                   placeholder="Email"
                   name="email"
-                  className="peer outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[450px] max-xxs:w-[290px] placeholder-transparent"
+                  className="peer outline-none bg-transparent p-3 rounded border w-[500px] max-xxs:w-[290px] max-md:w-[350px] placeholder-transparent"
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
                 />
@@ -208,7 +209,7 @@ function ProfileEdit() {
                   type={showPassword ? "text" : "password"}
                   placeholder="Password"
                   name="password"
-                  className="peer outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[450px] max-xxs:w-[290px] placeholder-transparent"
+                  className="peer outline-none bg-transparent p-3 rounded border w-[500px] max-xxs:w-[290px] max-md:w-[350px] placeholder-transparent"
                   onChange={(e) => setPassword(e.target.value)}
                 />
                 <label
@@ -240,7 +241,7 @@ function ProfileEdit() {
                   type={showConfirmPassword ? "text" : "password"}
                   placeholder="Confirm Password"
                   name="confirmPassword"
-                  className="peer outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[450px] max-xxs:w-[290px] placeholder-transparent"
+                  className="peer outline-none bg-transparent p-3 rounded border w-[500px] max-xxs:w-[290px] max-md:w-[350px] placeholder-transparent"
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 />
                 <label
@@ -273,7 +274,7 @@ function ProfileEdit() {
           {!editPassword && (
             <label
               htmlFor="profilePic"
-              className="block cursor-pointer flex gap-2  outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[450px] max-xxs:w-[290px]"
+              className="block cursor-pointer flex gap-2  outline-none bg-transparent p-3 rounded border w-[500px] max-xxs:w-[290px] max-md:w-[350px]"
             >
               <span className="text-gray-400 flex gap-2 whitespace-nowrap items-center">
                 Profile Image

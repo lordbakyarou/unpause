@@ -85,8 +85,12 @@ function Navbar() {
               </svg>
             </button>
             <NavLink className="flex ms-2 items-center  md:me-24">
-              <img src={mainLogo} class="h-10 me-3" alt="Brand Logo" />
-              <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
+              <img
+                src={mainLogo}
+                class="h-10 me-3  cursor-pointer"
+                alt="Brand Logo"
+              />
+              <span class="self-center text-xl font-semibold sm:text-2xl  cursor-pointer whitespace-nowrap dark:text-white">
                 <img src={logo} className="w-32" />
               </span>
             </NavLink>

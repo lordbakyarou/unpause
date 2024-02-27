@@ -29,6 +29,8 @@ import {
   removePodcast,
 } from "../redux/features/podcast/podcastSlice";
 
+import { RxCross1 } from "react-icons/rx";
+
 import { toast } from "react-toastify";
 
 const defaultBanner =
@@ -213,7 +215,7 @@ function CreatePodcast() {
               type="text"
               placeholder="Podcast TItle"
               name="podcastTitle"
-              className="peer outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[300px] placeholder-transparent"
+              className="peer outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[400px] max-xxs:w-[300px] max-md:w-[350px] placeholder-transparent"
               onChange={(e) => setPodcastDetails(e)}
             />
             <label
@@ -242,7 +244,7 @@ function CreatePodcast() {
               type="text"
               placeholder="Podcast Description"
               name="podcastDescription"
-              className="peer outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[300px] placeholder-transparent"
+              className="peer outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[400px] max-xxs:w-[300px] max-md:w-[350px] placeholder-transparent"
               onChange={(e) => setPodcastDetails(e)}
             />
             <label
@@ -263,7 +265,7 @@ function CreatePodcast() {
               type="text"
               placeholder="Add Genres"
               name="genres"
-              className="peer outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[300px] placeholder-transparent"
+              className="peer outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[400px] max-xxs:w-[300px] max-md:w-[350px] placeholder-transparent"
               onChange={(e) => setSearchCategory(e.target.value)}
               onKeyUp={(e) => {
                 if (e.key === "Enter") {
@@ -297,7 +299,7 @@ function CreatePodcast() {
               <CiCircleList />
             </label>
             {selectedCategories.length > 0 && (
-              <div className="w-[500px] max-sm:w-[300px] h-fit max-h-[200px]  rounded p-2 mt-2  overflow-scroll backdrop-blur-sm border rounded flex flex-wrap gap-2">
+              <div className="w-[500px] scrollbar-hide max-sm:w-[400px] max-xxs:w-[300px] max-md:w-[350px] h-fit max-h-[200px]  rounded p-2 mt-2  overflow-scroll backdrop-blur-sm border rounded flex flex-wrap gap-2">
                 {selectedCategories.map((item, index) => (
                   <p className="backdrop-blur-sm bg-white/30 w-fit rounded-xl p-2 text-sm flex items-center gap-2">
                     <MdOutlineCancel
@@ -315,11 +317,16 @@ function CreatePodcast() {
             )}
 
             {searchCategory && (
-              <div className="w-[500px] max-sm:w-[300px] h-fit max-h-[200px]  rounded p-2 mt-2  overflow-scroll backdrop-blur-sm bg-white/30">
+              <div className="w-[500px] relative scrollbar-hide max-sm:w-[400px] max-xxs:w-[300px] max-md:w-[350px] h-fit max-h-[200px]  rounded p-2 mt-2  overflow-scroll backdrop-blur-sm bg-white/30">
+                <div className="absolute top-1 right-1">
+                  {" "}
+                  <RxCross1 onClick={() => setSearchCategory("")} />
+                </div>
                 {filteredCategories.length > 0
                   ? filteredCategories.map((item) => {
                       return (
                         <div
+                          className="cursor-pointer"
                           onClick={() =>
                             setSelectedCategories([...selectedCategories, item])
                           }
@@ -335,7 +342,7 @@ function CreatePodcast() {
 
           <label
             htmlFor="bannerImage"
-            className="block cursor-pointer flex gap-2  outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[300px]"
+            className="block cursor-pointer flex gap-2  outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[400px] max-xxs:w-[300px] max-md:w-[350px]"
           >
             <span className="text-gray-400 flex gap-2 whitespace-nowrap items-center">
               Banner Image <CiImageOn className="text-2xl" />
@@ -346,14 +353,14 @@ function CreatePodcast() {
               className="hidden "
               onChange={(e) => setImage(e.target.files[0])}
             />
-            <p className="overflow-hidden whitespace-nowrap w-[250px] max-sm">
+            <p className="overflow-hidden whitespace-nowrap w-[250px] truncate max-sm">
               {image?.name}
             </p>
           </label>
 
           <label
             htmlFor="podcastImage"
-            className="block cursor-pointer flex gap-2 outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[300px]"
+            className="block cursor-pointer flex gap-2 outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[400px] max-xxs:w-[300px] max-md:w-[350px]"
           >
             <span className="text-gray-400 flex whitespace-nowrap gap-2 items-center">
               Podcast Image <CiImageOn className="text-2xl" />
@@ -366,13 +373,13 @@ function CreatePodcast() {
                 setPodcastImage(e.target.files[0]);
               }}
             />
-            <p className="overflow-hidden whitespace-nowrap w-[250px] max-sm">
+            <p className="overflow-hidden whitespace-nowrap w-[250px] truncate max-sm">
               {podcastImage?.name}
             </p>
           </label>
 
           <button
-            className="border-2  rounded p-3 font-semibold w-[500px] max-sm:w-[300px] hover:bg-gray-200 hover:bg-opacity-20"
+            className="border-2  rounded p-3 font-semibold w-[500px] max-sm:w-[400px] max-xxs:w-[300px] max-md:w-[350px] hover:bg-gray-200 hover:bg-opacity-20"
             onClick={handleCreatePodcast}
           >
             {loading ? (

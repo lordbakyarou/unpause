@@ -14,11 +14,14 @@ import { setToken } from "../redux/features/token/tokenSlice";
 import { setCurrentUser } from "../redux/features/user/userSlice";
 import { addPodcast } from "../redux/features/podcast/podcastSlice";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
+import ForgotPassword from "../Components/ForgotPassword";
 
 import { toast } from "react-toastify";
 
 function Login() {
   const navigate = useNavigate();
+
+  const [isForgotPassword, setIsForgotPassword] = useState(false);
 
   const dispatch = useDispatch();
   const token = useSelector((state) => state.token.token);
@@ -31,6 +34,7 @@ function Login() {
   const { email, password } = user;
 
   const [showPassword, setShowPassword] = useState(false);
+  const [forgotPassword, setForgotPassword] = useState("");
 
   const [loading, setLoading] = useState(false);
 
@@ -79,6 +83,7 @@ function Login() {
       toast.success("Login successful!");
     } catch (error) {
       console.log(error);
+
       setLoading(false);
       toast.error("Login error please check your login details");
     }
@@ -103,7 +108,7 @@ function Login() {
               type="email"
               placeholder="Email"
               name="email"
-              className="peer outline-none bg-transparent p-3 rounded border w-[500px] w-[500px] max-sm:w-[450px] max-xxs:w-[290px] placeholder-transparent"
+              className="peer outline-none bg-transparent p-3 rounded border w-[480px] max-sm:w-[450px] max-xxs:w-[290px] max-md:w-[350px] placeholder-transparent"
               onChange={(e) => setUserProperties(e)}
             />
             <label
@@ -132,7 +137,7 @@ function Login() {
               type={showPassword ? "text" : "password"}
               placeholder="Password"
               name="password"
-              className="peer outline-none bg-transparent p-3 rounded border w-[500px] w-[500px] max-sm:w-[450px] max-xxs:w-[290px] placeholder-transparent"
+              className="peer outline-none bg-transparent p-3 rounded border w-[480px] max-sm:w-[450px] max-xxs:w-[290px] max-md:w-[350px] placeholder-transparent"
               onChange={(e) => setUserProperties(e)}
             />
             <label
@@ -158,10 +163,18 @@ function Login() {
                 )}
               </div>
             )}
+            <div className="text-xs flex w-full justify-end ">
+              <p
+                className="cursor-pointer w-fit opacity-50 hover:opacity-100"
+                onClick={() => setIsForgotPassword(true)}
+              >
+                Forgot Password?
+              </p>
+            </div>
           </div>
 
           <button
-            className="border-2  rounded p-3 font-semibold w-[500px] w-[500px] max-sm:w-[450px] max-xxs:w-[290px] hover:bg-gray-200 hover:bg-opacity-20"
+            className="border-2  rounded p-3 font-semibold w-[480px] max-sm:w-[450px] max-xxs:w-[290px] max-md:w-[350px] hover:bg-gray-200 hover:bg-opacity-20"
             onClick={handleLogin}
           >
             {loading ? (
@@ -184,6 +197,16 @@ function Login() {
           </span>
         </p>
       </div>
+      {isForgotPassword && (
+        <div
+          className="w-screen sm:pl-64  overflow-hidden absolute left-0 top-0 flex items-center justify-center"
+          style={{
+            zIndex: "99",
+          }}
+        >
+          <ForgotPassword setIsForgotPassword={setIsForgotPassword} />
+        </div>
+      )}
     </div>
   );
 }
