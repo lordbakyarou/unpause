@@ -14,15 +14,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { addAllPodcast } from "../redux/features/allPodcast/allPodcastSlice";
 import { toast } from "react-toastify";
 import LoadingCard from "../Components/LoadingCard";
+import UserCard from "../Components/UserCard";
 
 function Users() {
-  const [allPodcast, setAllPodcast] = useState([]);
-  const podcast = useSelector((state) => state.podcast.podcast);
+  const [allUser, setAllUser] = useState([]);
+  //   const podcast = useSelector((state) => state.podcast.podcast);
   const dispatch = useDispatch();
 
   const token = useSelector((state) => state.token.token);
 
-  const [filteredPodcast, setFilteredPodcast] = useState([...allPodcast]);
+  const [filteredUser, setFilteredUser] = useState([...allUser]);
 
   const [search, setSearch] = useState("");
 
@@ -42,68 +43,29 @@ function Users() {
         const newArray = [];
 
         usersQuerySnapshot.forEach(async (userDoc) => {
-          const userId = userDoc.id;
-          const userPodcastsCollectionRef = collection(
-            db,
-            `podcasts/${userId}/podcast`
-          );
-          const userPodcastsQuerySnapshot = await getDocs(
-            userPodcastsCollectionRef
-          );
-
-          userPodcastsQuerySnapshot.forEach((podcastDoc) => {
-            newArray.push(podcastDoc.data());
-          });
-          // console.log(newArray);
-          setAllPodcast([...newArray]);
+          console.log(userDoc.data());
+          newArray.push(userDoc.data());
         });
+        setAllUser([...newArray]);
       } catch (error) {
         console.error("Error fetching podcasts: ", error);
       }
     };
 
     fetchPodcast();
-  }, [podcast]);
+  }, []);
 
   useEffect(() => {
-    const temp = allPodcast.filter(
-      (podcast) =>
-        podcast.podcastTitle
-          .toLowerCase()
-          .includes(search.toLocaleLowerCase()) ||
-        podcast.genres.includes(search)
+    const temp = allUser.filter(
+      (user) =>
+        user.name.toLowerCase().includes(search.toLocaleLowerCase()) ||
+        user.email.toLowerCase().includes(search.toLocaleLowerCase())
     );
 
-    setFilteredPodcast(temp);
-  }, [search, allPodcast]);
+    setFilteredUser(temp);
+  }, [search, allUser]);
 
   const [filterOption, setFilterOption] = useState(false);
-
-  const podcastCategories = [
-    "Comedy",
-    "Interview",
-    "Hybrid podcasts",
-    "True crime",
-    "Solo podcasts",
-    "History",
-    "News",
-    "Pop culture",
-    "Repurposed content",
-    "Storytelling podcast",
-    "Arts",
-    "Health and fitness",
-    "Music",
-    "Religious",
-    "Science",
-    "The panel podcast",
-    "Beauty and fashion",
-    "Business",
-    "Sports",
-    "Educational",
-    "Books",
-    "News podcast",
-    "Technology",
-  ];
 
   return (
     <div class="p-4 sm:ml-64">
@@ -139,7 +101,7 @@ function Users() {
           </div>
         </div>
 
-        {allPodcast.length == 0 && (
+        {allUser.length == 0 && (
           <div className="podcasts max-xxs:grid-cols-1 max-sm:items-center max-sm:px-2 max-sm:grid-cols-2  flex  grid grid-cols-3 max-xl:grid-cols-2  max-md:grid-cols-1 max-md:gap-2  gap-5 justify-center">
             {[1, 2, 3, 4, 5, 6].map((item, index) => {
               return <LoadingCard key={index} />;
@@ -147,20 +109,10 @@ function Users() {
           </div>
         )}
 
-        {allPodcast.length > 0 && (
+        {allUser.length > 0 && (
           <div className="podcasts max-xxs:grid-cols-1 max-sm:items-center max-sm:px-2 max-sm:grid-cols-2  flex  grid grid-cols-3 max-xl:grid-cols-2  max-md:grid-cols-1 max-md:gap-2  gap-5 justify-center">
-            {filteredPodcast?.map((podcast, index) => (
-              <Card
-                key={index}
-                onClick={() =>
-                  navigate(`/podcast/${podcast.uid}/${podcast.podcastId}`)
-                }
-                podcastDetails={{
-                  img: podcast.podcastImage,
-                  podcastName: podcast.podcastTitle,
-                }}
-                podcast={podcast}
-              />
+            {filteredUser?.map((user, index) => (
+              <UserCard user={user} key={index} />
             ))}
           </div>
         )}

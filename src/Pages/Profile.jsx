@@ -62,7 +62,7 @@ function Profile() {
   useEffect(() => {
     if (!token) {
       navigate("/");
-      console.log("hihihihi");
+      // console.log("hihihihi");
       toast.error("You must first login");
       return;
     }

@@ -13,6 +13,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 
 import { db, storage, auth } from "../Firebase/firebase";
 import { getDoc, doc, updateDoc } from "firebase/firestore";
+import { toast } from "react-toastify";
 
 function Episode({ episode, index, setPodcast }) {
   const dispatch = useDispatch();
@@ -54,7 +55,7 @@ function Episode({ episode, index, setPodcast }) {
 
         setPodcast(podcast.data());
       } else {
-        console.log("Document does not exist.");
+        toast.error("Podcast does not exist.");
       }
 
       if (episode.episodeId === currentEpisode.episode.episodeId) {

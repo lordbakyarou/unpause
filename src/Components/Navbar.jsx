@@ -59,13 +59,6 @@ function Navbar() {
         <div class="flex items-center justify-between">
           <div class="flex items-center justify-start rtl:justify-end">
             <button
-              onClick={() =>
-                console.log(
-                  document
-                    .getElementById("logo-sidebar")
-                    .classList.toggle("-translate-x-full")
-                )
-              }
               type="button"
               class="inline-flex items-center p-2 text-sm text-gray-300 rounded-lg sm:hidden hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-200  "
             >

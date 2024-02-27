@@ -72,7 +72,7 @@ function LikedPodcasts() {
     fetchPodcast();
   }, [podcast]);
 
-  console.log(allPodcast, "allpodcast");
+  // console.log(allPodcast, "allpodcast");
 
   return (
     <div class="p-4 sm:ml-64">
