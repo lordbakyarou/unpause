@@ -186,6 +186,42 @@ function Sidebar() {
               </span>
             </NavLink>
           </li>
+          <li>
+            <div
+              className="footer text-xs flex text-gray-400 flex-col gap-4 pl-4 pr-4
+  "
+            >
+              <div className="just-footer">
+                Follow me on{" "}
+                <span className="cursor-pointer hover:text-white">
+                  <NavLink
+                    to="https://www.linkedin.com/in/mayurhanwate/"
+                    target="_blank"
+                  >
+                    LinkedIn
+                  </NavLink>
+                </span>{" "}
+                ·{" "}
+                <span className="cursor-pointer hover:text-white">
+                  <NavLink to="https://github.com/lordbakyarou" target="_blank">
+                    Github
+                  </NavLink>
+                </span>{" "}
+                ·{" "}
+                <span className="cursor-pointer hover:text-white">
+                  <NavLink
+                    to="https://leetcode.com/mayur1710hanwate/"
+                    target="_blank"
+                  >
+                    Leetcode
+                  </NavLink>
+                </span>
+              </div>
+              <div className="actual-footer">
+                © 2024 UNPAUSE FROM MAYUR HANWATE
+              </div>
+            </div>
+          </li>
         </ul>
       </div>
     </aside>

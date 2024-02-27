@@ -156,7 +156,7 @@ function Profile() {
             );
           })}
         </div>
-        {!userPodcast && <p>User has no podcast</p>}
+        {userPodcast?.length === 0 && <p>User has no podcast</p>}
 
         {isPostOpen && (
           <div className="w-screen h-screen sm:pl-64   overflow-hidden absolute top-0 left-0 flex items-center justify-center">

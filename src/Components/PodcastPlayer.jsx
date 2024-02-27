@@ -19,6 +19,7 @@ import {
   clearEpisode,
   increaseIndex,
   decreaseIndex,
+  resetIndex,
 } from "../redux/features/episods/episodsSlice";
 
 import { playMusic, pauseMusic } from "../redux/features/music/musicSlice";
@@ -57,15 +58,22 @@ function PodcastPlayer() {
       } else {
         audioRef.current.play();
       }
-      // console.log(music.status, episode.index);
     };
 
     handlePlayPause();
-    // console.log(episode.index);
   }, [music.status, episode.episodes[episode.index].episodeId]);
+
+  useEffect(() => {});
 
   const handleTimeUpdate = () => {
     setCurrentTime(audioRef.current.currentTime);
+    if (audioRef.current.currentTime === audioRef.current.duration) {
+      if (episode.episodes.length - 1 === episode.index) {
+        dispatch(resetIndex());
+      } else {
+        dispatch(increaseIndex());
+      }
+    }
   };
 
   const handleLoadedMetadata = () => {

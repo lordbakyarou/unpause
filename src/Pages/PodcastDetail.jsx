@@ -87,7 +87,7 @@ const PodcastDetail = () => {
   return (
     <div class="p-4 sm:ml-64">
       <div
-        className={`py-5 px-20 max-lg:px-4 pb-56 max-sm:px-4 pb-40 w-full overflow-y-hidden flex justify-center flex-col gap-10  `}
+        className={`py-20 px-20 max-lg:px-4 pb-56 max-sm:px-4 pb-40 w-full overflow-y-hidden flex justify-center flex-col gap-10  `}
         onClick={(e) => {
           e.stopPropagation();
           setDeleteIcon(false);
@@ -103,7 +103,7 @@ const PodcastDetail = () => {
 
               <div className="relative">
                 <p
-                  className="text-2xl"
+                  className="text-2xl cursor-pointer"
                   onClick={(e) => {
                     e.stopPropagation();
                     setDeleteIcon(!deleteIcon);
@@ -117,7 +117,7 @@ const PodcastDetail = () => {
                     onClick={handleDeletePodcast}
                   >
                     <RiDeleteBin6Line />{" "}
-                    <span className="max-sm:w-10 max-sm:whitespace-pre-wrap">
+                    <span className="max-sm:w-10 max-sm:whitespace-pre-wrap cursor-pointer">
                       Delete Podcast
                     </span>
                   </p>
