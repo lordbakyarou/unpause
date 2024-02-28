@@ -229,15 +229,6 @@ function CreatePodcast() {
             >
               Podcast Title
             </label>
-            {/* 
-                  {loginInUser.password && (
-                    <div
-                      className="absolute top-2.5 right-2 text-lg text-gray-800 cursor-pointer"
-                      onClick={togglePasswordVisibility}
-                    >
-                      {showPassword ? <FaEyeSlash /> : <FaEye />}
-                    </div>
-                  )} */}
           </div>
           <div className="input-password  relative">
             <input
@@ -302,13 +293,13 @@ function CreatePodcast() {
               <div className="w-[500px] scrollbar-hide max-sm:w-[400px] max-xxs:w-[300px] max-md:w-[350px] h-fit max-h-[200px]  rounded p-2 mt-2  overflow-scroll backdrop-blur-sm border rounded flex flex-wrap gap-2">
                 {selectedCategories.map((item, index) => (
                   <p className="backdrop-blur-sm bg-white/30 w-fit rounded-xl p-2 text-sm flex items-center gap-2">
-                    <MdOutlineCancel
+                    <RxCross1
                       onClick={() => {
                         const temp = [...selectedCategories];
                         temp.splice(index, 1);
-                        // console.log(temp, selectedCategories);
                         setSelectedCategories(temp);
                       }}
+                      className="cursor-pointer hover:opacity-100 opacity-50"
                     />{" "}
                     {item}
                   </p>
@@ -318,7 +309,7 @@ function CreatePodcast() {
 
             {searchCategory && (
               <div className="w-[500px] relative scrollbar-hide max-sm:w-[400px] max-xxs:w-[300px] max-md:w-[350px] h-fit max-h-[200px]  rounded p-2 mt-2  overflow-scroll backdrop-blur-sm bg-white/30">
-                <div className="absolute top-1 right-1">
+                <div className="fixed top-1 z-50   right-1 cursor-pointer">
                   {" "}
                   <RxCross1 onClick={() => setSearchCategory("")} />
                 </div>

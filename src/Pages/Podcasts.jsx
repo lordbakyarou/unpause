@@ -132,7 +132,7 @@ function Podcasts() {
                 Search
               </label>
               <p
-                className="absolute top-5 right-2"
+                className="absolute top-4 right-2"
                 onClick={() => setFilterOption(!filterOption)}
               >
                 <FaFilter className="cursor-pointer" />
@@ -152,7 +152,7 @@ function Podcasts() {
                     }}
                     className="backdrop-blur-sm max-sm:text-xs w-fit cursor-pointer hover:bg-white/40 bg-white/30 rounded-xl p-2 text-sm"
                   >
-                    {category}
+                    #{category}
                   </p>
                 ))}
               </div>

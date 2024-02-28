@@ -150,7 +150,7 @@ const PodcastDetail = () => {
                     key={index}
                     className="backdrop-blur-sm cursor-pointer hover:bg-white/40 bg-white/30 rounded-xl p-2 text-sm"
                   >
-                    {item}
+                    #{item}
                   </p>
                 ))}
               </div>
