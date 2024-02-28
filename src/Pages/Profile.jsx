@@ -53,7 +53,7 @@ function Profile() {
 
     async function getUsersDetail() {
       const userDetail = await getDoc(doc(db, "users", uid));
-      setUser(userDetail.data(), "asfasdfsd");
+      setUser(userDetail.data());
     }
 
     getUsersDetail();
@@ -95,13 +95,17 @@ function Profile() {
         >
           <div className="image w-full h-full flex flex-col items-center justify-start pt-4 ">
             <img
-              src={user?.profilePic}
+              src={
+                user?.uid === currentUser.uid
+                  ? currentUser.profilePic
+                  : user?.profilePic
+              }
               className="w-[280px] h-72 object-cover rounded-t-2xl cursor-pointer transition-all hover:scale-105 duration-500"
             />
           </div>
           <div className="flex justify-between px-7 pb-10 items-center text-primary-text-color">
             <p className="w-fit  overflow-hidden opacity-50 hover:opacity-100 cursor-pointer">
-              {user?.name}
+              {user?.uid === currentUser.uid ? currentUser.name : user?.name}
             </p>
             {user?.uid === currentUser.uid && (
               <p
