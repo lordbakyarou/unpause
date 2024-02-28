@@ -4,7 +4,13 @@ import Card from "../Components/Card";
 import { useEffect, useState } from "react";
 
 import { db, storage, auth } from "../Firebase/firebase";
-import { getDoc, doc, getDocs, collection } from "firebase/firestore";
+import {
+  getDoc,
+  doc,
+  getDocs,
+  collection,
+  updateDoc,
+} from "firebase/firestore";
 
 import { useNavigate } from "react-router-dom";
 
@@ -44,6 +50,7 @@ function LikedPodcasts() {
         const getCurrentUserLikes = await getDoc(
           doc(db, "users", currentUser.uid)
         );
+        const userRef = doc(db, "users", currentUser.uid);
 
         const likes = getCurrentUserLikes.data().likes;
 
@@ -54,7 +61,15 @@ function LikedPodcasts() {
             doc(db, "podcasts", like.uid, "podcast", like.id)
           );
 
-          likeArray.push(getLike.data());
+          if (getLike.data() != undefined) {
+            likeArray.push(getLike.data());
+          } else {
+            // console.log(like.id);
+            const updatedLikes = getCurrentUserLikes
+              .data()
+              .likes.filter((item) => item.id !== like.id);
+            await updateDoc(userRef, { likes: updatedLikes });
+          }
         });
 
         // console.log([likeArray], "likearray");
@@ -87,16 +102,17 @@ function LikedPodcasts() {
 
         {allPodcast.length == 0 && (
           <div className="podcasts max-xxs:grid-cols-1  max-sm:items-center max-sm:px-2 max-sm:grid-cols-2  flex  grid grid-cols-3 max-lg:grid-cols-2  max-md:grid-cols-1 max-md:gap-2  gap-5 justify-center">
-            {[1, 2, 3, 4, 5, 6].map(() => {
-              return <LoadingCard />;
+            {[1, 2, 3, 4, 5, 6].map((a, index) => {
+              return <LoadingCard key={index} />;
             })}
           </div>
         )}
 
         {allPodcast.length > 0 && (
           <div className="podcasts max-xxs:grid-cols-1 max-sm:items-center max-sm:px-2 max-sm:grid-cols-2  flex  grid grid-cols-3 max-xl:grid-cols-2  max-md:grid-cols-1 max-md:gap-2  gap-5 justify-center">
-            {allPodcast?.map((podcast) => (
+            {allPodcast?.map((podcast, index) => (
               <Card
+                key={index}
                 onClick={() =>
                   navigate(`/podcast/${podcast.uid}/${podcast.podcastId}`)
                 }

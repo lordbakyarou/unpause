@@ -61,6 +61,7 @@ function Card({ podcastDetails, podcast }) {
         const updatedLikes = currentLikedData.filter(
           (item) => item.id !== podcast.podcastId
         );
+
         await updateDoc(userRef, { likes: updatedLikes });
 
         dispatch(setCurrentUser({ ...currentUser, likes: updatedLikes }));

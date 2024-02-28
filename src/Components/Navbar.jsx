@@ -96,7 +96,7 @@ function Navbar({ sidebarNavigation, setSidebarNavigation }) {
                     e.stopPropagation();
                     let profile = document.getElementById("profile-menu");
                     const pro = profile.classList.value.includes("absolute");
-                    console.log(pro);
+                    // console.log(pro);
                     if (pro) {
                       profile.classList.remove("absolute");
                       profile.classList.add("hidden");
