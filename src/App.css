@@ -9,3 +9,8 @@
 body::-webkit-scrollbar {
   display: none;
 }
+
+#audio-plyer {
+  height: 3px;
+  color: black;
+}

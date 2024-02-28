@@ -239,7 +239,6 @@ function PodcastPlayer() {
                       id="volume-player"
                       className="-rotate-90 absolute -right-14 bottom-20"
                       onChange={handleVolumeChange}
-                      onMouseLeave={() => setVolumeVisible(false)}
                     />
                   )}
                 </div>

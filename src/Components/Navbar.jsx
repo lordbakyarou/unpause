@@ -12,11 +12,14 @@ import { current } from "@reduxjs/toolkit";
 
 import logo from "../assets/logo2.png";
 import mainLogo from "../assets/mainlogo.png";
+import { useNavigate } from "react-router-dom";
 
 function Navbar({ sidebarNavigation, setSidebarNavigation }) {
   const location = useLocation();
 
-  const token = useSelector((state) => state.token);
+  const navigate = useNavigate();
+
+  const token = useSelector((state) => state.token.token);
   const dispatch = useDispatch();
 
   const currentUser = useSelector((state) => state.user.user);
@@ -73,10 +76,13 @@ function Navbar({ sidebarNavigation, setSidebarNavigation }) {
                 ></path>
               </svg>
             </button>
-            <NavLink className="flex ms-2 items-center  md:me-24">
+            <NavLink
+              to={token ? "/podcasts" : "/"}
+              className="flex ms-2 items-center  md:me-24"
+            >
               <img
                 src={mainLogo}
-                class="h-10 me-3  cursor-pointer"
+                class="h-10 me-3 cursor-pointer"
                 alt="Brand Logo"
               />
               <span class="self-center text-xl font-semibold sm:text-2xl  cursor-pointer whitespace-nowrap dark:text-white">
