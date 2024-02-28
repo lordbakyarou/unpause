@@ -45,6 +45,8 @@ function ProfileEdit() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+  const currentUser = useSelector((state) => state.user.user);
+
   const [image, setImage] = useState(null);
 
   const [password, setPassword] = useState("");
@@ -76,6 +78,7 @@ function ProfileEdit() {
 
         dispatch(
           setCurrentUser({
+            ...currentUser,
             name: fullname,
             email,
             uid: userInfo.uid,
