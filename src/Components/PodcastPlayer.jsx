@@ -212,6 +212,7 @@ function PodcastPlayer() {
                 <input
                   type="range"
                   className="w-full h-2 text-red-500  rounded-full shadow cursor-pointer"
+                  id="audio-plyer"
                   value={currentTime}
                   max={duration || 0}
                   onChange={handleSeek}
@@ -235,8 +236,10 @@ function PodcastPlayer() {
                       min="0"
                       max="100"
                       value={volume}
+                      id="volume-player"
                       className="-rotate-90 absolute -right-14 bottom-20"
                       onChange={handleVolumeChange}
+                      onMouseLeave={() => setVolumeVisible(false)}
                     />
                   )}
                 </div>

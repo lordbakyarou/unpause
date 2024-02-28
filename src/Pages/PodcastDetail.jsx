@@ -89,7 +89,6 @@ const PodcastDetail = () => {
       <div
         className={`py-20 px-20 max-lg:px-4 pb-56 max-sm:px-4 pb-40 w-full overflow-y-hidden flex justify-center flex-col gap-10  `}
         onClick={(e) => {
-          e.stopPropagation();
           setDeleteIcon(false);
         }}
       >
@@ -109,7 +108,7 @@ const PodcastDetail = () => {
                     setDeleteIcon(!deleteIcon);
                   }}
                 >
-                  <HiOutlineDotsHorizontal />
+                  {uid === userInfo.uid && <HiOutlineDotsHorizontal />}
                 </p>
                 {deleteIcon && uid === userInfo.uid && (
                   <p
@@ -158,7 +157,7 @@ const PodcastDetail = () => {
             </div>
 
             <div className="flex flex-col gap-10 opacity-50 hover:opacity-100 transition-all hover:scale-[103%] duration-500 cursor-pointer">
-              <h1 className="">{podcast.description}</h1>
+              <h1 className="">{podcast.podcastDescription}</h1>
             </div>
 
             <div className={`w-full flex flex-col gap-5 `}>

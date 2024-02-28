@@ -7,13 +7,13 @@ import { clearToken } from "../redux/features/token/tokenSlice";
 import { clearUser } from "../redux/features/user/userSlice";
 import { clearPodcast } from "../redux/features/podcast/podcastSlice";
 import { clearEpisode } from "../redux/features/episods/episodsSlice";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { current } from "@reduxjs/toolkit";
 
 import logo from "../assets/logo2.png";
 import mainLogo from "../assets/mainlogo.png";
 
-function Navbar() {
+function Navbar({ sidebarNavigation, setSidebarNavigation }) {
   const location = useLocation();
 
   const token = useSelector((state) => state.token);
@@ -41,7 +41,7 @@ function Navbar() {
 
   const [menuButton, setMenuButton] = useState(false);
 
-  useEffect(() => {}, [menuButton]);
+  const sidebarRef = useRef(null);
 
   return (
     <nav class="fixed top-0 bg-black/30 backdrop-blur-2xl z-50 w-full">
@@ -49,11 +49,12 @@ function Navbar() {
         <div class="flex items-center justify-between">
           <div class="flex items-center justify-start rtl:justify-end">
             <button
-              onClick={() =>
+              onClick={(e) => {
+                e.stopPropagation();
                 document
                   .getElementById("logo-sidebar")
-                  .classList.toggle("-translate-x-full")
-              }
+                  .classList.toggle("-translate-x-full");
+              }}
               type="button"
               class="inline-flex items-center p-2 text-sm text-gray-300 rounded-lg sm:hidden hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-200  "
             >
@@ -91,7 +92,19 @@ function Navbar() {
                   class="flex text-sm bg-gray-800 rounded-full focus:ring-2 focus:ring-text-color "
                   aria-expanded="false"
                   data-dropdown-toggle="dropdown-user"
-                  onClick={() => setMenuButton(!menuButton)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    let profile = document.getElementById("profile-menu");
+                    const pro = profile.classList.value.includes("absolute");
+                    console.log(pro);
+                    if (pro) {
+                      profile.classList.remove("absolute");
+                      profile.classList.add("hidden");
+                    } else {
+                      profile.classList.add("absolute");
+                      profile.classList.remove("hidden");
+                    }
+                  }}
                 >
                   <span class="sr-only">Open user menu</span>
                   <img
@@ -105,9 +118,8 @@ function Navbar() {
                 </button>
               </div>
               <div
-                class={`z-50 top-[38px] w-48 -left-40 ${
-                  menuButton ? "absolute" : "hidden"
-                }   my-4 text-base list-none shadow-xl border-text-color bg-gray-800 backdrop-blur-2xl divide-y divide-gray-100 rounded shadow `}
+                id="profile-menu"
+                class={`z-50 top-[38px] w-48 -left-40 hidden   my-4 text-base list-none shadow-xl border-text-color bg-gray-800 backdrop-blur-2xl divide-y divide-gray-100 rounded shadow `}
               >
                 <div className="bg-black/30 backdrop-blur-2xl">
                   {currentUser && (

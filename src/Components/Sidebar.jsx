@@ -20,7 +20,7 @@ import { FaHeart } from "react-icons/fa";
 
 import { toast } from "react-toastify";
 
-function Sidebar() {
+function Sidebar({ sidebarNavigation, setSidebarNavigation }) {
   const currentUser = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
 
@@ -65,6 +65,12 @@ function Sidebar() {
       id="logo-sidebar"
       class="fixed top-0 h-fit left-0 z-40 w-64 h-screen overflow-y-hidden pt-12 transition-transform -translate-x-full shadow  sm:translate-x-0  dark:border-gray-700"
       aria-label="Sidebar"
+      onClick={(e) => {
+        e.stopPropagation();
+        document
+          .getElementById("logo-sidebar")
+          .classList.remove("-translate-x-full");
+      }}
     >
       <div class="h-full px-3 pb-4 pt-10  bg-black/30 backdrop-blur-2xl ">
         <ul class="space-y-2 font-medium">

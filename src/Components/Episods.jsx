@@ -60,9 +60,13 @@ function Episode({ episode, index, setPodcast, podcastDetail }) {
         toast.error("Podcast does not exist.");
       }
 
-      if (episode.episodeId === currentEpisode.episode.episodeId) {
+      if (
+        currentEpisode?.episode?.episodes[currentEpisode?.episode?.index]
+          .episodeId === episode.episodeId
+      ) {
         dispatch(clearEpisode());
       }
+      console.log(episode.episodeId);
     } catch (error) {
       console.log(error);
     }
@@ -74,7 +78,7 @@ function Episode({ episode, index, setPodcast, podcastDetail }) {
         <p className="text-2xl">
           {index + 1}. {episode.episodeName}
         </p>
-        <p className="pl-5 opacity-50 hover:opacity-100 transition-all hover:scale-[102%] duration-500 cursor-pointer">
+        <p className="pl-5 opacity-50 w-fit hover:opacity-100 transition-all hover:scale-[102%] duration-500 cursor-pointer">
           {episode.episodeDescription}
         </p>
         <div className="rounded ml-5 w-fit flex gap-5 items-center cursor-pointer">
