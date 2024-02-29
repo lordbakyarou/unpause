@@ -12,9 +12,9 @@ function UserCard({ user }) {
       }}
     >
       <img
-        class="transition-all hover:scale-110 duration-200 mx-auto h-20 w-20 max-sm:h-40 max-sm:w-40  rounded-full sm:mx-0 sm:shrink-0"
+        class="transition-all object-cover hover:scale-110 duration-200 mx-auto h-20 w-20 max-sm:h-40 max-sm:w-40  rounded-full sm:mx-0 sm:shrink-0"
         src={user.profilePic}
-        alt="Woman's Face"
+        alt=""
       />
       <div class="text-center truncate space-y-2 sm:text-left">
         <div class="space-y-0.5">
