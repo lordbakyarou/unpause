@@ -138,7 +138,7 @@ const PodcastDetail = () => {
                 className="w-10 h-10 rounded-full bg-transparent overflow-hidden border  cursor-pointer transition-all hover:scale-[110%] duration-500"
                 onClick={() => navigate(`/profile/${podcast.uid}`)}
               >
-                <img src={userProfile} />
+                <img src={userProfile} className="object-cover" />
               </p>
             </div>
 

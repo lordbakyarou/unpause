@@ -114,7 +114,7 @@ function Navbar({ sidebarNavigation, setSidebarNavigation }) {
                 >
                   <span class="sr-only">Open user menu</span>
                   <img
-                    class="w-8 h-8 rounded-full"
+                    class="w-8 h-8 object-cover rounded-full"
                     src={
                       currentUser?.profilePic ||
                       "https://firebasestorage.googleapis.com/v0/b/podcast-application-react.appspot.com/o/default_pic%2Fvecteezy_default-profile-account-unknown-icon-black-silhouette_20765399.jpg?alt=media&token=4f0c367a-eaa7-44bb-9d87-3609fa380704"
@@ -145,6 +145,14 @@ function Navbar({ sidebarNavigation, setSidebarNavigation }) {
                     <ul class="py-1" role="none">
                       <li>
                         <NavLink
+                          to={`/profile/${currentUser?.uid}`}
+                          className="block px-4 py-2 text-sm hover:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >
+                          Profile
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
                           to="/podcasts"
                           className="block px-4 py-2 text-sm hover:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
@@ -159,14 +167,7 @@ function Navbar({ sidebarNavigation, setSidebarNavigation }) {
                           Create Podcast
                         </NavLink>
                       </li>
-                      <li>
-                        <NavLink
-                          to={`/profile/${currentUser?.uid}`}
-                          className="block px-4 py-2 text-sm hover:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                          Profile
-                        </NavLink>
-                      </li>
+
                       <li>
                         <NavLink
                           to="/"
