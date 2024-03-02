@@ -68,7 +68,7 @@ function Users() {
   const [filterOption, setFilterOption] = useState(false);
 
   return (
-    <div class="p-4 sm:ml-64">
+    <div class="p-4 sm:ml-64 scroll-smooth">
       <div className="pt-20 pb-40 w-full podcast overflow-auto flex justify-center items-center flex-col gap-10 bg-transparent">
         <div className="flex flex-col gap-2 items-center justify-center">
           <div className="flex flex-col gap-10 items-center">
