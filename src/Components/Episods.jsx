@@ -23,7 +23,7 @@ function Episode({ episode, index, setPodcast, podcastDetail }) {
   const user = useSelector((state) => state.user.user);
 
   const music = useSelector((state) => state.music);
-  console.log(podcastDetail, "in episodes page");
+  // console.log(podcastDetail, "in episodes page");
 
   const playEpisode = () => {
     dispatch(setEpisode({ episodes: podcastDetail, index }));
@@ -102,7 +102,7 @@ function Episode({ episode, index, setPodcast, podcastDetail }) {
               className="text-2xl transition-all hover:scale-[120%] duration-500 cursor-pointer"
             />
           )}
-          {user.uid === episode.uid && (
+          {user?.uid === episode?.uid && (
             <div className="flex items-center gap-2" onClick={deleteEpisode}>
               Delete <RiDeleteBin6Line />
             </div>

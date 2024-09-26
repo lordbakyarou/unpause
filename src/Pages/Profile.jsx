@@ -96,8 +96,8 @@ function Profile() {
           <div className="image w-full h-full flex flex-col items-center justify-start pt-4 ">
             <img
               src={
-                user?.uid === currentUser.uid
-                  ? currentUser.profilePic
+                user?.uid === currentUser?.uid
+                  ? currentUser?.profilePic
                   : user?.profilePic
               }
               className="w-[280px] h-72 object-cover rounded-t-2xl cursor-pointer transition-all hover:scale-105 duration-500"
@@ -105,9 +105,9 @@ function Profile() {
           </div>
           <div className="flex justify-between px-7 pb-10 items-center text-primary-text-color">
             <p className="w-fit  overflow-hidden opacity-50 hover:opacity-100 cursor-pointer">
-              {user?.uid === currentUser.uid ? currentUser.name : user?.name}
+              {user?.uid === currentUser?.uid ? currentUser?.name : user?.name}
             </p>
-            {user?.uid === currentUser.uid && (
+            {user?.uid === currentUser?.uid && (
               <p
                 className="flex items-center gap-2  cursor-pointer"
                 onClick={() => {
@@ -123,7 +123,7 @@ function Profile() {
               </p>
             )}
           </div>
-          {user?.uid === currentUser.uid && (
+          {user?.uid === currentUser?.uid && (
             <div
               className="absolute top-3 right-3 group border rounded-full p-1 backdrop-blur-md bg-white/10 text-xl"
               onClick={handleEditProfile}
@@ -138,7 +138,7 @@ function Profile() {
         <div className="flex flex-col gap-10 items-center ">
           {user && (
             <h1 className="text-3xl">
-              {user?.uid === currentUser.uid ? "Your " : user?.name + "'s "}
+              {user?.uid === currentUser?.uid ? "Your " : user?.name + "'s "}
               Podcasts
             </h1>
           )}

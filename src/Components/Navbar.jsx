@@ -47,7 +47,7 @@ function Navbar({ sidebarNavigation, setSidebarNavigation }) {
   const sidebarRef = useRef(null);
 
   return (
-    <nav class="fixed top-0 bg-black/30 backdrop-blur-2xl z-50 w-full">
+    <nav class="fixed  top-0 bg-black/30 backdrop-blur-2xl z-50 w-screen">
       <div class="px-3 py-3 lg:px-5 lg:pl-3 ">
         <div class="flex items-center justify-between">
           <div class="flex items-center justify-start rtl:justify-end">

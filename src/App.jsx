@@ -10,19 +10,16 @@ import PodcastDetail from "./Pages/PodcastDetail";
 import { Routes, Route } from "react-router-dom";
 import Profile from "./Pages/Profile";
 import PodcastPlayer from "./Components/PodcastPlayer";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import TwinklingStars from "./Components/TwinklingStars";
 import Sidebar from "./Components/Sidebar";
 import LikedPodcasts from "./Pages/LikedPodcast";
 import Users from "./Pages/Users";
-import { useState } from "react";
-import { doc } from "firebase/firestore";
 
 function App() {
   const episode = useSelector((state) => state.episode.episode);
-  const [sidebarNavbar, setSidebarNavigation] = useState(false);
 
   return (
     <div className="homescreen m-0 flex  flex-col w-screen justify-center bg-gray-900 h-screen text-gray-100 ">

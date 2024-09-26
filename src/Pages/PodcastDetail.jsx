@@ -108,9 +108,9 @@ const PodcastDetail = () => {
                     setDeleteIcon(!deleteIcon);
                   }}
                 >
-                  {uid === userInfo.uid && <HiOutlineDotsHorizontal />}
+                  {uid === userInfo?.uid && <HiOutlineDotsHorizontal />}
                 </p>
-                {deleteIcon && uid === userInfo.uid && (
+                {deleteIcon && uid === userInfo?.uid && (
                   <p
                     className="flex max-sm:flex-col bg-gray-200 items-center justify-center text-black p-2 mt-2 rounded absolute -left-14 whitespace-nowrap max-sm:text-xs items-center gap-2"
                     onClick={handleDeletePodcast}
@@ -164,7 +164,7 @@ const PodcastDetail = () => {
               <div className="flex flex-col gap-4">
                 <div className="flex  justify-between items-center">
                   <p className="text-3xl">Episodes</p>
-                  {uid === userInfo.uid && (
+                  {uid === userInfo?.uid && (
                     <div
                       className="flex gap-2 items-center"
                       onClick={() => setAddPodcastOpen(true)}

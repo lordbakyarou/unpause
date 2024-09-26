@@ -28,7 +28,7 @@ function Card({ podcastDetails, podcast }) {
   const [isLiked, setIsLiked] = useState(false);
 
   useEffect(() => {
-    const likedPodcast = currentUser.likes?.find(
+    const likedPodcast = currentUser?.likes?.find(
       (item) => item.id === podcast.podcastId
     );
     if (likedPodcast === undefined) {
