@@ -157,7 +157,7 @@ function Signup() {
   }, [token]);
 
   return (
-    <div class="p-4 sm:ml-64">
+    <div className="p-4 sm:ml-64">
       <div className="pt-20 overflow-y-hidden flex justify-center items-center flex-col gap-10 ">
         <h1 className="text-4xl font-semibold">Signup</h1>
         <form

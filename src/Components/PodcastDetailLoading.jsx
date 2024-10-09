@@ -27,7 +27,7 @@ const PodcastDetailLoading = () => {
         <div className="image w-full h-full flex flex-col items-center justify-start pt-4 ">
           <div className="w-full h-[350px] object-cover rounded-2xl cursor-pointer transition-all hover:scale-105 duration-500">
             <svg
-              class="w-full h-full text-gray-200 dark:text-gray-600"
+              className="w-full h-full text-gray-200 dark:text-gray-600"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
@@ -38,15 +38,15 @@ const PodcastDetailLoading = () => {
           </div>
         </div>
         <div className=" w-full flex  items-center  gap-2 justify-end">
-          <p className="w-fit flex items-center h-full ">
-            <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-          </p>
+          <div className="w-fit flex items-center h-full ">
+            <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
+          </div>
           <p
             className="w-7 h-7 rounded-full bg-transparent overflow-hidden border  cursor-pointer transition-all hover:scale-[110%] duration-500"
             //   onClick={() => navigate(`/profile/${podcast.uid}`)}
           >
             <svg
-              class="w-full h-full text-gray-200 dark:text-gray-600"
+              className="w-full h-full text-gray-200 dark:text-gray-600"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
@@ -58,10 +58,10 @@ const PodcastDetailLoading = () => {
         </div>
 
         <div className="flex w-full flex-row items-center gap-2">
-          <p className="mr-2">
-            <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>{" "}
-            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[440px] mb-2.5"></div>
-          </p>
+          <div className="mr-2">
+            <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>{" "}
+            <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[440px] mb-2.5"></div>
+          </div>
           <div className="flex overflow-scroll whitespace-nowrap scrollbar-hide gap-2"></div>
         </div>
 
@@ -72,15 +72,15 @@ const PodcastDetailLoading = () => {
             <div className="flex  justify-between items-center">
               <p className="text-3xl">Episodes</p>
             </div>
-            <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[440px] mb-2.5"></div>
+            <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[440px] mb-2.5"></div>
           </div>
           {/* need to chang ethis */}
-          <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-          <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[480px] mb-2.5"></div>
-          <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-          <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[440px] mb-2.5"></div>
-          <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[460px] mb-2.5"></div>
-          <div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
+          <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
+          <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[480px] mb-2.5"></div>
+          <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
+          <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[440px] mb-2.5"></div>
+          <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[460px] mb-2.5"></div>
+          <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
         </div>
       </>
     </div>

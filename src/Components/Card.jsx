@@ -73,7 +73,7 @@ function Card({ podcastDetails, podcast }) {
 
   return (
     <div
-      className="w-80 relative max-md:w-80 max-md:h-fit h-[510px] max-sm:w-56 max-lg:w-60 pt-[0px] max-sm:pt-0 max-xxs:w-full max-xxs:p-2  max-xxs:h-fit  max-lg:h-full max-sm:h-full drop-shadow-lg  rounded-2xl flex flex-col gap-2 justify-between max-lg:justify-evenly max-sm:justify-evenly "
+      className="w-80 relative max-md:w-80 max-md:h-fit h-[510px] max-sm:w-56 max-lg:w-60 pt-[0px] max-sm:pt-0 max-xxs:w-full max-xxs:p-2  max-xxs:h-fit  max-lg:h-full max-sm:h-full drop-shadow-lg flex flex-col gap-2 justify-between max-lg:justify-evenly max-sm:justify-evenly "
       style={{
         backgroundImage:
           "linear-gradient(rgba(58, 129, 191, 0.3), rgba(65, 48, 90, 0.3))",
@@ -134,7 +134,7 @@ function Card({ podcastDetails, podcast }) {
                 return (
                   <span
                     key={index}
-                    class="inline-block w-fit bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+                    className="inline-block w-fit bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
                   >
                     #{genre}
                   </span>

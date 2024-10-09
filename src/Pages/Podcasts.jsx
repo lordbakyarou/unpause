@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addAllPodcast } from "../redux/features/allPodcast/allPodcastSlice";
 import { toast } from "react-toastify";
 import LoadingCard from "../Components/LoadingCard";
+import UpdatedCard from "../Components/UpdatedCard";
 
 function Podcasts() {
   const [allPodcast, setAllPodcast] = useState([]);
@@ -106,17 +107,17 @@ function Podcasts() {
   ];
 
   return (
-    <div class="p-4 sm:ml-64 scroll-smooth">
+    <div className="p-4  scroll-smooth">
       <div className="pt-20 pb-40 w-full podcast overflow-auto flex justify-center items-center flex-col gap-10 bg-transparent">
         <div className="flex flex-col gap-2 items-center justify-center">
           <div className="flex flex-col gap-10 items-center">
-            <h1 className="text-3xl">Discover Podcasts</h1>
+            <h1 className="text-2xl">Discover Podcasts</h1>
             <div className="flex max-lg:w-[450px] relative max-md:w-[300px] max-sm:w-[400px] max-xxs:w-[300px] w-full relative items-center gap-2">
               <input
                 // type={showPassword ? "text" : "password"}
                 placeholder="Search"
                 name="text"
-                className="peer outline-none bg-transparent p-3 rounded border w-[900px] max-lg:w-[450px] max-xl:w-[700px] placeholder-transparent"
+                className="peer outline-none bg-transparent px-2 py-3 rounded border w-[900px] max-lg:w-[450px] max-xl:w-[700px] placeholder-transparent"
                 onChange={(e) => setSearch(e.target.value)}
                 value={search}
               />
@@ -150,7 +151,7 @@ function Podcasts() {
                       setSearch(category);
                       setSearch(category);
                     }}
-                    className="backdrop-blur-sm max-sm:text-xs w-fit cursor-pointer hover:bg-white/40 bg-white/30 rounded-xl p-2 text-sm"
+                    className="backdrop-blur-sm max-sm:text-xs w-fit cursor-pointer hover:bg-white/40 bg-white/30 rounded-xl p-2 text-xs"
                   >
                     #{category}
                   </p>
@@ -161,7 +162,7 @@ function Podcasts() {
         </div>
 
         {allPodcast.length == 0 && (
-          <div className="podcasts max-xxs:grid-cols-1 max-sm:items-center max-sm:px-2 max-sm:grid-cols-2  flex  grid grid-cols-3 max-xl:grid-cols-2  max-md:grid-cols-1 max-md:gap-2  gap-5 justify-center">
+          <div className="podcasts max-xxs:grid-cols-1 max-sm:items-center max-sm:px-2 max-sm:grid-cols-2 flex grid grid-cols-4 max-xl:grid-cols-3 max-lg:grid-cols-2 max-[738px]:grid-cols-1  max-md:grid-cols-2 max-md:gap-2  gap-5 justify-center">
             {[1, 2, 3, 4, 5, 6].map((item, index) => {
               return <LoadingCard key={index} />;
             })}
@@ -169,10 +170,21 @@ function Podcasts() {
         )}
 
         {allPodcast.length > 0 && (
-          <div className="podcasts max-xxs:grid-cols-1 max-sm:items-center max-sm:px-2 max-sm:grid-cols-2  flex  grid grid-cols-3 max-xl:grid-cols-2  max-md:grid-cols-1 max-md:gap-2  gap-5 justify-center">
-            {filteredPodcast?.map((podcast, index) => (
-              <Card
-                key={index}
+          <div className="podcasts max-xxs:grid-cols-1 max-sm:items-center max-sm:px-2 max-sm:grid-cols-2 flex grid grid-cols-4 max-xl:grid-cols-3 max-lg:grid-cols-2 max-[738px]:grid-cols-1  max-md:grid-cols-2 max-md:gap-2  gap-5 justify-center">
+            {filteredPodcast?.map((podcast) => (
+              // <Card
+              //   key={index}
+              //   onClick={() =>
+              //     navigate(`/podcast/${podcast.uid}/${podcast.podcastId}`)
+              //   }
+              //   podcastDetails={{
+              //     img: podcast.podcastImage,
+              //     podcastName: podcast.podcastTitle,
+              //   }}
+              //   podcast={podcast}
+              // />
+              <UpdatedCard
+                key={podcast.podcastId}
                 onClick={() =>
                   navigate(`/podcast/${podcast.uid}/${podcast.podcastId}`)
                 }

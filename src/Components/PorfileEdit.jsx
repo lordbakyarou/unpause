@@ -129,7 +129,7 @@ function ProfileEdit() {
 
   return (
     <div
-      className="h-screen w-full  backdrop-blur-sm   bg-black/30 flex items-center justify-center"
+      className="h-full w-full backdrop-blur-sm   bg-black/30 flex items-center justify-center"
       onClick={(e) => {
         e.stopPropagation();
         dispatch(closePost());

@@ -85,7 +85,7 @@ const PodcastDetail = () => {
   };
 
   return (
-    <div class="p-4 sm:ml-64">
+    <div className="p-4">
       <div
         className={`py-20 px-20 max-lg:px-4 pb-56 max-sm:px-4 pb-40 w-full overflow-y-hidden flex justify-center flex-col gap-10  `}
         onClick={(e) => {
@@ -96,7 +96,7 @@ const PodcastDetail = () => {
         {podcast && (
           <>
             <div className="flex flex justify-between items-center">
-              <h1 className="text-3xl">
+              <h1 className="text-2xl">
                 Podcast Name : {podcast.podcastTitle}
               </h1>
 

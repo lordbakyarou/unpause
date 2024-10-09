@@ -116,17 +116,17 @@ function PodcastPlayer() {
 
   return (
     episode && (
-      <div class="w-full fixed bottom-0 z-50">
-        <div class="bg-red-light"></div>
-        <div class="flex items-center justify-center h-fit bg-red-lightest">
+      <div className="w-full fixed bottom-0 z-50">
+        <div className="bg-red-light"></div>
+        <div className="flex items-center justify-center h-fit bg-red-lightest">
           <div
-            class="backdrop-blur-xl bg-black/40 shadow-outline w-full flex max-sm:flex-col items-center h-fit"
+            className="backdrop-blur-xl bg-black/40 shadow-outline w-full flex max-sm:flex-col items-center h-fit"
             //   style="width: 45rem !important;"
           >
             <div className="absolute right-1 top-1 w-fit h-fit text-white hover:cursor-pointer">
               <RxCross1 onClick={() => dispatch(clearEpisode())} />
             </div>
-            <div class="flex gap-2 pt-1 pl-1 max-sm:w-full  items-center">
+            <div className="flex gap-2 pt-1 pl-1 max-sm:w-full  items-center">
               {/* {console.log(episode)} */}
               <div className="w-32 h-20 mb-3">
                 <img
@@ -142,25 +142,25 @@ function PodcastPlayer() {
                   }
                 />
               </div>
-              <div class="w-full flex gap-2 max-sm:flex-col max-sm:w-full sm:items-center">
-                <div class="flex  justify-between">
+              <div className="w-full flex gap-2 max-sm:flex-col max-sm:w-full sm:items-center">
+                <div className="flex  justify-between">
                   <div className="">
-                    <marquee class="text-xl text-white whitespace-nowrap font-medium">
+                    <marquee className="text-xl text-white whitespace-nowrap font-medium">
                       {episode.episodes[episode.index].episodeName}
                     </marquee>
-                    <p class="text-sm text-white mt-1">
+                    <p className="text-sm text-white mt-1">
                       {episode.episodes[episode.index].episodeCreator}
                     </p>
                   </div>
                 </div>
-                <div class="flex justify-between max-sm:justify-start max-sm:gap-10 max-xxs:justify-between max-xxs:px-1 max-xxs:gap-2 gap-2 text-xl items-center h-fit text-white">
+                <div className="flex justify-between max-sm:justify-start max-sm:gap-10 max-xxs:justify-between max-xxs:px-1 max-xxs:gap-2 gap-2 text-xl items-center h-fit text-white">
                   <div
-                    class="text-white hover:cursor-pointer"
+                    className="text-white hover:cursor-pointer"
                     onClick={() => dispatch(decreaseIndex())}
                   >
                     <FaStepBackward />
                   </div>
-                  <div class="text-white hover:cursor-pointer">
+                  <div className="text-white hover:cursor-pointer">
                     <TbRewindBackward5 onClick={handleBackward} />
                   </div>
                   <div
@@ -172,24 +172,24 @@ function PodcastPlayer() {
                     className="text-white cursor-pointer flex justify-center  items-center"
                   >
                     {music.status ? (
-                      <div class="text-black rounded-full bg-white p-2 shadow-lg">
+                      <div className="text-black rounded-full bg-white p-2 shadow-lg">
                         <FaPause />
                       </div>
                     ) : (
-                      <div class="text-black rounded-full bg-white p-2 shadow-lg">
+                      <div className="text-black rounded-full bg-white p-2 shadow-lg">
                         <FaPlay className="ml-0.5" />
                       </div>
                     )}
                   </div>
 
                   <div
-                    class="text-white hover:cursor-pointer"
+                    className="text-white hover:cursor-pointer"
                     onClick={handleForward}
                   >
                     <TbRewindForward5 />
                   </div>
                   <div
-                    class="text-white hover:cursor-pointer"
+                    className="text-white hover:cursor-pointer"
                     onClick={() => dispatch(increaseIndex())}
                   >
                     <FaStepForward />

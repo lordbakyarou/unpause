@@ -63,7 +63,7 @@ function Sidebar({ sidebarNavigation, setSidebarNavigation }) {
   return (
     <aside
       id="logo-sidebar"
-      class="fixed top-0 h-fit left-0 z-40 w-64 h-screen overflow-y-hidden pt-12 transition-transform -translate-x-full shadow  sm:translate-x-0  dark:border-gray-700"
+      className="fixed top-0 h-fit left-0 z-40 w-64 h-screen overflow-y-hidden pt-12 transition-transform -translate-x-full shadow  sm:translate-x-0  dark:border-gray-700"
       aria-label="Sidebar"
       onClick={(e) => {
         e.stopPropagation();
@@ -72,8 +72,8 @@ function Sidebar({ sidebarNavigation, setSidebarNavigation }) {
           .classList.remove("-translate-x-full");
       }}
     >
-      <div class="h-full px-3 pb-4 pt-10  bg-black/30 backdrop-blur-2xl ">
-        <ul class="space-y-2 font-medium">
+      <div className="h-full px-3 pb-4 pt-10  bg-black/30 backdrop-blur-2xl ">
+        <ul className="space-y-2 font-medium text-sm">
           <li>
             <NavLink
               to="/podcasts"
@@ -81,7 +81,9 @@ function Sidebar({ sidebarNavigation, setSidebarNavigation }) {
               // onClick={handleNavLinkClick}
             >
               <MdPodcasts className="text-gray-300 text-2xl" />
-              <span class="ms-3 text-gray-300 whitespace-nowrap">Podcasts</span>
+              <span className="ms-3 text-gray-300 whitespace-nowrap">
+                Podcasts
+              </span>
             </NavLink>
           </li>
           <li>
@@ -91,7 +93,7 @@ function Sidebar({ sidebarNavigation, setSidebarNavigation }) {
               // onClick={handleNavLinkClick}
             >
               <IoCreate className="text-gray-300 text-2xl" />
-              <span class="flex-1 ms-3  text-gray-300 whitespace-nowrap">
+              <span className="flex-1 ms-3  text-gray-300 whitespace-nowrap">
                 Create Podcast
               </span>
             </NavLink>
@@ -104,7 +106,7 @@ function Sidebar({ sidebarNavigation, setSidebarNavigation }) {
                 // onClick={handleNavLinkClick}
               >
                 <CgProfile className="text-gray-300 text-2xl" />
-                <span class="flex-1 ms-3 text-gray-300 whitespace-nowrap">
+                <span className="flex-1 ms-3 text-gray-300 whitespace-nowrap">
                   Profile
                 </span>
               </NavLink>
@@ -128,7 +130,7 @@ function Sidebar({ sidebarNavigation, setSidebarNavigation }) {
                 // onClick={handleNavLinkClick}
               >
                 <FaHeart className="text-gray-300 text-2xl" />
-                <span class="flex-1 ms-3 text-gray-300 whitespace-nowrap">
+                <span className="flex-1 ms-3 text-gray-300 whitespace-nowrap">
                   Liked Podcasts
                 </span>
               </NavLink>
@@ -147,7 +149,7 @@ function Sidebar({ sidebarNavigation, setSidebarNavigation }) {
                 }}
               >
                 <CgLogOut className="text-gray-300 text-2xl" />
-                <span class="flex-1 ms-3 text-gray-300 whitespace-nowrap">
+                <span className="flex-1 ms-3 text-gray-300 whitespace-nowrap">
                   Log Out
                 </span>
               </NavLink>
@@ -161,7 +163,7 @@ function Sidebar({ sidebarNavigation, setSidebarNavigation }) {
                 className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 group"
               >
                 <CgLogIn className="text-gray-300 text-2xl" />
-                <span class="flex-1 ms-3 text-gray-300 whitespace-nowrap">
+                <span className="flex-1 ms-3 text-gray-300 whitespace-nowrap">
                   Log In
                 </span>
               </NavLink>
@@ -174,7 +176,7 @@ function Sidebar({ sidebarNavigation, setSidebarNavigation }) {
                 className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 group"
               >
                 <BsPersonFillAdd className="text-gray-300 text-2xl" />
-                <span class="flex-1 ms-3 text-gray-300 whitespace-nowrap">
+                <span className="flex-1 ms-3 text-gray-300 whitespace-nowrap">
                   Sign Up
                 </span>
               </NavLink>
@@ -187,14 +189,14 @@ function Sidebar({ sidebarNavigation, setSidebarNavigation }) {
               target="_blank"
               className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 group"
             >
-              <span class="flex-1 ms-3 text-gray-400 font-normal whitespace-nowrap">
+              <span className="flex-1 text-xs ms-2 text-gray-400 font-normal whitespace-nowrap">
                 About Me
               </span>
             </NavLink>
           </li>
           <li>
             <div
-              className="footer text-xs flex text-gray-400 flex-col gap-4 pl-4 pr-4
+              className="footer text-[11px] flex text-gray-400 flex-col gap-4 pl-4 pr-4
   "
             >
               <div className="just-footer">

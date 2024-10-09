@@ -27,6 +27,7 @@ function Episode({ episode, index, setPodcast, podcastDetail }) {
 
   const playEpisode = () => {
     dispatch(setEpisode({ episodes: podcastDetail, index }));
+    // console.log(podcastDetail);
     dispatch(playMusic());
   };
 

@@ -201,9 +201,9 @@ function CreatePodcast() {
   }, [searchCategory, selectedCategories]);
 
   return (
-    <div class="p-4 sm:ml-64">
+    <div className="p-4 ">
       <div className="pt-20 pb-40 flex justify-center items-center flex-col scrollbar-hide gap-10 ">
-        <h1 className="text-4xl font-semibold max-sm:text-xl">
+        <h1 className="text-2xl font-semibold max-sm:text-xl">
           Create A Podcast
         </h1>
         <div

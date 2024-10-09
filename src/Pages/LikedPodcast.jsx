@@ -20,6 +20,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addAllPodcast } from "../redux/features/allPodcast/allPodcastSlice";
 import { toast } from "react-toastify";
 import LoadingCard from "../Components/LoadingCard";
+import UpdatedCard from "../Components/UpdatedCard";
 
 function LikedPodcasts() {
   const [allPodcast, setAllPodcast] = useState([]);
@@ -90,11 +91,11 @@ function LikedPodcasts() {
   // console.log(allPodcast, "allpodcast");
 
   return (
-    <div class="p-4 sm:ml-64">
+    <div className="p-4 ">
       <div className="pt-20 pb-40 w-full podcast overflow-auto flex justify-center items-center flex-col gap-10 bg-transparent">
         <div className="flex flex-col gap-2 items-center justify-center">
           <div className="flex flex-col gap-10 items-center">
-            <h1 className="text-3xl">Your Favorite Podcasts</h1>
+            <h1 className="text-2xl">Your Favorite Podcasts</h1>
           </div>
 
           <div className="transition-all duration-1000 ease-in-out"></div>
@@ -111,7 +112,7 @@ function LikedPodcasts() {
         {allPodcast.length > 0 && (
           <div className="podcasts max-xxs:grid-cols-1 max-sm:items-center max-sm:px-2 max-sm:grid-cols-2  flex  grid grid-cols-3 max-xl:grid-cols-2  max-md:grid-cols-1 max-md:gap-2  gap-5 justify-center">
             {allPodcast?.map((podcast, index) => (
-              <Card
+              <UpdatedCard
                 key={index}
                 onClick={() =>
                   navigate(`/podcast/${podcast.uid}/${podcast.podcastId}`)

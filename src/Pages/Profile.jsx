@@ -20,6 +20,7 @@ import { useParams } from "react-router-dom";
 import { clearEpisode } from "../redux/features/episods/episodsSlice";
 
 import { toast } from "react-toastify";
+import UpdatedCard from "../Components/UpdatedCard";
 
 function Profile() {
   const [user, setUser] = useState(null);
@@ -81,26 +82,20 @@ function Profile() {
   }, [uid]);
 
   return (
-    <div class="p-4 sm:ml-64">
-      <div className="pt-5 w-full pb-40 overflow-y-hidden flex justify-center items-center flex-col gap-10">
+    <div className="p-4">
+      <div className="pt-20 w-full pb-40 overflow-y-hidden flex justify-center items-center flex-col gap-10">
         <div className="flex flex-col gap-10 items-center ">
-          <h1 className="text-3xl">Profile</h1>
+          <h1 className="text-2xl">Profile</h1>
         </div>
-        <div
-          className="w-80 h-[350px] rounded-2xl relative flex flex-col gap-2 justify-between "
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(58, 129, 191, 0.3), rgba(65, 48, 90, 0.3))",
-          }}
-        >
-          <div className="image w-full h-full flex flex-col items-center justify-start pt-4 ">
+        <div className="w-80 h-[350px] relative flex flex-col gap-2 justify-between bg-black/60">
+          <div className="image w-full h-full flex flex-col items-center justify-start  ">
             <img
               src={
                 user?.uid === currentUser?.uid
                   ? currentUser?.profilePic
                   : user?.profilePic
               }
-              className="w-[280px] h-72 object-cover rounded-t-2xl cursor-pointer transition-all hover:scale-105 duration-500"
+              className="w-[350px] h-72 object-cover  cursor-pointer transition-all hover:scale-105 duration-500"
             />
           </div>
           <div className="flex justify-between px-7 pb-10 items-center text-primary-text-color">
@@ -147,7 +142,8 @@ function Profile() {
           {userPodcast?.map((podcast) => {
             // console.log(podcast);
             return (
-              <Card
+              <UpdatedCard
+                key={podcast.podcastId}
                 podcastDetails={{
                   img: podcast.podcastImage,
                   podcastName: podcast.podcastTitle,
@@ -163,7 +159,7 @@ function Profile() {
         {userPodcast?.length === 0 && <p>User has no podcast</p>}
 
         {isPostOpen && (
-          <div className="w-screen h-screen sm:pl-64   overflow-hidden absolute top-0 left-0 flex items-center justify-center">
+          <div className="min-w-full min-h-screen h-full absolute top-0 left-0 flex items-center justify-center">
             <ProfileEdit />
           </div>
         )}

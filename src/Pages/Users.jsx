@@ -43,7 +43,7 @@ function Users() {
         const newArray = [];
 
         usersQuerySnapshot.forEach(async (userDoc) => {
-          console.log(userDoc.data());
+          // console.log(userDoc.data());
           newArray.push(userDoc.data());
         });
         setAllUser([...newArray]);
@@ -68,11 +68,11 @@ function Users() {
   const [filterOption, setFilterOption] = useState(false);
 
   return (
-    <div class="p-4 sm:ml-64 scroll-smooth">
-      <div className="pt-20 pb-40 w-full podcast overflow-auto flex justify-center items-center flex-col gap-10 bg-transparent">
+    <div className="p-4  scroll-smooth">
+      <div className="pt-12 pb-40 w-full podcast overflow-auto flex justify-center items-center flex-col gap-10 bg-transparent">
         <div className="flex flex-col gap-2 items-center justify-center">
-          <div className="flex flex-col gap-10 items-center">
-            <h1 className="text-3xl">All Users</h1>
+          <div className="flex flex-col gap-5 items-center">
+            <h1 className="text-2xl">All Users</h1>
             <div className="flex max-lg:w-[450px] relative max-md:w-[300px] max-sm:w-[400px] max-xxs:w-[300px] w-full relative items-center gap-2">
               <input
                 // type={showPassword ? "text" : "password"}
