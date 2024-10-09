@@ -139,11 +139,11 @@ function Navbar({
                     </div>
                   )}
                   {currentUser ? (
-                    <ul className="py-1" role="none">
+                    <ul className="" role="none">
                       <li>
                         <NavLink
                           to={`/profile/${currentUser?.uid}`}
-                          className="block px-4 py-2 text-sm hover:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                          className="block px-4 py-2  bg-[#252833] text-sm hover:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Profile
                         </NavLink>
@@ -151,7 +151,7 @@ function Navbar({
                       <li>
                         <NavLink
                           to="/podcasts"
-                          className="block px-4 py-2 text-sm hover:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                          className="block px-4 py-2  bg-[#252833] text-sm hover:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Podcasts
                         </NavLink>
@@ -159,7 +159,7 @@ function Navbar({
                       <li>
                         <NavLink
                           to="/create-a-podcast"
-                          className="block px-4 py-2 text-sm hover:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                          className="block px-4 py-2  bg-[#252833] text-sm hover:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Create Podcast
                         </NavLink>
@@ -168,7 +168,7 @@ function Navbar({
                       <li>
                         <NavLink
                           to="/"
-                          className="block px-4 py-2 text-sm hover:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                          className="block px-4 py-2  bg-[#252833] text-sm hover:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                           onClick={() => {
                             dispatch(clearToken());
                             dispatch(clearUser());
@@ -181,11 +181,11 @@ function Navbar({
                       </li>
                     </ul>
                   ) : (
-                    <ul className="py-1" role="none">
+                    <ul className="" role="none">
                       <li>
                         <NavLink
                           to="/"
-                          className="block px-4 py-2 text-sm text-text-color hover:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                          className="block px-4 py-2 bg-[#252833] text-sm text-text-color hover:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Login
                         </NavLink>
@@ -193,7 +193,7 @@ function Navbar({
                       <li>
                         <NavLink
                           to="/signup"
-                          className="block px-4 py-2 text-sm text-text-color hover:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                          className="block px-4 py-2  bg-[#252833] text-sm text-text-color hover:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Create Account
                         </NavLink>

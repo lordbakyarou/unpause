@@ -17,6 +17,8 @@ import { setToken } from "../redux/features/token/tokenSlice";
 import { BsArrowClockwise } from "react-icons/bs";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 
+import loginImage from "../assets/signin-image.png";
+
 import { toast } from "react-toastify";
 
 import "firebase/firestore";
@@ -157,159 +159,174 @@ function Signup() {
   }, [token]);
 
   return (
-    <div className="p-4 sm:ml-64">
-      <div className="pt-20 overflow-y-hidden flex justify-center items-center flex-col gap-10 ">
-        <h1 className="text-4xl font-semibold">Signup</h1>
-        <form
-          className="flex flex-col items-center justify-center gap-5"
-          autoComplete="off"
-        >
-          <div className="input-password  relative">
-            <input
-              type="text"
-              placeholder="Full Name"
-              name="name"
-              className="peer outline-none bg-transparent p-3 rounded border w-[450px] max-md:w-[350px] max-sm:w-[450px] max-xxs:w-[290px]  placeholder-transparent"
-              onChange={(e) => setUserProperties(e)}
-            />
-            <label
-              className="absolute
+    <div class="font-[sans-serif] md:h-screen">
+      <div class="grid md:grid-cols-2 items-center gap-8 h-full">
+        <div class="max-md:order-1 p-4">
+          <img
+            src={loginImage}
+            class="lg:max-w-[85%] w-full h-full object-contain block mx-auto"
+            alt="login-image"
+          />
+        </div>
+        <div className="p-4 ">
+          <div className="pt-20 overflow-y-hidden flex justify-center items-center flex-col gap-10 ">
+            <h1 className="text-4xl max-md:text-2xl font-semibold">Signup</h1>
+            <form
+              className="flex flex-col items-center justify-center gap-5"
+              autoComplete="off"
+            >
+              <div className="input-password relative">
+                <input
+                  type="text"
+                  placeholder="Full Name"
+                  name="name"
+                  className="peer outline-none bg-transparent p-3 max-md:p-2  rounded border w-[450px] max-xl:w-[300px] max-md:w-[350px] max-sm:w-[450px] max-xxs:w-[290px]  placeholder-transparent"
+                  onChange={(e) => setUserProperties(e)}
+                />
+                <label
+                  className="absolute
                  transition-all
                   left-3.5 -top-0
                    text-gray-400 
                    text-xs peer-placeholder-shown:text-sm
+                   max-md:peer-placeholder-shown:text-xs
                     peer-placeholder-shown:top-3.5
                     pointer-events-none"
-            >
-              Full Name
-            </label>
-          </div>
-          <div className="input-password  relative">
-            <input
-              type="email"
-              placeholder="Email"
-              name="email"
-              className="peer outline-none bg-transparent p-3 rounded border  w-[450px] max-md:w-[350px] max-sm:w-[450px] max-xxs:w-[290px] placeholder-transparent"
-              onChange={(e) => setUserProperties(e)}
-            />
-            <label
-              className="absolute
+                >
+                  Full Name
+                </label>
+              </div>
+              <div className="input-password relative">
+                <input
+                  type="email"
+                  placeholder="Email"
+                  name="email"
+                  className="peer outline-none bg-transparent p-3 max-md:p-2 rounded border w-[450px] max-xl:w-[300px] max-md:w-[350px] max-sm:w-[450px] max-xxs:w-[290px] placeholder-transparent"
+                  onChange={(e) => setUserProperties(e)}
+                />
+                <label
+                  className="absolute
                  transition-all
                   left-3.5 -top-0
                    text-gray-400 
                    text-xs peer-placeholder-shown:text-sm
+                   max-md:peer-placeholder-shown:text-xs
                     peer-placeholder-shown:top-3.5
                     pointer-events-none"
-            >
-              Email
-            </label>
-          </div>
-          <div className="input-password  relative">
-            <input
-              type={showPassword ? "text" : "password"}
-              placeholder="Password"
-              name="password"
-              className="peer outline-none bg-transparent p-3 rounded border  w-[450px] max-md:w-[350px] max-sm:w-[450px] max-xxs:w-[290px] placeholder-transparent"
-              onChange={(e) => setUserProperties(e)}
-            />
-            <label
-              className="absolute
+                >
+                  Email
+                </label>
+              </div>
+              <div className="input-password  relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password"
+                  name="password"
+                  className="peer outline-none bg-transparent p-3 max-md:p-2 rounded border  w-[450px] max-xl:w-[300px] max-md:w-[350px] max-sm:w-[450px] max-xxs:w-[290px] placeholder-transparent"
+                  onChange={(e) => setUserProperties(e)}
+                />
+                <label
+                  className="absolute
                  transition-all
                   left-3.5 -top-0
                    text-gray-400 
                    text-xs peer-placeholder-shown:text-sm
+                   max-md:peer-placeholder-shown:text-xs
                     peer-placeholder-shown:top-3.5
                     pointer-events-none"
-            >
-              Password
-            </label>
-            {user.password && (
-              <div
-                className="absolute top-3.5 right-2 text-lg text-gray-800 cursor-pointer"
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                {showPassword ? (
-                  <IoMdEyeOff className="text-white" />
-                ) : (
-                  <IoMdEye className="text-white" />
+                >
+                  Password
+                </label>
+                {user.password && (
+                  <div
+                    className="absolute top-3.5 right-2 text-lg text-gray-800 cursor-pointer"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? (
+                      <IoMdEyeOff className="text-white" />
+                    ) : (
+                      <IoMdEye className="text-white" />
+                    )}
+                  </div>
                 )}
               </div>
-            )}
-          </div>
-          <div className="input-password  relative">
-            <input
-              type={showConfirmPassword ? "text" : "password"}
-              placeholder="Confirm Password"
-              name="confirmPassword"
-              className="peer outline-none bg-transparent p-3 rounded border  w-[450px] max-md:w-[350px] max-sm:w-[450px] max-xxs:w-[290px] placeholder-transparent"
-              onChange={(e) => setUserProperties(e)}
-            />
-            <label
-              className="absolute
+              <div className="input-password  relative">
+                <input
+                  type={showConfirmPassword ? "text" : "password"}
+                  placeholder="Confirm Password"
+                  name="confirmPassword"
+                  className="peer outline-none bg-transparent p-3 max-md:p-2 rounded border  w-[450px] max-xl:w-[300px] max-md:w-[350px] max-sm:w-[450px] max-xxs:w-[290px] placeholder-transparent"
+                  onChange={(e) => setUserProperties(e)}
+                />
+                <label
+                  className="absolute
                  transition-all
                   left-3.5 -top-0
                    text-gray-400 
                    text-xs peer-placeholder-shown:text-sm
+                   max-md:peer-placeholder-shown:text-xs
                     peer-placeholder-shown:top-3.5
                     pointer-events-none"
-            >
-              Confirm Password
-            </label>
+                >
+                  Confirm Password
+                </label>
 
-            {user.confirmPassword && (
-              <div
-                className="absolute top-3.5 right-2 text-lg text-gray-800 cursor-pointer"
-                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-              >
-                {showConfirmPassword ? (
-                  <IoMdEyeOff className="text-white" />
-                ) : (
-                  <IoMdEye className="text-white" />
+                {user.confirmPassword && (
+                  <div
+                    className="absolute top-3.5 right-2 text-lg text-gray-800 cursor-pointer"
+                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  >
+                    {showConfirmPassword ? (
+                      <IoMdEyeOff className="text-white" />
+                    ) : (
+                      <IoMdEye className="text-white" />
+                    )}
+                  </div>
                 )}
               </div>
-            )}
-          </div>
 
-          <label
-            htmlFor="fileInput"
-            className="block cursor-pointer outline-none flex gap-2 bg-transparent p-3 rounded border  w-[450px] max-md:w-[350px] max-sm:w-[450px] max-xxs:w-[290px] "
-          >
-            <span className="text-gray-400 flex whitespace-nowrap gap-2 items-center">
-              Add Profile Pic <CiImageOn className="text-2xl" />
-            </span>
-            <input
-              id="fileInput"
-              type="file"
-              className="hidden"
-              onChange={(e) => setImage(e.target.files[0])}
-            />
-            <p className="overflow-hidden truncate whitespace-nowrap w-[250px] max-sm">
-              {image?.name}
+              <label
+                htmlFor="fileInput"
+                className="block cursor-pointer outline-none flex gap-2 bg-transparent p-3 max-md:p-2 rounded border  w-[450px] max-xl:w-[300px] max-md:w-[350px] max-sm:w-[450px] max-xxs:w-[290px] "
+              >
+                <span className="text-gray-400 flex whitespace-nowrap gap-2 items-center">
+                  Add Profile Pic <CiImageOn className="text-2xl" />
+                </span>
+                <input
+                  id="fileInput"
+                  type="file"
+                  className="hidden"
+                  onChange={(e) => setImage(e.target.files[0])}
+                />
+                <p className="overflow-hidden truncate whitespace-nowrap w-[250px] max-sm">
+                  {image?.name}
+                </p>
+              </label>
+              <button
+                className="border-2  rounded p-3 max-md:p-2 font-semibold  w-[450px] max-md:w-[350px] max-sm:w-[450px] max-xl:w-[300px] max-xxs:w-[290px] hover:bg-gray-200 hover:bg-opacity-20"
+                onClick={validateDetails}
+              >
+                {loading ? (
+                  <div className="flex gap-2 justify-center items-center">
+                    <BsArrowClockwise className="animate-spin" />
+                    Signing up...
+                  </div>
+                ) : (
+                  "Signup Now"
+                )}
+              </button>
+            </form>
+            <p className="">
+              <span className="opacity-50">Already Have An Account? </span>
+              <span
+                className="cursor-pointer opacity-50 hover:opacity-100 text-blue-top"
+                onClick={() => navigate("/")}
+              >
+                Login
+              </span>
             </p>
-          </label>
-          <button
-            className="border-2  rounded p-3 font-semibold  w-[450px] max-md:w-[350px] max-sm:w-[450px] max-xxs:w-[290px] hover:bg-gray-200 hover:bg-opacity-20"
-            onClick={validateDetails}
-          >
-            {loading ? (
-              <div className="flex gap-2 justify-center items-center">
-                <BsArrowClockwise className="animate-spin" />
-                Signing up...
-              </div>
-            ) : (
-              "Signup Now"
-            )}
-          </button>
-        </form>
-        <p className="">
-          <span className="opacity-50">Already Have An Account? </span>
-          <span
-            className="cursor-pointer opacity-50 hover:opacity-100 text-blue-top"
-            onClick={() => navigate("/")}
-          >
-            Login
-          </span>
-        </p>
+          </div>
+        </div>
       </div>
     </div>
   );

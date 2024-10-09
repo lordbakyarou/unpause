@@ -16,6 +16,8 @@ import { addPodcast } from "../redux/features/podcast/podcastSlice";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import ForgotPassword from "../Components/ForgotPassword";
 
+import loginImage from "../assets/signin-image.png";
+
 import { toast } from "react-toastify";
 
 function Login() {
@@ -103,33 +105,43 @@ function Login() {
   }, [token]);
 
   return (
-    <div className="p-4 sm:ml-64">
-      <div className="pt-20 overflow-y-hidden flex justify-center items-center flex-col gap-10 ">
-        <h1 className="text-4xl font-semibold">Login</h1>
-        <form
-          className="flex flex-col items-center justify-center gap-5"
-          autoComplete="off"
-        >
-          <div className="input-password  relative">
-            <input
-              type="email"
-              placeholder="Email"
-              name="email"
-              className="peer outline-none bg-transparent p-3 rounded border w-[480px] max-sm:w-[450px] max-xxs:w-[290px] max-md:w-[350px] placeholder-transparent"
-              onChange={(e) => setUserProperties(e)}
-            />
-            <label
-              className="absolute
+    <div class="font-[sans-serif] md:h-screen">
+      <div class="grid md:grid-cols-2 items-center gap-8 h-full">
+        <div class="max-md:order-1 p-4">
+          <img
+            src={loginImage}
+            class="lg:max-w-[85%] w-full h-full object-contain block mx-auto"
+            alt="login-image"
+          />
+        </div>
+        <div className="p-4 ">
+          <div className="pt-20 overflow-y-hidden flex justify-center items-center flex-col gap-10 ">
+            <h1 className="text-4xl max-md:text-2xl font-semibold">Login</h1>
+            <form
+              className="flex flex-col items-center justify-center gap-5"
+              autoComplete="off"
+            >
+              <div className="input-password  relative">
+                <input
+                  type="email"
+                  placeholder="Email"
+                  name="email"
+                  className="peer outline-none bg-transparent p-3 max-md:p-2 rounded border w-[480px] max-xl:w-[300px] max-sm:w-[450px] max-xxs:w-[290px] max-md:w-[350px] placeholder-transparent"
+                  onChange={(e) => setUserProperties(e)}
+                />
+                <label
+                  className="absolute
              transition-all
               left-3.5 -top-0
                text-gray-400 
                text-xs peer-placeholder-shown:text-sm
+               max-md:peer-placeholder-shown:text-sm
                 peer-placeholder-shown:top-3.5
                 pointer-events-none"
-            >
-              Email
-            </label>
-            {/* 
+                >
+                  Email
+                </label>
+                {/* 
               {loginInUser.password && (
                 <div
                   className="absolute top-2.5 right-2 text-lg text-gray-800 cursor-pointer"
@@ -138,82 +150,85 @@ function Login() {
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </div>
               )} */}
-          </div>
-          <div className="input-password  relative">
-            <input
-              type={showPassword ? "text" : "password"}
-              placeholder="Password"
-              name="password"
-              className="peer outline-none bg-transparent p-3 rounded border w-[480px] max-sm:w-[450px] max-xxs:w-[290px] max-md:w-[350px] placeholder-transparent"
-              onChange={(e) => setUserProperties(e)}
-            />
-            <label
-              className="absolute
+              </div>
+              <div className="input-password  relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password"
+                  name="password"
+                  className="peer outline-none bg-transparent p-3 max-md:p-2 rounded border w-[480px] max-xl:w-[300px] max-sm:w-[450px] max-xxs:w-[290px] max-md:w-[350px] placeholder-transparent"
+                  onChange={(e) => setUserProperties(e)}
+                />
+                <label
+                  className="absolute
              transition-all
               left-3.5 -top-0
                text-gray-400 
                text-xs peer-placeholder-shown:text-sm
+               max-md:peer-placeholder-shown:text-sm
                 peer-placeholder-shown:top-3.5
                 pointer-events-none"
-            >
-              Password
-            </label>
-            {user.password && (
-              <div
-                className="absolute top-3.5 right-2 text-lg text-gray-800 cursor-pointer"
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                {showPassword ? (
-                  <IoMdEyeOff className="text-white" />
-                ) : (
-                  <IoMdEye className="text-white" />
+                >
+                  Password
+                </label>
+                {user.password && (
+                  <div
+                    className="absolute top-3.5 right-2 text-lg text-gray-800 cursor-pointer"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? (
+                      <IoMdEyeOff className="text-white" />
+                    ) : (
+                      <IoMdEye className="text-white" />
+                    )}
+                  </div>
                 )}
+                <div className="text-xs flex w-full justify-end ">
+                  <p
+                    className="cursor-pointer w-fit opacity-50 hover:opacity-100"
+                    onClick={() => setIsForgotPassword(true)}
+                  >
+                    Forgot Password?
+                  </p>
+                </div>
               </div>
-            )}
-            <div className="text-xs flex w-full justify-end ">
-              <p
-                className="cursor-pointer w-fit opacity-50 hover:opacity-100"
-                onClick={() => setIsForgotPassword(true)}
-              >
-                Forgot Password?
-              </p>
-            </div>
-          </div>
 
-          <button
-            className="border-2  rounded p-3 font-semibold w-[480px] max-sm:w-[450px] max-xxs:w-[290px] max-md:w-[350px] hover:bg-gray-200 hover:bg-opacity-20"
-            onClick={handleLogin}
-          >
-            {loading ? (
-              <div className="flex gap-2 justify-center items-center">
-                <BsArrowClockwise className="animate-spin" />
-                Loging up...
-              </div>
-            ) : (
-              "Login Now"
-            )}
-          </button>
-        </form>
-        <p className="">
-          <span className="opacity-50">Don't Have An Account? </span>
-          <span
-            className="cursor-pointer opacity-50 hover:opacity-100 text-blue-top"
-            onClick={() => navigate("/signup")}
-          >
-            Signup
-          </span>
-        </p>
-      </div>
-      {isForgotPassword && (
-        <div
-          className="w-screen sm:pl-64  overflow-hidden absolute left-0 top-0 flex items-center justify-center"
-          style={{
-            zIndex: "99",
-          }}
-        >
-          <ForgotPassword setIsForgotPassword={setIsForgotPassword} />
+              <button
+                className="border-2  rounded p-3 max-md:p-2 font-semibold w-[480px] max-sm:w-[450px] max-xl:w-[300px] max-xxs:w-[290px] max-md:w-[350px] hover:bg-gray-200 hover:bg-opacity-20"
+                onClick={handleLogin}
+              >
+                {loading ? (
+                  <div className="flex gap-2 justify-center items-center">
+                    <BsArrowClockwise className="animate-spin" />
+                    Loging up...
+                  </div>
+                ) : (
+                  "Login Now"
+                )}
+              </button>
+            </form>
+            <p className="">
+              <span className="opacity-50">Don't Have An Account? </span>
+              <span
+                className="cursor-pointer opacity-50 hover:opacity-100 text-blue-top"
+                onClick={() => navigate("/signup")}
+              >
+                Signup
+              </span>
+            </p>
+          </div>
+          {isForgotPassword && (
+            <div
+              className="w-screen sm:pl-64  overflow-hidden absolute left-0 top-0 flex items-center justify-center"
+              style={{
+                zIndex: "99",
+              }}
+            >
+              <ForgotPassword setIsForgotPassword={setIsForgotPassword} />
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </div>
   );
 }
