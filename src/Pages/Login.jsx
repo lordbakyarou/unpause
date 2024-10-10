@@ -16,7 +16,7 @@ import { addPodcast } from "../redux/features/podcast/podcastSlice";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import ForgotPassword from "../Components/ForgotPassword";
 
-import loginImage from "../assets/signin-image.png";
+import loginImage from "../assets/login.jpeg";
 
 import { toast } from "react-toastify";
 
@@ -106,7 +106,7 @@ function Login() {
 
   return (
     <div class="font-[sans-serif] md:h-screen">
-      <div class="grid md:grid-cols-2 items-center gap-8 h-full">
+      <div class="grid md:grid-cols-2 items-center  h-full">
         <div class="max-md:order-1 p-4">
           <img
             src={loginImage}

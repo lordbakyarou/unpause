@@ -17,7 +17,7 @@ import { setToken } from "../redux/features/token/tokenSlice";
 import { BsArrowClockwise } from "react-icons/bs";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 
-import loginImage from "../assets/signin-image.png";
+import loginImage from "../assets/signup.jpeg";
 
 import { toast } from "react-toastify";
 
