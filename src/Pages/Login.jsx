@@ -219,7 +219,7 @@ function Login() {
           </div>
           {isForgotPassword && (
             <div
-              className="w-screen sm:pl-64  overflow-hidden absolute left-0 top-0 flex items-center justify-center"
+              className="w-screen  overflow-hidden absolute left-0 top-0 flex items-center justify-center"
               style={{
                 zIndex: "99",
               }}
