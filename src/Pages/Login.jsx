@@ -6,6 +6,9 @@ import { db, storage, auth } from "../Firebase/firebase";
 import { getDoc, setDoc, doc, getDocs, collection } from "firebase/firestore";
 
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+
+import googleAuth from "../assets/google.png";
 
 import { BsArrowClockwise } from "react-icons/bs";
 
@@ -44,6 +47,54 @@ function Login() {
     setUser({ ...user, [e.target.name]: e.target.value });
   }
 
+  async function loginUsingGoogle(e) {
+    e.preventDefault();
+    try {
+      const provider = await new GoogleAuthProvider();
+      const user = await signInWithPopup(auth, provider);
+      await handleGoogleLogin(user.user);
+    } catch (error) {
+      console.log(error, "error there");
+      toast.error("Login error please check your login details");
+    }
+  }
+
+  async function handleGoogleLogin(googleUser) {
+    try {
+      const userDoc = await getDoc(doc(db, "users", googleUser.uid));
+      if (userDoc.exists()) {
+        const userData = userDoc.data();
+        dispatch(setToken(googleUser.accessToken));
+        dispatch(setCurrentUser(userData));
+
+        const podcastsCollectionRef = collection(
+          db,
+          "podcasts",
+          googleUser.uid,
+          "podcast"
+        );
+
+        const querySnapshot = await getDocs(podcastsCollectionRef);
+        querySnapshot.forEach((doc) => {
+          dispatch(addPodcast(doc.data()));
+        });
+
+        navigate("/podcasts");
+
+        toast.success("Login successful!");
+      } else {
+        throw new Error("User does not exist");
+      }
+    } catch (error) {
+      if (error.message.includes("User does not exist")) {
+        toast.error("User does not exist, please sign up first.");
+      } else {
+        toast.error("Login error, please check your login details.");
+      }
+      console.error("Login Error:", error);
+    }
+  }
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -61,6 +112,7 @@ function Login() {
         email,
         password
       );
+
       const user = loggedInUser.user;
       // console.log(user);
 
@@ -205,6 +257,17 @@ function Login() {
                 ) : (
                   "Login Now"
                 )}
+              </button>
+              <button
+                style={{ display: "flex", alignItems: "center", gap: "10px" }}
+                // onClick={loginUsingGoogle}
+                className="flex items-center justify-center  rounded p-3 max-md:p-2 font-semibold"
+                onClick={loginUsingGoogle}
+              >
+                {/* <IconButton> */}
+                <img src={googleAuth} alt="Your Image" width={20} />
+                {/* </IconButton> */}
+                <p className="">Login using Google</p>
               </button>
             </form>
             <p className="">

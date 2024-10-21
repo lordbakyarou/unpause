@@ -7,8 +7,14 @@ import { db, storage, auth } from "../Firebase/firebase";
 
 import { ref, uploadBytes, listAll, getDownloadURL } from "firebase/storage";
 
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { setDoc, doc } from "firebase/firestore";
+import {
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
+import { setDoc, doc, getDoc } from "firebase/firestore";
+
+import googleAuth from "../assets/google.png";
 
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentUser } from "../redux/features/user/userSlice";
@@ -51,12 +57,24 @@ function Signup() {
     confirmPassword: "",
   });
 
-  // console.log(import.meta.env, "shikar");
-
   const { name, email, password, confirmPassword } = user;
 
   function setUserProperties(e) {
     setUser({ ...user, [e.target.name]: e.target.value });
+  }
+
+  async function signinUsingGoogle(e) {
+    e.preventDefault();
+
+    try {
+      const provider = await new GoogleAuthProvider();
+
+      const user = await signInWithPopup(auth, provider);
+      user.user.password = "xmz@123Hannssjes)";
+      await handleGoogleSignup(user.user);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   const validateDetails = (e) => {
@@ -76,41 +94,84 @@ function Signup() {
     }
   };
 
-  const handleSignup = async () => {
+  const handleGoogleSignup = async (googleUser) => {
+    try {
+      const userDocRef = doc(db, "users", googleUser.uid);
+      const userDoc = await getDoc(userDocRef);
+
+      if (userDoc.exists()) {
+        throw new Error("User already exists. Please log in.");
+      }
+
+      await setDoc(userDocRef, {
+        name: googleUser.displayName,
+        email: googleUser.email,
+        uid: googleUser.uid,
+        profilePic: googleUser.photoURL,
+        likes: [],
+      });
+
+      dispatch(
+        setCurrentUser({
+          name: googleUser.displayName,
+          email: googleUser.email,
+          uid: googleUser.uid,
+          profilePic: googleUser.photoURL,
+          likes: [],
+        })
+      );
+
+      dispatch(setToken(googleUser.accessToken));
+
+      navigate("/podcasts");
+      toast.success("Account created successfully");
+    } catch (error) {
+      if (error.message.includes("User already exists")) {
+        toast.error("User already exists. Please log in.");
+      } else {
+        toast.error("Invalid account details.");
+      }
+      console.log(error.message);
+    }
+  };
+
+  const handleSignup = async (googleUser) => {
     setLoading(true);
     try {
-      const userCredential = await createUserWithEmailAndPassword(
+      let userCredential;
+
+      userCredential = await createUserWithEmailAndPassword(
         auth,
-        email,
-        password
+        email || googleUser?.email,
+        password || googleUser?.password
       );
 
       const user = userCredential.user;
 
-      // console.log(image);
+      console.log(user, "This is user");
 
       if (image) {
         const storageRef = ref(storage, `profile/${user.uid}`);
         const imagethis = await uploadBytes(storageRef, image);
 
         const imageUrl = await getDownloadURL(storageRef);
-        // console.log(imagethis, imageUrl);
+        console.log(imagethis, imageUrl);
 
         // // Save user data along with the profile pic URL
         await setDoc(doc(db, "users", user.uid), {
-          name,
-          email,
-          uid: user.uid,
-          profilePic: imageUrl,
+          name: name || googleUser.displayName,
+          email: email || googleUser.email,
+          uid: user.uid || googleUser.uid,
+          profilePic: imageUrl || googleUser.photoURL,
           likes: [],
         });
 
         dispatch(
           setCurrentUser({
-            name,
-            email,
-            uid: user.uid,
-            profilePic: imageUrl,
+            name: name || googleUser.displayName,
+            email: email || googleUser.email,
+            uid: user.uid || user.uid || googleUser.uid,
+            profilePic: imageUrl || googleUser.photoURL,
             likes: [],
           })
         );
@@ -314,6 +375,17 @@ function Signup() {
                 ) : (
                   "Signup Now"
                 )}
+              </button>
+              <button
+                style={{ display: "flex", alignItems: "center", gap: "10px" }}
+                // onClick={loginUsingGoogle}
+                className="flex items-center justify-center  rounded p-3 max-md:p-2 font-semibold"
+                onClick={signinUsingGoogle}
+              >
+                {/* <IconButton> */}
+                <img src={googleAuth} alt="Your Image" width={20} />
+                {/* </IconButton> */}
+                <p className="">Signup using Google</p>
               </button>
             </form>
             <p className="">

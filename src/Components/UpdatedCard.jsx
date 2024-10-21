@@ -20,6 +20,7 @@ import {
 } from "firebase/firestore";
 import { setEpisode } from "../redux/features/episods/episodsSlice";
 import { playMusic } from "../redux/features/music/musicSlice";
+import { toast } from "react-toastify";
 
 function UpdatedCard({ podcastDetails, podcast }) {
   const navigate = useNavigate();
@@ -42,8 +43,12 @@ function UpdatedCard({ podcastDetails, podcast }) {
   }, []);
 
   const playEpisode = () => {
-    dispatch(setEpisode({ episodes: podcast.episodes, index: 0 }));
-    dispatch(playMusic());
+    if (podcast.episodes.length == 0) {
+      toast.error("This podcast has no songs");
+    } else {
+      dispatch(setEpisode({ episodes: podcast.episodes, index: 0 }));
+      dispatch(playMusic());
+    }
   };
 
   const handleLike = async () => {
