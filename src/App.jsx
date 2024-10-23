@@ -36,10 +36,10 @@ function App() {
 
   return (
     <Suspense fallback={<FallbackUI />}>
-      <div className="homescreen m-0 flex  flex-col w-screen justify-center bg-[#0F1014] h-screen text-gray-100 ">
-        <div className="relative w-screen overflow-auto h-screen flex justify-center text-primary-text-color bg-transparent scrollbar-hide">
+      <div className="homescreen m-0 flex  flex-col w-screen justify-center dark:bg-[#0F1014] bg-white h-screen dark:text-gray-100 text-gray-800">
+        <div className="relative w-screen overflow-auto h-screen flex justify-center dark:text-primary-text-color bg-transparent scrollbar-hide">
           <div
-            className="w-full h-full absolute top-0 z-50 "
+            className="w-full h-full absolute top-0 z-50"
             onClick={(e) => {
               e.stopPropagation();
               let element = document.getElementById("logo-sidebar");

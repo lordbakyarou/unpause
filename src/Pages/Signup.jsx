@@ -99,6 +99,8 @@ function Signup() {
       const userDocRef = doc(db, "users", googleUser.uid);
       const userDoc = await getDoc(userDocRef);
 
+      const resizedProfilePic = googleUser.photoURL.replace("s96-c", "s400-c");
+
       if (userDoc.exists()) {
         throw new Error("User already exists. Please log in.");
       }
@@ -107,7 +109,7 @@ function Signup() {
         name: googleUser.displayName,
         email: googleUser.email,
         uid: googleUser.uid,
-        profilePic: googleUser.photoURL,
+        profilePic: resizedProfilePic,
         likes: [],
       });
 
@@ -116,7 +118,7 @@ function Signup() {
           name: googleUser.displayName,
           email: googleUser.email,
           uid: googleUser.uid,
-          profilePic: googleUser.photoURL,
+          profilePic: resizedProfilePic,
           likes: [],
         })
       );
@@ -148,14 +150,11 @@ function Signup() {
 
       const user = userCredential.user;
 
-      console.log(user, "This is user");
-
       if (image) {
         const storageRef = ref(storage, `profile/${user.uid}`);
         const imagethis = await uploadBytes(storageRef, image);
 
         const imageUrl = await getDownloadURL(storageRef);
-        console.log(imagethis, imageUrl);
 
         // // Save user data along with the profile pic URL
         await setDoc(doc(db, "users", user.uid), {

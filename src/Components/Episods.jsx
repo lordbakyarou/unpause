@@ -16,6 +16,8 @@ import { getDoc, doc, updateDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
 
+import defaultEpisode from "../assets/defaultEpisode.png";
+
 function Episode({ episode, index, setPodcast, podcastDetail }) {
   const dispatch = useDispatch();
 
@@ -67,7 +69,6 @@ function Episode({ episode, index, setPodcast, podcastDetail }) {
       ) {
         dispatch(clearEpisode());
       }
-      console.log(episode.episodeId);
     } catch (error) {
       console.log(error);
     }
@@ -75,39 +76,44 @@ function Episode({ episode, index, setPodcast, podcastDetail }) {
 
   return (
     episode && (
-      <div className="flex flex-col pl-2 gap-3">
-        <p className="text-2xl">
-          {index + 1}. {episode.episodeName}
-        </p>
-        <p className="pl-5 opacity-50 w-fit hover:opacity-100 transition-all hover:scale-[102%] duration-500 cursor-pointer">
-          {episode.episodeDescription}
-        </p>
-        <div className="rounded ml-5 w-fit flex gap-5 items-center cursor-pointer">
-          <p onClick={playEpisode}>
+      <div className="flex pl-2 gap-3">
+        {index + 1}.
+        <img
+          src={episode.episodeImage || defaultEpisode}
+          className="object-cover w-20 h-20"
+        />
+        <div className="">
+          <p className="text-lg">{episode.episodeName}</p>
+          <p className=" text-sm opacity-50 w-fit hover:opacity-100 transition-all hover:scale-[101%] duration-500 cursor-pointer">
+            {episode.episodeDescription}
+          </p>
+          <div className="rounded w-fit flex gap-2 items-center cursor-pointer">
+            <p onClick={playEpisode} className="text-sm">
+              {music.status &&
+              currentEpisode?.episode?.episodes[currentEpisode?.episode?.index]
+                .episodeId === episode.episodeId
+                ? "Pause"
+                : "Play"}
+            </p>
             {music.status &&
             currentEpisode?.episode?.episodes[currentEpisode?.episode?.index]
-              .episodeId === episode.episodeId
-              ? "Pause"
-              : "Play"}
-          </p>
-          {music.status &&
-          currentEpisode?.episode?.episodes[currentEpisode?.episode?.index]
-            .episodeId === episode.episodeId ? (
-            <IoPauseCircleOutline
-              onClick={() => dispatch(pauseMusic())}
-              className="text-2xl transition-all hover:scale-[120%] duration-500 cursor-pointer"
-            />
-          ) : (
-            <IoPlayCircleOutline
-              onClick={playEpisode}
-              className="text-2xl transition-all hover:scale-[120%] duration-500 cursor-pointer"
-            />
-          )}
-          {user?.uid === episode?.uid && (
-            <div className="flex items-center gap-2" onClick={deleteEpisode}>
-              Delete <RiDeleteBin6Line />
-            </div>
-          )}
+              .episodeId === episode.episodeId ? (
+              <IoPauseCircleOutline
+                onClick={() => dispatch(pauseMusic())}
+                className="text-2xl transition-all hover:scale-[120%] duration-500 cursor-pointer"
+              />
+            ) : (
+              <IoPlayCircleOutline
+                onClick={playEpisode}
+                className="text-2xl transition-all hover:scale-[120%] duration-500 cursor-pointer"
+              />
+            )}
+            {user?.uid === episode?.uid && (
+              <div className="flex items-center gap-2" onClick={deleteEpisode}>
+                Delete <RiDeleteBin6Line />
+              </div>
+            )}
+          </div>
         </div>
       </div>
     )

@@ -95,53 +95,54 @@ const PodcastDetail = () => {
         {!podcast && <PodcastDetailLoading />}
         {podcast && (
           <>
-            <div className="flex flex justify-between items-center">
-              <h1 className="text-2xl">
-                Podcast Name : {podcast.podcastTitle}
-              </h1>
+            <div className="relative">
+              <div className="absolute top-10 left-2 flex flex justify-between items-center">
+                <h1 className="text-xl max-sm:text-md">
+                  Podcast Name : {podcast.podcastTitle}
+                </h1>
 
-              <div className="relative">
-                <p
-                  className="text-2xl cursor-pointer"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setDeleteIcon(!deleteIcon);
-                  }}
-                >
-                  {uid === userInfo?.uid && <HiOutlineDotsHorizontal />}
-                </p>
-                {deleteIcon && uid === userInfo?.uid && (
+                <div className="relative">
                   <p
-                    className="flex max-sm:flex-col bg-gray-200 items-center justify-center text-black p-2 mt-2 rounded absolute -left-14 whitespace-nowrap max-sm:text-xs items-center gap-2"
-                    onClick={handleDeletePodcast}
+                    className="text-2xl cursor-pointer"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setDeleteIcon(!deleteIcon);
+                    }}
                   >
-                    <RiDeleteBin6Line />{" "}
-                    <span className="max-sm:w-10 max-sm:whitespace-pre-wrap cursor-pointer">
-                      Delete Podcast
-                    </span>
+                    {uid === userInfo?.uid && <HiOutlineDotsHorizontal />}
                   </p>
-                )}
+                  {deleteIcon && uid === userInfo?.uid && (
+                    <p
+                      className="flex max-sm:flex-col bg-gray-200 items-center justify-center text-black p-2 mt-2 rounded absolute -left-14 whitespace-nowrap max-sm:text-xs items-center gap-2"
+                      onClick={handleDeletePodcast}
+                    >
+                      <RiDeleteBin6Line />{" "}
+                      <span className="max-sm:w-10 max-sm:whitespace-pre-wrap cursor-pointer">
+                        Delete Podcast
+                      </span>
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              <div className="image w-full h-full flex flex-col items-center justify-start pt-4 ">
+                <img
+                  src={podcast.bannerImage}
+                  className="w-full h-[300px] object-cover rounded-xl cursor-pointer"
+                />
+              </div>
+              <div className="absolute bottom-1 right-2 w-full flex items-center gap-2 justify-end">
+                <p className="w-fit cursor-pointer font-semibold text-sm">
+                  Created By: {createdBy}
+                </p>
+                <p
+                  className="w-10 h-10 rounded-full bg-transparent overflow-hidden border cursor-pointer transition-all hover:scale-[105%] duration-500"
+                  onClick={() => navigate(`/profile/${podcast.uid}`)}
+                >
+                  <img src={userProfile} className="object-cover" />
+                </p>
               </div>
             </div>
-
-            <div className="image w-full h-full flex flex-col items-center justify-start pt-4 ">
-              <img
-                src={podcast.bannerImage}
-                className="w-full h-[350px] object-cover rounded-2xl cursor-pointer transition-all hover:scale-105 duration-500"
-              />
-            </div>
-            <div className=" w-full flex  items-center  gap-2 justify-end">
-              <p className="w-fit cursor-pointer opacity-50 hover:opacity-100 ">
-                Created By: {createdBy}
-              </p>
-              <p
-                className="w-10 h-10 rounded-full bg-transparent overflow-hidden border  cursor-pointer transition-all hover:scale-[110%] duration-500"
-                onClick={() => navigate(`/profile/${podcast.uid}`)}
-              >
-                <img src={userProfile} className="object-cover" />
-              </p>
-            </div>
-
             <div className="flex w-full flex-row items-center gap-2">
               <p className="mr-2">Genres:</p>
               <div className="flex overflow-scroll whitespace-nowrap scrollbar-hide gap-2">

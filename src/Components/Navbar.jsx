@@ -11,6 +11,7 @@ import { useEffect } from "react";
 
 import logo from "../assets/logo2.png";
 import mainLogo from "../assets/mainlogo.png";
+import ThemeToggle from "./ThemeToggle";
 
 function Navbar({
   sidebarNavigation,
@@ -41,8 +42,10 @@ function Navbar({
   //     "https://firebasestorage.googleapis.com/v0/b/podcast-application-react.appspot.com/o/default_pic%2Fvecteezy_default-profile-account-unknown-icon-black-silhouette_20765399.jpg?alt=media&token=4f0c367a-eaa7-44bb-9d87-3609fa380704"
   // );
 
+  console.log(currentUser?.profilePic);
+
   return (
-    <nav className="fixed top-0 bg-black/30 backdrop-blur-2xl z-50 w-screen">
+    <nav className="fixed top-0 dark:bg-black/30 bg-gray-200 backdrop-blur-2xl z-50 w-screen">
       <div className="px-3 py-1 lg:px-5 lg:pl-3 ">
         <div className="flex items-center justify-between">
           <div className="flex items-center justify-start rtl:justify-end">
@@ -88,6 +91,7 @@ function Navbar({
             </NavLink>
           </div>
           <div className="flex items-center">
+            <ThemeToggle />
             <div className="flex relative  items-center ms-3">
               <div>
                 <button
@@ -99,7 +103,6 @@ function Navbar({
                     e.stopPropagation();
                     let profile = document.getElementById("profile-menu");
                     const pro = profile.classList.value.includes("absolute");
-                    // console.log(pro);
                     if (pro) {
                       profile.classList.remove("absolute");
                       profile.classList.add("hidden");

@@ -85,7 +85,7 @@ function UpdatedSidebar({
       onMouseLeave={() => setIsHovered(false)}
     >
       {isHovered ? (
-        <div className="h-full px-3 pb-4 pt-10 bg-gradient-to-r from-black via-black/80 to-transparent">
+        <div className="h-full px-3 pb-4 pt-10 bg-gradient-to-r dark:from-black dark:via-black/80 to-transparent">
           <ul className="space-y-2 font-medium text-sm">
             <li>
               <NavLink
@@ -93,8 +93,8 @@ function UpdatedSidebar({
                 className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 group"
                 // onClick={handleNavLinkClick}
               >
-                <MdPodcasts className="text-gray-300 text-2xl flex-shrink-0" />
-                <span className="ms-3 text-gray-300 whitespace-nowrap">
+                <MdPodcasts className="dark:text-gray-300 text-gray-800 text-2xl flex-shrink-0" />
+                <span className="ms-3 dark:text-gray-300 text-gray-800 whitespace-nowrap">
                   Podcasts
                 </span>
               </NavLink>
@@ -105,8 +105,8 @@ function UpdatedSidebar({
                 className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 group"
                 // onClick={handleNavLinkClick}
               >
-                <IoCreate className="text-gray-300 text-2xl flex-shrink-0" />
-                <span className="flex-1 ms-3  text-gray-300 whitespace-nowrap">
+                <IoCreate className="dark:text-gray-300 text-gray-800 text-2xl flex-shrink-0" />
+                <span className="flex-1 ms-3 dark:text-gray-300 text-gray-800 whitespace-nowrap">
                   Create Podcast
                 </span>
               </NavLink>
@@ -118,8 +118,8 @@ function UpdatedSidebar({
                   className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 group"
                   // onClick={handleNavLinkClick}
                 >
-                  <CgProfile className="text-gray-300 text-2xl flex-shrink-0" />
-                  <span className="flex-1 ms-3 text-gray-300 whitespace-nowrap">
+                  <CgProfile className="dark:text-gray-300 text-gray-800 text-2xl flex-shrink-0" />
+                  <span className="flex-1 ms-3 dark:text-gray-300 text-gray-800 whitespace-nowrap">
                     Profile
                   </span>
                 </NavLink>
@@ -131,8 +131,10 @@ function UpdatedSidebar({
                 className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 group"
                 // onClick={handleNavLinkClick}
               >
-                <FaUsers className="text-gray-300 text-2xl flex-shrink-0" />
-                <span className="ml-3 text-gray-300 truncate">Users</span>
+                <FaUsers className="dark:text-gray-300 text-gray-800 text-2xl flex-shrink-0" />
+                <span className="ml-3 dark:text-gray-300 text-gray-800 truncate">
+                  Users
+                </span>
               </NavLink>
             </li>
             {currentUser && (
@@ -142,8 +144,8 @@ function UpdatedSidebar({
                   className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 group"
                   // onClick={handleNavLinkClick}
                 >
-                  <FaHeart className="text-gray-300 text-2xl flex-shrink-0" />
-                  <span className="ml-3 text-gray-300 truncate">
+                  <FaHeart className="dark:text-gray-300 text-gray-800 text-2xl flex-shrink-0" />
+                  <span className="ml-3 dark:text-gray-300 text-gray-800 truncate">
                     Liked Podcasts
                   </span>
                 </NavLink>
@@ -161,8 +163,8 @@ function UpdatedSidebar({
                     dispatch(clearEpisode());
                   }}
                 >
-                  <CgLogOut className="text-gray-300 text-2xl flex-shrink-0" />
-                  <span className="flex-1 ms-3 text-gray-300 whitespace-nowrap">
+                  <CgLogOut className="dark:text-gray-300 text-gray-800 text-2xl flex-shrink-0" />
+                  <span className="flex-1 ms-3 dark:text-gray-300 text-gray-800 whitespace-nowrap">
                     Log Out
                   </span>
                 </NavLink>
@@ -175,8 +177,8 @@ function UpdatedSidebar({
                   to="/"
                   className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 group"
                 >
-                  <CgLogIn className="text-gray-300 text-2xl flex-shrink-0" />
-                  <span className="flex-1 ms-3 text-gray-300 whitespace-nowrap">
+                  <CgLogIn className="dark:text-gray-300 text-gray-800 text-2xl flex-shrink-0" />
+                  <span className="flex-1 ms-3 dark:text-gray-300 text-gray-800 whitespace-nowrap">
                     Log In
                   </span>
                 </NavLink>
@@ -188,8 +190,8 @@ function UpdatedSidebar({
                   to="/signup"
                   className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 group"
                 >
-                  <BsPersonFillAdd className="text-gray-300 text-2xl flex-shrink-0" />
-                  <span className="flex-1 ms-3 text-gray-300 whitespace-nowrap">
+                  <BsPersonFillAdd className="dark:text-gray-300 text-gray-800 text-2xl flex-shrink-0" />
+                  <span className="flex-1 ms-3 dark:text-gray-300 text-gray-800 whitespace-nowrap">
                     Sign Up
                   </span>
                 </NavLink>
@@ -246,7 +248,7 @@ function UpdatedSidebar({
           </ul>
         </div>
       ) : (
-        <div className="h-full px-3 pb-4 pt-10 bg-[#0F1014] backdrop-blur-2xl ">
+        <div className="h-full px-3 pb-4 pt-10 dark:bg-[#0F1014] backdrop-blur-2xl">
           <ul className="space-y-2 font-medium text-sm">
             <li>
               <NavLink
@@ -254,7 +256,7 @@ function UpdatedSidebar({
                 className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 group"
                 // onClick={handleNavLinkClick}
               >
-                <MdPodcasts className="text-gray-300 text-2xl" />
+                <MdPodcasts className="dark:text-gray-300 text-gray-800 text-2xl" />
               </NavLink>
             </li>
             <li>
@@ -263,7 +265,7 @@ function UpdatedSidebar({
                 className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 group"
                 // onClick={handleNavLinkClick}
               >
-                <IoCreate className="text-gray-300 text-2xl" />
+                <IoCreate className="dark:text-gray-300 text-gray-800 text-2xl" />
               </NavLink>
             </li>
             {currentUser && (
@@ -273,7 +275,7 @@ function UpdatedSidebar({
                   className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 group"
                   // onClick={handleNavLinkClick}
                 >
-                  <CgProfile className="text-gray-300 text-2xl" />
+                  <CgProfile className="dark:text-gray-300 text-gray-800 text-2xl" />
                 </NavLink>
               </li>
             )}
@@ -283,7 +285,7 @@ function UpdatedSidebar({
                 className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 group"
                 // onClick={handleNavLinkClick}
               >
-                <FaUsers className="text-gray-300 text-2xl flex-shrink-0" />
+                <FaUsers className="dark:text-gray-300 text-gray-800 text-2xl flex-shrink-0" />
               </NavLink>
             </li>
             {currentUser && (
@@ -293,7 +295,7 @@ function UpdatedSidebar({
                   className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 group"
                   // onClick={handleNavLinkClick}
                 >
-                  <FaHeart className="text-gray-300 text-2xl" />
+                  <FaHeart className="dark:text-gray-300 text-gray-800 text-2xl" />
                 </NavLink>
               </li>
             )}
@@ -309,7 +311,7 @@ function UpdatedSidebar({
                     dispatch(clearEpisode());
                   }}
                 >
-                  <CgLogOut className="text-gray-300 text-2xl" />
+                  <CgLogOut className="dark:text-gray-300 text-gray-800 text-2xl" />
                 </NavLink>
               </li>
             )}
@@ -320,7 +322,7 @@ function UpdatedSidebar({
                   to="/"
                   className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 group"
                 >
-                  <CgLogIn className="text-gray-300 text-2xl" />
+                  <CgLogIn className="dark:text-gray-300 text-gray-800 text-2xl" />
                 </NavLink>
               </li>
             )}
@@ -330,7 +332,7 @@ function UpdatedSidebar({
                   to="/signup"
                   className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 group"
                 >
-                  <BsPersonFillAdd className="text-gray-300 text-2xl" />
+                  <BsPersonFillAdd className="dark:text-gray-300 text-gray-800 text-2xl" />
                 </NavLink>
               </li>
             )}
