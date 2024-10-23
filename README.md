@@ -38,14 +38,19 @@ Unpause is a mobile-friendly podcast application built with React, Tailwind CSS,
    npm start
    ```
 
-##Screenshots
-![image](https://github.com/lordbakyarou/unpause/assets/70631103/4ed21897-bdad-45c5-ba63-a86f475e428f)
+# Screenshots
+## Screenshot 1
+![Screenshot 2024-10-21 140923](https://github.com/user-attachments/assets/8258ea5e-93e1-41ba-a57d-8ee31a72e45c)
+## Screenshot 2
+![Screenshot 2024-10-21 141158](https://github.com/user-attachments/assets/159e2ceb-1604-4359-9e50-74f91ba7b099)
+## Screenshot 3
+![Screenshot 2024-10-21 141522](https://github.com/user-attachments/assets/ef0c6443-01ba-4264-9a0d-222d1f2d09ad)
+## Screenshot 4
+![Screenshot 2024-10-21 141121](https://github.com/user-attachments/assets/42cef49e-ff2d-4dbc-9846-b88d4444237f)
 
-![Screenshot 2024-02-29 195650](https://github.com/lordbakyarou/unpause/assets/70631103/f6a80d1a-90dd-4953-b431-f7f996c23748)
-![Screenshot 2024-02-29 200215](https://github.com/lordbakyarou/unpause/assets/70631103/d94080ea-1258-4190-80bf-d5da539c70ca)
 
-##Get Involved
+## Get Involved
 I welcome contributions from the community! Whether you're a developer, designer, or podcast enthusiast, there are many ways to get involved with the Unpause project. Report bugs, or suggest new features.
 
-##Questions or Feedback?
+## Questions or Feedback?
 I hope you enjoy using Unpause! If you have any questions, feedback, or suggestions for improvement, please don't hesitate to reach out. You can open an issue on this repository, or contact me directly via email - mayur1710hanwate@gmail.com
