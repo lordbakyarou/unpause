@@ -87,7 +87,7 @@ const PodcastDetail = () => {
   return (
     <div className="p-4">
       <div
-        className={`py-20 px-20 max-lg:px-4 pb-56 max-sm:px-4 pb-40 w-full overflow-y-hidden flex justify-center flex-col gap-10  `}
+        className={`py-20 px-20 max-lg:px-20 pb-56 max-sm:px-4 pb-40 w-full overflow-y-hidden flex justify-center flex-col gap-10  `}
         onClick={(e) => {
           setDeleteIcon(false);
         }}
