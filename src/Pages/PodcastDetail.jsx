@@ -77,7 +77,7 @@ const PodcastDetail = () => {
       const docRef = doc(db, "podcasts", uid, "podcast", id);
 
       await deleteDoc(docRef);
-      console.log("done");
+      // console.log("done");
       navigate(`/profile/${uid}`);
     } catch (error) {
       console.log(error);
@@ -87,7 +87,7 @@ const PodcastDetail = () => {
   return (
     <div className="p-4">
       <div
-        className={`py-20 px-20 max-lg:px-20 pb-56 max-sm:px-4 pb-40 w-full overflow-y-hidden flex justify-center flex-col gap-10  `}
+        className={`py-20 px-20 max-lg:px-20 pb-56 max-sm:px-4 bg-[#EDF3F7] dark:bg-transparent pb-40 w-full overflow-y-hidden flex justify-center flex-col gap-10`}
         onClick={(e) => {
           setDeleteIcon(false);
         }}
@@ -96,11 +96,12 @@ const PodcastDetail = () => {
         {podcast && (
           <>
             <div className="relative">
-              <div className="absolute top-10 left-2 flex flex justify-between items-center">
-                <h1 className="text-xl max-sm:text-md">
+              <div className="absolute top-10 flex justify-between left-2 flex flex justify-between items-center">
+                <h1 className="text-xl dark:text-white text-black font-semibold max-sm:text-md backdrop-blur-lg">
                   Podcast Name : {podcast.podcastTitle}
                 </h1>
-
+              </div>
+              <div className="absolute right-5 top-10">
                 <div className="relative">
                   <p
                     className="text-2xl cursor-pointer"
@@ -109,11 +110,13 @@ const PodcastDetail = () => {
                       setDeleteIcon(!deleteIcon);
                     }}
                   >
-                    {uid === userInfo?.uid && <HiOutlineDotsHorizontal />}
+                    {uid === userInfo?.uid && (
+                      <HiOutlineDotsHorizontal className="dark:text-white  text-black" />
+                    )}
                   </p>
                   {deleteIcon && uid === userInfo?.uid && (
                     <p
-                      className="flex max-sm:flex-col bg-gray-200 items-center justify-center text-black p-2 mt-2 rounded absolute -left-14 whitespace-nowrap max-sm:text-xs items-center gap-2"
+                      className="flex max-sm:flex-col right-20 bg-gray-200 items-center justify-center text-black p-2 mt-2 absolute right-4 rounded whitespace-nowrap max-sm:text-xs items-center gap-2"
                       onClick={handleDeletePodcast}
                     >
                       <RiDeleteBin6Line />{" "}
@@ -131,12 +134,12 @@ const PodcastDetail = () => {
                   className="w-full h-[300px] object-cover rounded-xl cursor-pointer"
                 />
               </div>
-              <div className="absolute bottom-1 right-2 w-full flex items-center gap-2 justify-end">
-                <p className="w-fit cursor-pointer font-semibold text-sm">
+              <div className="absolute bottom-1  right-2 w-full flex items-center gap-2 justify-end">
+                <p className="w-fit cursor-pointer font-semibold text-sm text-black dark:text-white">
                   Created By: {createdBy}
                 </p>
                 <p
-                  className="w-10 h-10 rounded-full bg-transparent overflow-hidden border cursor-pointer transition-all hover:scale-[105%] duration-500"
+                  className="w-10 h-10 rounded-full dark:bg-transparent overflow-hidden border cursor-pointer transition-all hover:scale-[105%] duration-500"
                   onClick={() => navigate(`/profile/${podcast.uid}`)}
                 >
                   <img src={userProfile} className="object-cover" />
@@ -149,7 +152,7 @@ const PodcastDetail = () => {
                 {podcast.genres.map((item, index) => (
                   <p
                     key={index}
-                    className="backdrop-blur-sm cursor-pointer hover:bg-white/40 bg-white/30 rounded-xl p-2 text-sm"
+                    className="backdrop-blur-sm cursor-pointer hover:bg-white/40 bg-white dark:bg-white/30 rounded-xl p-2 text-sm"
                   >
                     #{item}
                   </p>
@@ -157,7 +160,7 @@ const PodcastDetail = () => {
               </div>
             </div>
 
-            <div className="flex flex-col gap-10 opacity-50 hover:opacity-100 transition-all hover:scale-[103%] duration-500 cursor-pointer">
+            <div className="flex flex-col gap-10 dark:opacity-50 hover:opacity-100 transition-all hover:scale-[103%] duration-500 cursor-pointer text-gray-800 dark:text-white">
               <h1 className="">{podcast.podcastDescription}</h1>
             </div>
 
@@ -192,7 +195,7 @@ const PodcastDetail = () => {
             </div>
             {addPodcastOpen && (
               <div
-                className="w-screen   overflow-hidden absolute left-0 top-0 flex items-center "
+                className="w-screen overflow-hidden absolute left-0 top-0 flex items-center "
                 style={{
                   zIndex: "99",
                 }}

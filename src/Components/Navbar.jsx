@@ -10,6 +10,7 @@ import { clearEpisode } from "../redux/features/episods/episodsSlice";
 import { useEffect } from "react";
 
 import logo from "../assets/logo2.png";
+import darkLogo from "../assets/dark-logo.png";
 import mainLogo from "../assets/mainlogo.png";
 import ThemeToggle from "./ThemeToggle";
 
@@ -23,6 +24,7 @@ function Navbar({
   const dispatch = useDispatch();
 
   const currentUser = useSelector((state) => state.user.user);
+  const theme = useSelector((state) => state.theme.theme);
 
   useEffect(() => {
     function onScroll() {
@@ -37,15 +39,10 @@ function Navbar({
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // const [userPorfilePic, setUserProfilePic] = useState(
-  //   currentUser?.profilePic ||
-  //     "https://firebasestorage.googleapis.com/v0/b/podcast-application-react.appspot.com/o/default_pic%2Fvecteezy_default-profile-account-unknown-icon-black-silhouette_20765399.jpg?alt=media&token=4f0c367a-eaa7-44bb-9d87-3609fa380704"
-  // );
-
-  console.log(currentUser?.profilePic);
+  // console.log(currentUser?.profilePic);
 
   return (
-    <nav className="fixed top-0 dark:bg-black/30 bg-gray-200 backdrop-blur-2xl z-50 w-screen">
+    <nav className="fixed top-0  backdrop-blur-2xl z-50 w-screen">
       <div className="px-3 py-1 lg:px-5 lg:pl-3 ">
         <div className="flex items-center justify-between">
           <div className="flex items-center justify-start rtl:justify-end">
@@ -59,7 +56,7 @@ function Navbar({
                 setIsHovered(true);
               }}
               type="button"
-              className="inline-flex items-center p-2 text-sm text-gray-300 rounded-lg sm:hidden hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-200  "
+              className="inline-flex items-center p-2 text-sm dark:text-gray-300 text-gray-600 rounded-lg sm:hidden   focus:outline-none"
             >
               <span className="sr-only">Open sidebar</span>
               <svg
@@ -85,14 +82,17 @@ function Navbar({
                 className="h-10 me-3 cursor-pointer"
                 alt="Brand Logo"
               />
-              <span className="self-center text-xl font-semibold sm:text-2xl  cursor-pointer whitespace-nowrap dark:text-white">
-                <img src={logo} className="w-32" />
+              <span className="self-center text-xl font-semibold sm:text-2xl cursor-pointer whitespace-nowrap dark:text-white">
+                <img
+                  src={theme === "dark" ? logo : darkLogo}
+                  className="w-32"
+                />
               </span>
             </NavLink>
           </div>
           <div className="flex items-center">
             <ThemeToggle />
-            <div className="flex relative  items-center ms-3">
+            <div className="flex relative items-center ms-3">
               <div>
                 <button
                   type="button"
@@ -125,12 +125,12 @@ function Navbar({
               </div>
               <div
                 id="profile-menu"
-                className={`z-50 top-[38px] w-48 -left-40 hidden   my-4 text-base list-none shadow-xl border-text-color bg-gray-800 backdrop-blur-2xl divide-y divide-gray-100 rounded shadow `}
+                className={`z-50 top-[38px] w-48 -left-40 hidden my-4 text-base list-none shadow-xl border-text-color bg-gray-800 backdrop-blur-2xl divide-y divide-gray-100 rounded shadow `}
               >
-                <div className="bg-black/30 backdrop-blur-2xl">
+                <div className="dark:bg-black/30 bg-white backdrop-blur-2xl">
                   {currentUser && (
                     <div className="px-4 py-3" role="none">
-                      <p className="text-sm  dark:text-white" role="none">
+                      <p className="text-sm dark:text-white" role="none">
                         {currentUser?.name}
                       </p>
                       <p
@@ -146,7 +146,7 @@ function Navbar({
                       <li>
                         <NavLink
                           to={`/profile/${currentUser?.uid}`}
-                          className="block px-4 py-2  bg-[#252833] text-sm hover:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                          className="block px-4 py-2 dark:bg-[#252833] text-sm hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Profile
                         </NavLink>
@@ -154,7 +154,7 @@ function Navbar({
                       <li>
                         <NavLink
                           to="/podcasts"
-                          className="block px-4 py-2  bg-[#252833] text-sm hover:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                          className="block px-4 py-2  dark:bg-[#252833] text-sm hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Podcasts
                         </NavLink>
@@ -162,7 +162,7 @@ function Navbar({
                       <li>
                         <NavLink
                           to="/create-a-podcast"
-                          className="block px-4 py-2  bg-[#252833] text-sm hover:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                          className="block px-4 py-2  dark:bg-[#252833] text-sm hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Create Podcast
                         </NavLink>
@@ -171,7 +171,7 @@ function Navbar({
                       <li>
                         <NavLink
                           to="/"
-                          className="block px-4 py-2  bg-[#252833] text-sm hover:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                          className="block px-4 py-2  dark:bg-[#252833] text-sm hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                           onClick={() => {
                             dispatch(clearToken());
                             dispatch(clearUser());
@@ -188,7 +188,7 @@ function Navbar({
                       <li>
                         <NavLink
                           to="/"
-                          className="block px-4 py-2 bg-[#252833] text-sm text-text-color hover:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                          className="block px-4 py-2 dark:bg-[#252833] text-sm text-text-color hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Login
                         </NavLink>
@@ -196,7 +196,7 @@ function Navbar({
                       <li>
                         <NavLink
                           to="/signup"
-                          className="block px-4 py-2  bg-[#252833] text-sm text-text-color hover:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                          className="block px-4 py-2  dark:bg-[#252833] text-sm text-text-color hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           Create Account
                         </NavLink>

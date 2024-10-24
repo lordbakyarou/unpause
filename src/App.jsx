@@ -36,7 +36,7 @@ function App() {
 
   return (
     <Suspense fallback={<FallbackUI />}>
-      <div className="homescreen m-0 flex  flex-col w-screen justify-center dark:bg-[#0F1014] bg-white h-screen dark:text-gray-100 text-gray-800">
+      <div className="homescreen m-0 flex  flex-col w-screen justify-center dark:bg-[#0F1014] bg-[#EDF3F7] h-screen dark:text-gray-100 text-gray-800">
         <div className="relative w-screen overflow-auto h-screen flex justify-center dark:text-primary-text-color bg-transparent scrollbar-hide">
           <div
             className="w-full h-full absolute top-0 z-50"

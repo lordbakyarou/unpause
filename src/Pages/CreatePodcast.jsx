@@ -210,19 +210,19 @@ function CreatePodcast() {
           className="flex flex-col items-center justify-center gap-5"
           autoComplete="off"
         >
-          <div className="input-password  relative">
+          <div className="input-password relative">
             <input
               type="text"
               placeholder="Podcast TItle"
               name="podcastTitle"
-              className="peer outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[400px] max-xxs:w-[300px] max-md:w-[350px] placeholder-transparent"
+              className="peer outline-none dark:bg-transparent bg-white p-3 rounded border w-[500px] max-sm:w-[400px] max-xxs:w-[300px] max-md:w-[350px] placeholder-transparent"
               onChange={(e) => setPodcastDetails(e)}
             />
             <label
               className="absolute
                  transition-all
                   left-3.5 -top-0
-                   text-gray-400 
+                   dark:text-gray-400 text-gray-700 
                    text-xs peer-placeholder-shown:text-sm
                     peer-placeholder-shown:top-3.5
                     pointer-events-none"
@@ -235,14 +235,14 @@ function CreatePodcast() {
               type="text"
               placeholder="Podcast Description"
               name="podcastDescription"
-              className="peer outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[400px] max-xxs:w-[300px] max-md:w-[350px] placeholder-transparent"
+              className="peer outline-none dark:bg-transparent bg-white p-3 rounded border w-[500px] max-sm:w-[400px] max-xxs:w-[300px] max-md:w-[350px] placeholder-transparent"
               onChange={(e) => setPodcastDetails(e)}
             />
             <label
               className="absolute
                  transition-all
                   left-3.5 -top-0
-                   text-gray-400 
+                   dark:text-gray-400 text-gray-700 
                    text-xs peer-placeholder-shown:text-sm
                     peer-placeholder-shown:top-3.5
                     pointer-events-none"
@@ -256,7 +256,7 @@ function CreatePodcast() {
               type="text"
               placeholder="Add Genres"
               name="genres"
-              className="peer outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[400px] max-xxs:w-[300px] max-md:w-[350px] placeholder-transparent"
+              className="peer outline-none dark:bg-transparent bg-white p-3 rounded border w-[500px] max-sm:w-[400px] max-xxs:w-[300px] max-md:w-[350px] placeholder-transparent"
               onChange={(e) => setSearchCategory(e.target.value)}
               onKeyUp={(e) => {
                 if (e.key === "Enter") {
@@ -273,7 +273,7 @@ function CreatePodcast() {
               className="absolute
                  transition-all
                   left-3.5 -top-0
-                   text-gray-400 
+                   dark:text-gray-400 text-gray-700 
                    text-xs peer-placeholder-shown:text-sm
                     peer-placeholder-shown:top-3.5
                     pointer-events-none"
@@ -283,7 +283,7 @@ function CreatePodcast() {
             <label
               className="absolute
                   right-3.5 top-3
-                   text-gray-400
+                   dark:text-gray-400 text-gray-700
                    text-2xl
                   "
             >
@@ -308,34 +308,39 @@ function CreatePodcast() {
             )}
 
             {searchCategory && (
-              <div className="w-[500px] relative scrollbar-hide max-sm:w-[400px] max-xxs:w-[300px] max-md:w-[350px] h-fit max-h-[200px]  rounded p-2 mt-2  overflow-scroll backdrop-blur-sm bg-white/30">
-                <div className="fixed top-1 z-50   right-1 cursor-pointer">
+              <div className="w-[500px] relative scrollbar-hide max-sm:w-[400px] max-xxs:w-[300px] max-md:w-[350px] h-fit max-h-[200px] rounded p-2 mt-2  overflow-scroll backdrop-blur-sm dark:bg-white/30 bg-black/80">
+                <div className="fixed top-1 z-50 right-1 cursor-pointer">
                   {" "}
-                  <RxCross1 onClick={() => setSearchCategory("")} />
+                  <RxCross1
+                    className="text-white "
+                    onClick={() => setSearchCategory("")}
+                  />
                 </div>
-                {filteredCategories.length > 0
-                  ? filteredCategories.map((item) => {
-                      return (
-                        <div
-                          className="cursor-pointer"
-                          onClick={() =>
-                            setSelectedCategories([...selectedCategories, item])
-                          }
-                        >
-                          {item}
-                        </div>
-                      );
-                    })
-                  : "No such genre found"}
+                {filteredCategories.length > 0 ? (
+                  filteredCategories.map((item) => {
+                    return (
+                      <div
+                        className="cursor-pointer text-white "
+                        onClick={() =>
+                          setSelectedCategories([...selectedCategories, item])
+                        }
+                      >
+                        {item}
+                      </div>
+                    );
+                  })
+                ) : (
+                  <p className="text-white">No such genre found</p>
+                )}
               </div>
             )}
           </div>
 
           <label
             htmlFor="bannerImage"
-            className="block cursor-pointer flex gap-2  outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[400px] max-xxs:w-[300px] max-md:w-[350px]"
+            className="block cursor-pointer flex gap-2 outline-none dark:bg-transparent bg-white p-3 rounded border w-[500px] max-sm:w-[400px] max-xxs:w-[300px] max-md:w-[350px]"
           >
-            <span className="text-gray-400 flex gap-2 whitespace-nowrap items-center">
+            <span className="dark:text-gray-400 text-gray-700 flex gap-2 whitespace-nowrap items-center">
               Banner Image <CiImageOn className="text-2xl" />
             </span>
             <input
@@ -351,9 +356,9 @@ function CreatePodcast() {
 
           <label
             htmlFor="podcastImage"
-            className="block cursor-pointer flex gap-2 outline-none bg-transparent p-3 rounded border w-[500px] max-sm:w-[400px] max-xxs:w-[300px] max-md:w-[350px]"
+            className="block cursor-pointer flex gap-2 outline-none dark:bg-transparent bg-white p-3 rounded border w-[500px] max-sm:w-[400px] max-xxs:w-[300px] max-md:w-[350px]"
           >
-            <span className="text-gray-400 flex whitespace-nowrap gap-2 items-center">
+            <span className="dark:text-gray-400 text-gray-700 flex whitespace-nowrap gap-2 items-center">
               Podcast Image <CiImageOn className="text-2xl" />
             </span>
             <input
@@ -370,7 +375,7 @@ function CreatePodcast() {
           </label>
 
           <button
-            className="border-2  rounded p-3 font-semibold w-[500px] max-sm:w-[400px] max-xxs:w-[300px] max-md:w-[350px] hover:bg-gray-200 hover:bg-opacity-20"
+            className="border-2 rounded p-3 font-semibold w-[500px] max-sm:w-[400px] max-xxs:w-[300px] max-md:w-[350px] hover:bg-gray-900 bg-gray-900 text-white dark:bg-transparent dark-text-white hover:dark:bg-opacity-20"
             onClick={handleCreatePodcast}
           >
             {loading ? (

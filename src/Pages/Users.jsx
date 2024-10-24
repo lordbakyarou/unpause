@@ -102,7 +102,7 @@ function Users() {
         </div>
 
         {allUser.length == 0 && (
-          <div className="podcasts max-xxs:grid-cols-1 max-sm:items-center max-sm:px-2 max-sm:grid-cols-2  flex  grid grid-cols-3 max-xl:grid-cols-2  max-md:grid-cols-1 max-md:gap-2  gap-5 justify-center">
+          <div className="podcasts max-xxs:grid-cols-1 max-sm:items-center max-sm:px-2 max-sm:grid-cols-2 flex grid grid-cols-3 max-xl:grid-cols-2 max-md:grid-cols-1 max-md:gap-2 gap-5 justify-center">
             {[1, 2, 3, 4, 5, 6].map((item, index) => {
               return <LoadingCard key={index} />;
             })}
@@ -110,7 +110,7 @@ function Users() {
         )}
 
         {allUser.length > 0 && (
-          <div className="podcasts max-xxs:grid-cols-1 max-sm:items-center max-sm:px-2 max-sm:grid-cols-2  flex  grid grid-cols-3 max-xl:grid-cols-2  max-md:grid-cols-1 max-md:gap-2  gap-5 justify-center">
+          <div className="podcasts max-xxs:grid-cols-1 max-sm:items-center max-sm:px-2 max-sm:grid-cols-2 flex grid grid-cols-3 max-xl:grid-cols-2 max-md:grid-cols-1 max-md:gap-2 gap-5 justify-center">
             {filteredUser?.map((user, index) => (
               <UserCard user={user} key={index} />
             ))}

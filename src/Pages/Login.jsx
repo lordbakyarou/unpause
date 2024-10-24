@@ -52,7 +52,7 @@ function Login() {
     try {
       const provider = await new GoogleAuthProvider();
       const user = await signInWithPopup(auth, provider);
-      console.log(user);
+      // console.log(user);
       await handleGoogleLogin(user.user);
     } catch (error) {
       console.log(error, "error there");
@@ -63,7 +63,7 @@ function Login() {
   async function handleGoogleLogin(googleUser) {
     try {
       const userDoc = await getDoc(doc(db, "users", googleUser.uid));
-      console.log(userDoc);
+      // console.log(userDoc);
       if (userDoc.exists()) {
         const userData = userDoc.data();
         userData.profilePic = userData.profilePic.replace("s96-c", "s400-c");

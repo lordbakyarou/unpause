@@ -87,7 +87,7 @@ function Profile() {
         <div className="flex flex-col gap-10 items-center ">
           <h1 className="text-2xl">Profile</h1>
         </div>
-        <div className="w-80 h-[350px] relative flex flex-col gap-2 justify-between bg-black/60">
+        <div className="w-80 h-[350px] relative flex flex-col gap-2 justify-between dark:bg-black/60 bg-white/30">
           <div className="image w-full h-full flex flex-col items-center justify-start  ">
             <img
               src={
@@ -99,7 +99,7 @@ function Profile() {
             />
           </div>
           <div className="flex justify-between px-7 pb-10 items-center text-primary-text-color">
-            <p className="w-fit  overflow-hidden opacity-50 hover:opacity-100 cursor-pointer">
+            <p className="w-fit  overflow-hidden opacity-50 hover:opacity-100 dark:text-gray-200 text-gray-800 cursor-pointer">
               {user?.uid === currentUser?.uid ? currentUser?.name : user?.name}
             </p>
             {user?.uid === currentUser?.uid && (
@@ -113,8 +113,10 @@ function Profile() {
                   navigate("/");
                 }}
               >
-                <IoIosLogOut className="hover:fill-white cursor-pointer opacity-50 hover:opacity-100 cursor-pointer transition-all hover:scale-150 duration-500" />{" "}
-                <span className="opacity-50 hover:opacity-100">Logout</span>
+                <IoIosLogOut className="hover:dark:fill-white cursor-pointer dark:text-gray-200 opacity-50 hover:opacity-100 text-gray-800 cursor-pointer transition-all hover:scale-150 duration-500" />{" "}
+                <span className="opacity-50 hover:opacity-100 dark:text-gray-200 text-gray-800">
+                  Logout
+                </span>
               </p>
             )}
           </div>
@@ -123,7 +125,7 @@ function Profile() {
               className="absolute top-3 right-3 group border rounded-full p-1 backdrop-blur-md bg-white/10 text-xl"
               onClick={handleEditProfile}
             >
-              <MdModeEdit className=" opacity-50 hover:opacity-100 cursor-pointer transition-all hover:scale-110 duration-500 text-black" />
+              <MdModeEdit className="opacity-50 hover:opacity-100 cursor-pointer transition-all hover:scale-110 duration-500 text-black dark:text-white" />
               <p className="text-white bg-black px-1 text-xs absolute top-8 right-0 hidden group-hover:block rounded">
                 Edit
               </p>

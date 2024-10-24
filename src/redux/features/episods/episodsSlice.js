@@ -25,7 +25,7 @@ const episodeSlice = createSlice({
     },
     resetIndex: (state) => {
       state.episode.index = 0;
-      console.log(state.episode.index);
+      // console.log(state.episode.index);
     },
   },
 });

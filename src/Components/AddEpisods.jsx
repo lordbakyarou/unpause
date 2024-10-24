@@ -141,14 +141,14 @@ function AddEpisodes({
 
   return (
     <div
-      className="h-screen  w-full bg-black/30 flex items-center justify-center backdrop-blur-sm"
+      className="h-screen  w-full dark:bg-black/30 flex items-center justify-center backdrop-blur-sm"
       onClick={(e) => {
         e.stopPropagation();
         setAddPodcastOpen(false);
       }}
     >
       <div
-        className="overflow-y-hidden overflow-x-hidden max-sm:w-[500px] max-xxs:w-[290px] max-md:w-[350px] flex justify-center relative items-center flex-col gap-10 bg-black backdrop-blur-xl rounded-lg p-5"
+        className="overflow-y-hidden overflow-x-hidden max-sm:w-[500px] max-xxs:w-[290px] max-md:w-[350px] flex justify-center relative items-center flex-col gap-10 dark:bg-black bg-white backdrop-blur-xl rounded-lg p-5"
         onClick={(e) => {
           e.stopPropagation();
           setAddPodcastOpen(true);

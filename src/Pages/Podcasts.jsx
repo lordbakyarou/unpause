@@ -107,8 +107,8 @@ function Podcasts() {
   ];
 
   return (
-    <div className="p-4  scroll-smooth">
-      <div className="pt-20 pb-40 w-full podcast overflow-auto flex justify-center items-center flex-col gap-10 bg-transparent">
+    <div className="p-4 scroll-smooth">
+      <div className="pt-20 pb-40 w-full podcast overflow-auto flex justify-center items-center flex-col gap-10 dark:bg-transparent bg-[#EDF3F7]">
         <div className="flex flex-col gap-2 items-center justify-center">
           <div className="flex flex-col gap-10 items-center">
             <h1 className="text-2xl">Discover Podcasts</h1>
@@ -117,7 +117,7 @@ function Podcasts() {
                 // type={showPassword ? "text" : "password"}
                 placeholder="Search"
                 name="text"
-                className="peer outline-none bg-transparent px-2 py-3 rounded border w-[900px] max-lg:w-[450px] max-xl:w-[700px] placeholder-transparent"
+                className="peer outline-none dark:bg-transparent bg-white px-2 py-3 rounded border w-[900px] max-lg:w-[450px] max-xl:w-[700px] placeholder-transparent"
                 onChange={(e) => setSearch(e.target.value)}
                 value={search}
               />
@@ -151,7 +151,7 @@ function Podcasts() {
                       setSearch(category);
                       setSearch(category);
                     }}
-                    className="backdrop-blur-sm max-sm:text-xs w-fit cursor-pointer hover:bg-white/40 bg-white/30 rounded-xl p-2 text-xs"
+                    className="backdrop-blur-sm max-sm:text-xs w-fit cursor-pointer hover:bg-white/40 dark:bg-white/30 bg-white  rounded-xl p-2 text-xs"
                   >
                     #{category}
                   </p>

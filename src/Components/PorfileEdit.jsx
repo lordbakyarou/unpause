@@ -129,14 +129,14 @@ function ProfileEdit() {
 
   return (
     <div
-      className="h-full w-full backdrop-blur-sm   bg-black/30 flex items-center justify-center"
+      className="h-full w-full backdrop-blur-sm dark:bg-black/30 flex items-center justify-center"
       onClick={(e) => {
         e.stopPropagation();
         dispatch(closePost());
       }}
     >
       <div
-        className=" flex max-xxs:w-[300px]   max-md:w-[400px] justify-center relative items-center flex-col gap-10 bg-black  backdrop-blur-xl rounded-lg p-5"
+        className=" flex max-xxs:w-[300px] max-md:w-[400px] justify-center relative items-center flex-col gap-10 dark:bg-black bg-white backdrop-blur-xl rounded-lg p-5"
         onClick={(e) => {
           e.stopPropagation();
           dispatch(openPost());

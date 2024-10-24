@@ -6,6 +6,7 @@ import editPostReducer from "../features/editpost/editPostOpen";
 import episodsReducer from "../features/episods/episodsSlice";
 import musicReducer from "../features/music/musicSlice";
 import allPodcastReducer from "../features/allPodcast/allPodcastSlice";
+import themeReducer from "../features/theme/themeSlice";
 
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   episode: episodsReducer,
   music: musicReducer,
   allPodcast: allPodcastReducer,
+  theme: themeReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

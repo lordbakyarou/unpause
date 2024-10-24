@@ -85,12 +85,12 @@ function UpdatedSidebar({
       onMouseLeave={() => setIsHovered(false)}
     >
       {isHovered ? (
-        <div className="h-full px-3 pb-4 pt-10 bg-gradient-to-r dark:from-black dark:via-black/80 to-transparent">
+        <div className="h-full px-3 pb-4 pt-10 bg-gradient-to-r dark:from-black dark:via-black/80 to-transparent backdrop-blur-2xl">
           <ul className="space-y-2 font-medium text-sm">
             <li>
               <NavLink
                 to="/podcasts"
-                className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 group"
+                className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 group"
                 // onClick={handleNavLinkClick}
               >
                 <MdPodcasts className="dark:text-gray-300 text-gray-800 text-2xl flex-shrink-0" />
@@ -102,7 +102,7 @@ function UpdatedSidebar({
             <li>
               <NavLink
                 to="/create-a-podcast"
-                className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 group"
+                className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 group"
                 // onClick={handleNavLinkClick}
               >
                 <IoCreate className="dark:text-gray-300 text-gray-800 text-2xl flex-shrink-0" />
@@ -115,7 +115,7 @@ function UpdatedSidebar({
               <li>
                 <NavLink
                   to={`/profile/${currentUser?.uid}`}
-                  className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 group"
+                  className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 group"
                   // onClick={handleNavLinkClick}
                 >
                   <CgProfile className="dark:text-gray-300 text-gray-800 text-2xl flex-shrink-0" />
@@ -128,7 +128,7 @@ function UpdatedSidebar({
             <li>
               <NavLink
                 to="/users"
-                className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 group"
+                className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 group"
                 // onClick={handleNavLinkClick}
               >
                 <FaUsers className="dark:text-gray-300 text-gray-800 text-2xl flex-shrink-0" />
@@ -141,7 +141,7 @@ function UpdatedSidebar({
               <li>
                 <NavLink
                   to={`/liked-podcast/${currentUser?.uid}`}
-                  className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 group"
+                  className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 group"
                   // onClick={handleNavLinkClick}
                 >
                   <FaHeart className="dark:text-gray-300 text-gray-800 text-2xl flex-shrink-0" />
@@ -155,7 +155,7 @@ function UpdatedSidebar({
               <li>
                 <NavLink
                   to="/"
-                  className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 group"
+                  className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 group"
                   onClick={() => {
                     dispatch(clearToken());
                     dispatch(clearUser());
@@ -175,7 +175,7 @@ function UpdatedSidebar({
               <li>
                 <NavLink
                   to="/"
-                  className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 group"
+                  className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 group"
                 >
                   <CgLogIn className="dark:text-gray-300 text-gray-800 text-2xl flex-shrink-0" />
                   <span className="flex-1 ms-3 dark:text-gray-300 text-gray-800 whitespace-nowrap">
@@ -188,7 +188,7 @@ function UpdatedSidebar({
               <li>
                 <NavLink
                   to="/signup"
-                  className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 group"
+                  className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 group"
                 >
                   <BsPersonFillAdd className="dark:text-gray-300 text-gray-800 text-2xl flex-shrink-0" />
                   <span className="flex-1 ms-3 dark:text-gray-300 text-gray-800 whitespace-nowrap">
@@ -202,18 +202,18 @@ function UpdatedSidebar({
               <NavLink
                 to="https://mayur.fun"
                 target="_blank"
-                className="flex items-center p-2 text-gray-200 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 group"
+                className="flex items-center p-2 text-gray-200 rounded-lg "
               >
-                <span className="flex-1 text-xs ms-2 text-gray-400 font-normal whitespace-nowrap">
+                <span className="flex-1 text-sm font-semibold ms-2 text-gray-600 whitespace-nowrap hover:text-gray-900 hover:dark:text-white">
                   About Me
                 </span>
               </NavLink>
             </li>
             <li>
-              <div className="footer text-[11px] w-[200px] flex text-gray-400 flex-col gap-4 pl-4 pr-4 ">
+              <div className="footer text-[11px] w-[200px] flex text-gray-500 flex-col gap-4 pl-4 pr-4 ">
                 <div className="just-footer no-wrap">
                   Follow me on{" "}
-                  <span className="cursor-pointer hover:text-white">
+                  <span className="cursor-pointer  hover:dark:text-white hover:text-gray-900">
                     <NavLink
                       to="https://www.linkedin.com/in/mayurhanwate/"
                       target="_blank"
@@ -222,7 +222,7 @@ function UpdatedSidebar({
                     </NavLink>
                   </span>{" "}
                   ·{" "}
-                  <span className="cursor-pointer hover:text-white">
+                  <span className="cursor-pointer  hover:dark:text-white hover:text-gray-900">
                     <NavLink
                       to="https://github.com/lordbakyarou"
                       target="_blank"
@@ -231,7 +231,7 @@ function UpdatedSidebar({
                     </NavLink>
                   </span>{" "}
                   ·{" "}
-                  <span className="cursor-pointer hover:text-white">
+                  <span className="cursor-pointer hover:dark:text-white hover:text-gray-900">
                     <NavLink
                       to="https://leetcode.com/mayur1710hanwate/"
                       target="_blank"
@@ -248,7 +248,7 @@ function UpdatedSidebar({
           </ul>
         </div>
       ) : (
-        <div className="h-full px-3 pb-4 pt-10 dark:bg-[#0F1014] backdrop-blur-2xl">
+        <div className="h-full px-3 pb-4 pt-10 dark:bg-transparent">
           <ul className="space-y-2 font-medium text-sm">
             <li>
               <NavLink
