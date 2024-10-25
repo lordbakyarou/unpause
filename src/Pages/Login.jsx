@@ -51,6 +51,9 @@ function Login() {
     e.preventDefault();
     try {
       const provider = await new GoogleAuthProvider();
+      provider.setCustomParameters({
+        prompt: "select_account",
+      });
       const user = await signInWithPopup(auth, provider);
       // console.log(user);
       await handleGoogleLogin(user.user);
@@ -172,21 +175,22 @@ function Login() {
         </div>
         <div className="p-4 ">
           <div className="pt-20 overflow-y-hidden flex justify-center items-center flex-col gap-10 ">
-            <h1 className="text-4xl max-md:text-2xl font-semibold">Login</h1>
-            <form
-              className="flex flex-col items-center justify-center gap-5"
-              autoComplete="off"
-            >
-              <div className="input-password  relative">
-                <input
-                  type="email"
-                  placeholder="Email"
-                  name="email"
-                  className="peer outline-none bg-transparent p-3 max-md:p-2 rounded border w-[480px] max-xl:w-[300px] max-sm:w-[450px] max-xxs:w-[290px] max-md:w-[350px] placeholder-transparent"
-                  onChange={(e) => setUserProperties(e)}
-                />
-                <label
-                  className="absolute
+            <div className="flex flex-col gap-2 items-center dark:border-none  sm:p-5 dark:bg-transparent bg-white shadow-md">
+              <h1 className="text-4xl max-md:text-2xl font-semibold">Login</h1>
+              <form
+                className="flex flex-col items-center justify-center gap-5"
+                autoComplete="off"
+              >
+                <div className="input-password  relative">
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    name="email"
+                    className="peer outline-none bg-transparent p-3 max-md:p-2 rounded dark:border dark:border-gray-100 border-gray-300 border w-[480px] max-xl:w-[300px] max-sm:w-[450px] max-xxs:w-[290px] max-md:w-[350px] placeholder-transparent"
+                    onChange={(e) => setUserProperties(e)}
+                  />
+                  <label
+                    className="absolute
              transition-all
               left-3.5 -top-0
                text-gray-400 
@@ -194,10 +198,10 @@ function Login() {
                max-md:peer-placeholder-shown:text-sm
                 peer-placeholder-shown:top-3.5
                 pointer-events-none"
-                >
-                  Email
-                </label>
-                {/* 
+                  >
+                    Email
+                  </label>
+                  {/* 
               {loginInUser.password && (
                 <div
                   className="absolute top-2.5 right-2 text-lg text-gray-800 cursor-pointer"
@@ -206,17 +210,17 @@ function Login() {
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </div>
               )} */}
-              </div>
-              <div className="input-password  relative">
-                <input
-                  type={showPassword ? "text" : "password"}
-                  placeholder="Password"
-                  name="password"
-                  className="peer outline-none bg-transparent p-3 max-md:p-2 rounded border w-[480px] max-xl:w-[300px] max-sm:w-[450px] max-xxs:w-[290px] max-md:w-[350px] placeholder-transparent"
-                  onChange={(e) => setUserProperties(e)}
-                />
-                <label
-                  className="absolute
+                </div>
+                <div className="input-password  relative">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Password"
+                    name="password"
+                    className="peer outline-none bg-transparent p-3 max-md:p-2 rounded dark:border dark:border-gray-100 border-gray-300 border w-[480px] max-xl:w-[300px] max-sm:w-[450px] max-xxs:w-[290px] max-md:w-[350px] placeholder-transparent"
+                    onChange={(e) => setUserProperties(e)}
+                  />
+                  <label
+                    className="absolute
              transition-all
               left-3.5 -top-0
                text-gray-400 
@@ -224,76 +228,79 @@ function Login() {
                max-md:peer-placeholder-shown:text-sm
                 peer-placeholder-shown:top-3.5
                 pointer-events-none"
-                >
-                  Password
-                </label>
-                {user.password && (
-                  <div
-                    className="absolute top-3.5 right-2 text-lg text-gray-800 cursor-pointer"
-                    onClick={() => setShowPassword(!showPassword)}
                   >
-                    {showPassword ? (
-                      <IoMdEyeOff className="text-white" />
-                    ) : (
-                      <IoMdEye className="text-white" />
-                    )}
+                    Password
+                  </label>
+                  {user.password && (
+                    <div
+                      className="absolute top-3.5 right-2 text-lg text-gray-800 cursor-pointer"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? (
+                        <IoMdEyeOff className="text-white" />
+                      ) : (
+                        <IoMdEye className="text-white" />
+                      )}
+                    </div>
+                  )}
+                  <div className="text-xs flex w-full justify-end ">
+                    <p
+                      className="cursor-pointer w-fit opacity-50 hover:opacity-100"
+                      onClick={() => setIsForgotPassword(true)}
+                    >
+                      Forgot Password?
+                    </p>
                   </div>
-                )}
-                <div className="text-xs flex w-full justify-end ">
-                  <p
-                    className="cursor-pointer w-fit opacity-50 hover:opacity-100"
-                    onClick={() => setIsForgotPassword(true)}
-                  >
-                    Forgot Password?
-                  </p>
                 </div>
-              </div>
 
-              <button
-                className="border-2  rounded p-3 max-md:p-2 font-semibold w-[480px] max-sm:w-[450px] max-xl:w-[300px] max-xxs:w-[290px] max-md:w-[350px] hover:bg-gray-200 hover:bg-opacity-20"
-                onClick={handleLogin}
-              >
-                {loading ? (
-                  <div className="flex gap-2 justify-center items-center">
-                    <BsArrowClockwise className="animate-spin" />
-                    Loging up...
-                  </div>
-                ) : (
-                  "Login Now"
-                )}
-              </button>
-              <button
-                style={{ display: "flex", alignItems: "center", gap: "10px" }}
-                // onClick={loginUsingGoogle}
-                className="flex items-center justify-center  rounded p-3 max-md:p-2 font-semibold"
-                onClick={loginUsingGoogle}
-              >
-                {/* <IconButton> */}
-                <img src={googleAuth} alt="Your Image" width={20} />
-                {/* </IconButton> */}
-                <p className="">Login using Google</p>
-              </button>
-            </form>
-            <p className="">
-              <span className="opacity-50">Don't Have An Account? </span>
-              <span
-                className="cursor-pointer opacity-50 hover:opacity-100 text-blue-top"
-                onClick={() => navigate("/signup")}
-              >
-                Signup
-              </span>
-            </p>
-          </div>
-          {isForgotPassword && (
-            <div
-              className="w-screen  overflow-hidden absolute left-0 top-0 flex items-center justify-center"
-              style={{
-                zIndex: "99",
-              }}
-            >
-              <ForgotPassword setIsForgotPassword={setIsForgotPassword} />
+                <button
+                  className="dark:border dark:border-gray-100 border-gray-300 border bg-[#72C199] rounded p-3 max-md:p-2 font-semibold w-[480px] max-sm:w-[450px] max-xl:w-[300px] max-xxs:w-[290px] max-md:w-[350px] bg-opacity-90 hover:bg-opacity-100"
+                  onClick={handleLogin}
+                >
+                  {loading ? (
+                    <div className="flex gap-2 text-white  justify-center items-center ">
+                      <BsArrowClockwise className="animate-spin" />
+                      Loging up...
+                    </div>
+                  ) : (
+                    <p className="text-white">Login Now</p>
+                  )}
+                </button>
+                <button
+                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
+                  // onClick={loginUsingGoogle}
+                  className="flex items-center justify-center  rounded p-3 max-md:p-2 font-semibold"
+                  onClick={loginUsingGoogle}
+                >
+                  {/* <IconButton> */}
+                  <img src={googleAuth} alt="Your Image" width={20} />
+                  {/* </IconButton> */}
+                  <p className="">Login using Google</p>
+                </button>
+              </form>
+              <p className="">
+                <span className="opacity-50 text-sm">
+                  Don't Have An Account?{" "}
+                </span>
+                <span
+                  className="cursor-pointer opacity-50 hover:opacity-100 text-green-400 font-semibold"
+                  onClick={() => navigate("/signup")}
+                >
+                  Signup
+                </span>
+              </p>
             </div>
-          )}
+            {isForgotPassword && (
+              <div
+                className="w-screen  overflow-hidden absolute left-0 top-0 flex items-center justify-center"
+                style={{
+                  zIndex: "99",
+                }}
+              >
+                <ForgotPassword setIsForgotPassword={setIsForgotPassword} />
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
